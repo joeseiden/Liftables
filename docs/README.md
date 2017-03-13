@@ -1,7 +1,7 @@
 #Liftagram
 
 [Heroku Link]
-[Trello Link]
+[Trello Link](https://trello.com/b/Jp1IDArW/liftables)
 
 ##Minimum Viable Product
 
