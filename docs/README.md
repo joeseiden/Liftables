@@ -1,18 +1,19 @@
-#Liftagram
+#Liftables
 
-[Heroku Link]
-[Trello Link]
+[Heroku Link](https://liftables.herokuapp.com/)
+[Trello Link](https://trello.com/b/Jp1IDArW/liftables)
 
 ##Minimum Viable Product
 
 Liftables is a web application inspired by Instructables to help people learn how to train with weights through visual and step by step tutorials built using Ruby on Rails and React/Redux. By the end of this project, the app will satisfy the following criteria:
 
-- [] Hosting on Heroku
-- [] Account creation, login and guest/demo login
-- [] Instructive articles
-- [] Commenting on articles
-- [] Adding photos and videos to articles
-- [] Searching articles by keyword
+- [ ] Hosting on Heroku
+- [ ] Production Readme
+- [ ] Account creation, login and guest/demo login
+- [ ] Instructive articles
+- [ ] Commenting on articles
+- [ ] Adding photos and videos to articles
+- [ ] Searching articles by keyword
 - **Bonus**: Categories
 - **Bonus**: Featured article channels
 
