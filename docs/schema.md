@@ -25,7 +25,7 @@ column name  | data type | details
 id           | integer   | not null, primary key
 title        | string    | not null
 contents     | text      | not null
-media_url    | text      | not null
+media_url    | text      | 
 article_id   | integer   | not null, indexed, foreign key (references article)
 
 ## Comments
