@@ -6,20 +6,30 @@ import {
   IndexRoute,
   hashHistory
 } from 'react-router';
+import { receiveErrors } from '../actions/session_actions';
 import App from './app';
 import AuthFormContainer from './auth/auth_form_container';
+import MainContainer from './main/main_container';
 
-const Root = ({ store }) => (
 
-  
+const Root = ({ store }) => {
+
+  const clearErrors = () => store.dispatch(receiveErrors([]))
+  return (
   <Provider store={ store }>
     <Router history={hashHistory}>
       <Route path="/" component={ App }>
-        <Route path="/login" component={AuthFormContainer}/>
-        <Route path="/signup" component={AuthFormContainer}/>
+        <IndexRoute component={MainContainer}/>
+        <Route path="/login"
+               onEnter={clearErrors}
+               component={AuthFormContainer}/>
+        <Route path="/signup"
+               onEnter={clearErrors}
+               component={AuthFormContainer}/>
       </Route>
     </Router>
   </Provider>
-);
+  );
+};
 
 export default Root;

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { hashHistory } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 
 class AuthForm extends React.Component {
   constructor(props){
@@ -12,11 +12,7 @@ class AuthForm extends React.Component {
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleErrors = this.handleErrors.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.clearErrors([]);
+    this.handleErrors = this.handleErrors.bind(this);
   }
 
   update(field) {
@@ -25,20 +21,61 @@ class AuthForm extends React.Component {
     };
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    if (this.props.formType === 'signup'){
-      this.props.signup(this.state);
-    } else {
-      this.props.login(this.state);
-    }
+  handleErrors() {
+    return(
+      <ul className="errors">
+        {this.props.errors.map((error, i) =>(
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
   }
 
-  render() {
-    return(
-      <form id="auth-form" onSubmit={this.handleSubmit}>
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log(this.state);
+    const user = this.state;
+    console.log(user);
+    this.props.processForm(user);
+  }
 
-      </form>
+  navLink() {
+      if (this.props.formType === "login") {
+  			return <Link to="/signup">Sign Up</Link>;
+  		} else {
+  			return <Link to="/login">Log In</Link>;
+  		}
+  	}
+
+  render() {
+    const formType = (this.props.formType === 'login' ? "Log In" : "Sign Up");
+    return(
+      <div className="auth-form-container">
+        {this.handleErrors()}
+        {formType} or {this.navLink()} instead
+        <form id="auth-form" onSubmit={this.handleSubmit}>
+          <label id="username">
+            Username:
+            <input type="text"
+                   value={this.state.username}
+                   onChange={this.update("username")}
+                   className="auth-input"
+                   placeholder="Username"/>
+          </label>
+          <br/>
+          <label id="password"> Password:
+            <input type="password"
+                   value={this.state.password}
+                   onChange={this.update("password")}
+                   className="auth-input"
+                   placeholder="Password"/>
+          </label>
+          <br/>
+          <input type="submit" value={formType}/>
+        </form>
+      </div>
     );
   }
 }

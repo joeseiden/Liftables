@@ -3,9 +3,7 @@ import AuthForm from './auth_form';
 import {
   signup,
   login,
-  receiveErrors,
-  editAccount,
-  deleteAccount
+  receiveErrors
 } from '../../actions/session_actions';
 
 const mapStateToProps = ({session}) => ({
@@ -18,7 +16,7 @@ const mapDispatchToProps = (dispatch, { location }) => {
     const processForm = (formType === 'login') ? login : signup;
 
     return {
-      clearErrors: (array) => (dispatch(receiveErrors(array))),
+      // clearErrors: () => (dispatch(receiveErrors([]))),
       processForm: user => dispatch(processForm(user)),
       formType
   };
