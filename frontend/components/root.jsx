@@ -14,17 +14,15 @@ import MainContainer from './main/main_container';
 
 const Root = ({ store }) => {
 
-  const clearErrors = () => store.dispatch(receiveErrors([]))
+
   return (
   <Provider store={ store }>
     <Router history={hashHistory}>
       <Route path="/" component={ App }>
         <IndexRoute component={MainContainer}/>
         <Route path="/login"
-               onEnter={clearErrors}
                component={AuthFormContainer}/>
         <Route path="/signup"
-               onEnter={clearErrors}
                component={AuthFormContainer}/>
       </Route>
     </Router>

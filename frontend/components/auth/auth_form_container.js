@@ -6,21 +6,16 @@ import {
   receiveErrors
 } from '../../actions/session_actions';
 
-const mapStateToProps = ({session}) => ({
+const mapStateToProps = ({session}, ownProps) => ({
     loggedIn: Boolean(session.currentUser),
-    errors: session.errors
+    errors: session.errors,
+    formType: ownProps.formType
   });
 
-const mapDispatchToProps = (dispatch, { location }) => {
-    const formType = location.pathname.slice(1);
-    const processForm = (formType === 'login') ? login : signup;
-
-    return {
-      // clearErrors: () => (dispatch(receiveErrors([]))),
-      processForm: user => dispatch(processForm(user)),
-      formType
-  };
-};
+const mapDispatchToProps = (dispatch, formType) => ({
+    login: user => dispatch(login(user)),
+    signup: user => dispatch(signup(user))
+});
 
 export default connect(
   mapStateToProps,

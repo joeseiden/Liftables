@@ -13,12 +13,22 @@ class AuthForm extends React.Component {
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
+    this.formToggle = this.formToggle.bind(this);
   }
 
   update(field) {
     return (e) => {
       this.setState({[field]: e.target.value});
     };
+  }
+
+  formToggle(e) {
+    e.preventDefault();
+    if (this.props.formType === 'login'){
+      this.props.setFormType('signup');
+    } else {
+      this.props.setFormType('login');
+    }
   }
 
   handleErrors() {
@@ -35,26 +45,35 @@ class AuthForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
     const user = this.state;
-    console.log(user);
-    this.props.processForm(user);
+    if (this.props.formType === 'login'){
+      this.props.login(user).then(this.props._closeForm);
+    } else {
+      this.props.signup(user).then(this.props._closeForm);
+    }
   }
 
-  navLink() {
+  formToggleButton() {
       if (this.props.formType === "login") {
-  			return <Link to="/signup">Sign Up</Link>;
+  			return(
+        <button id="form-toggle" onClick={this.formToggle}>
+          Sign Up
+        </button>);
   		} else {
-  			return <Link to="/login">Log In</Link>;
-  		}
+  			return(
+          <button id="form-toggle" onClick={this.formToggle}>
+            Log In
+          </button>
+      );
   	}
+  }
 
   render() {
     const formType = (this.props.formType === 'login' ? "Log In" : "Sign Up");
     return(
       <div className="auth-form-container">
         {this.handleErrors()}
-        {formType} or {this.navLink()} instead
+        {formType} or {this.formToggleButton()} instead
         <form id="auth-form" onSubmit={this.handleSubmit}>
           <label id="username">
             Username:

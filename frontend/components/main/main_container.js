@@ -3,7 +3,8 @@ import Main from './main';
 import {
   signup,
   login,
-  logout
+  logout,
+  receiveErrors
 } from '../../actions/session_actions';
 
 const mapStateToProps = ({session}) => ({
@@ -11,7 +12,8 @@ const mapStateToProps = ({session}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
+  clearErrors: () => dispatch(receiveErrors([]))
 });
 
 export default connect(

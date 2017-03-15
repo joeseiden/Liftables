@@ -1,19 +1,88 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import NavBar from './navbar';
+import Modal from 'react-modal';
+import AuthFormContainer from '../auth/auth_form_container';
 
 class Main extends React.Component{
   constructor(props){
     super(props);
+
+    this.state = {
+      modalOpen: false,
+      formType: null
+    };
+    this._closeForm = this._closeForm.bind(this);
+    this._openForm = this._openForm.bind(this);
+    this.setFormType = this.setFormType.bind(this);
   }
 
-  loggedIn(){
-    Boolean(this.props.currentUser);
+  componentWillMount() {
+    Modal.setAppElement('body');
+  }
+
+  componentDidMount(){
+  }
+
+  rightNav(){
+    if (this.props.currentUser) {
+      return(
+        <div className="right-nav">
+          <button onClick={this.props.logout}>Log Out</button>
+        </div>
+      );
+    } else {
+      return(
+        <div className="right-nav">
+          <button onClick={this._openForm('login')} id="nav-login">
+            Log In
+          </button>
+          <button onClick={this._openForm('signup')} id="nav-signup">
+            Sign Up
+          </button>
+        </div>
+      );
+    }
+  }
+
+  setFormType(formType) {
+    this.setState({formType});
+  }
+
+  _openForm(formType){
+    return (e) => {
+      e.preventDefault();
+      console.log(formType);
+      this.setState({
+        modalOpen: true,
+        formType
+      });
+    };
+  }
+
+  _closeForm(){
+    this.setState({modalOpen:false});
   }
 
   render(){
-    return(
-      <NavBar loggedIn={this.loggedIn()} />
+    return (
+      <div id='nav-bar'>
+        <div className="left-nav">
+
+          <h1>Liftables</h1>
+        </div>
+          {this.rightNav()}
+          <Modal
+            isOpen={this.state.modalOpen}
+            contentLabel="auth-modal"
+            onRequestClose={this._closeForm}
+            onAfterOpen={this.clearErrors}
+            shouldCloseOnOverlayClick={true}>
+            <AuthFormContainer
+              formType={this.state.formType}
+              closeModal={this._closeForm}
+              setFormType={this.setFormType}/>
+          </Modal>
+      </div>
     );
   }
 }
