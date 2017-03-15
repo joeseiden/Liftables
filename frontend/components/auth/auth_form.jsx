@@ -47,9 +47,9 @@ class AuthForm extends React.Component {
     e.preventDefault();
     const user = this.state;
     if (this.props.formType === 'login'){
-      this.props.login(user).then(this.props._closeForm);
+      this.props.login(user).then(this.props.closeModal);
     } else {
-      this.props.signup(user).then(this.props._closeForm);
+      this.props.signup(user).then(this.props.closeModal);
     }
   }
 
@@ -92,8 +92,9 @@ class AuthForm extends React.Component {
                    placeholder="Password"/>
           </label>
           <br/>
-          <input type="submit" value={formType}/>
+          <input id="auth-form-submit" type="submit" value={formType}/>
         </form>
+        <button id="close-button" onClick={this.props.closeModal}>Close</button>
       </div>
     );
   }

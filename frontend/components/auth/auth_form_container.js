@@ -14,7 +14,8 @@ const mapStateToProps = ({session}, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, formType) => ({
     login: user => dispatch(login(user)),
-    signup: user => dispatch(signup(user))
+    signup: user => dispatch(signup(user)),
+    clearErrors: () => dispatch(receiveErrors([]))
 });
 
 export default connect(

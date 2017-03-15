@@ -45,7 +45,7 @@ class Main extends React.Component{
   }
 
   setFormType(formType) {
-    this.setState({formType});
+    this.setState({formType}, this.props.clearErrors);
   }
 
   _openForm(formType){
@@ -65,23 +65,25 @@ class Main extends React.Component{
 
   render(){
     return (
-      <div id='nav-bar'>
-        <div className="left-nav">
+      <div>
+        <div id='nav-bar'>
+          <div className="left-nav">
 
-          <h1>Liftables</h1>
+            <h1>Liftables</h1>
+          </div>
+            {this.rightNav()}
+            <Modal
+              isOpen={this.state.modalOpen}
+              contentLabel="auth-modal"
+              onRequestClose={this._closeForm}
+              shouldCloseOnOverlayClick={true}>
+              <AuthFormContainer
+                formType={this.state.formType}
+                closeModal={this._closeForm}
+                setFormType={this.setFormType}/>
+            </Modal>
         </div>
-          {this.rightNav()}
-          <Modal
-            isOpen={this.state.modalOpen}
-            contentLabel="auth-modal"
-            onRequestClose={this._closeForm}
-            onAfterOpen={this.clearErrors}
-            shouldCloseOnOverlayClick={true}>
-            <AuthFormContainer
-              formType={this.state.formType}
-              closeModal={this._closeForm}
-              setFormType={this.setFormType}/>
-          </Modal>
+        <div>I am splash page</div>
       </div>
     );
   }
