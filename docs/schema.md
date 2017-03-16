@@ -8,6 +8,8 @@ username        | string    | not null, indexed, unique
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
 
+has_many articles, comments
+
 ## Articles
 column name  | data type | details
 -------------|-----------|-----------------------
@@ -25,7 +27,7 @@ column name  | data type | details
 id           | integer   | not null, primary key
 title        | string    | not null
 contents     | text      | not null
-media_url    | text      | 
+media_url    | text      |
 article_id   | integer   | not null, indexed, foreign key (references article)
 
 ## Comments

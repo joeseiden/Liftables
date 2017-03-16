@@ -14,6 +14,7 @@ class AuthForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
     this.formToggle = this.formToggle.bind(this);
+    this.logInAsGuest = this.logInAsGuest.bind(this);
   }
 
   update(field) {
@@ -32,6 +33,8 @@ class AuthForm extends React.Component {
   }
 
   handleErrors() {
+    // figure out why errors is disappearing from session
+    if (this.props.errors){
     return(
       <ul className="errors">
         {this.props.errors.map((error, i) =>(
@@ -41,6 +44,15 @@ class AuthForm extends React.Component {
         ))}
       </ul>
     );
+    }
+  }
+
+  logInAsGuest(e){
+    e.preventDefault();
+    // figure out how to animate filling in form
+    this.props.closeModal();
+    this.props.login({username: "barry_bluejeans",
+                   password: "password"});
   }
 
   handleSubmit(e) {
@@ -100,9 +112,9 @@ class AuthForm extends React.Component {
           </label>
           <br/>
           <input id="auth-form-submit" type="submit" value={formType}/>
+          <button id="guest-login" onClick={this.logInAsGuest}>Demo</button>
         </form>
         {this.formToggleButton()}
-        <br/>
         <button id="close-button" onClick={this.props.closeModal}>Close</button>
       </div>
     );

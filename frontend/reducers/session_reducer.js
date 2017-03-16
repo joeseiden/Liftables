@@ -10,6 +10,7 @@ const _nullUser = Object.freeze({
   errors: []
 });
 
+
 const SessionReducer = (state = _nullUser, action) => {
   Object.freeze(state);
   switch (action.type) {

@@ -46,7 +46,8 @@ class Main extends React.Component{
   }
 
   setFormType(formType) {
-    this.setState({formType}, this.props.clearErrors);
+    this.setState({formType});
+    this.props.clearErrors();
   }
 
   _openForm(formType){
@@ -60,7 +61,8 @@ class Main extends React.Component{
   }
 
   _closeForm(){
-    this.setState({modalOpen:false}, this.props.clearErrors);
+    this.setState({modalOpen:false});
+    this.props.clearErrors();
   }
 
   render(){
