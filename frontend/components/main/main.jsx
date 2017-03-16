@@ -51,7 +51,6 @@ class Main extends React.Component{
   _openForm(formType){
     return (e) => {
       e.preventDefault();
-      console.log(formType);
       this.setState({
         modalOpen: true,
         formType
@@ -66,17 +65,19 @@ class Main extends React.Component{
   render(){
     return (
       <div>
-        <div id='nav-bar'>
+        <div id='main-nav' className="nav-bar">
           <div className="left-nav">
-
-            <h1>Liftables</h1>
+            <img id='logo' className="thumbnail"
+              src="http://www.free-icons-download.net/images/weightlifting-icon-78421.png"/>
+            <h1 id='logo-name'>Liftables</h1>
           </div>
             {this.rightNav()}
             <Modal
               isOpen={this.state.modalOpen}
               contentLabel="auth-modal"
               onRequestClose={this._closeForm}
-              shouldCloseOnOverlayClick={true}>
+              shouldCloseOnOverlayClick={true}
+              className="auth-form-modal">
               <AuthFormContainer
                 formType={this.state.formType}
                 closeModal={this._closeForm}
