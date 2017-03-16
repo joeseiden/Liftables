@@ -1,10 +1,10 @@
 class Api::ArticlesController < ApplicationController
   def index
-    @articles = Article.includes(:steps).all
+    @articles = Article.all
   end
 
   def show
-    @article = Article.includes(:steps).find(params[:id])
+    @article = Article.find(params[:id])
 
     if @article
       render 'api/articles/show'
@@ -15,7 +15,6 @@ class Api::ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.user_id = current_user.id
 
     if @article.save
       render 'api/articles/show'
@@ -25,7 +24,7 @@ class Api::ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.includes(:steps).find(params[:id])
+    @article = Article.find(params[:id])
 
     if @article.update
       render 'api/articles/show'
@@ -47,6 +46,6 @@ class Api::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :description, :image_url)
+    params.require(:article).permit(:title, :description, :image_url, :user_id)
   end
 end
