@@ -35,7 +35,7 @@ class AuthForm extends React.Component {
     return(
       <ul className="errors">
         {this.props.errors.map((error, i) =>(
-          <li className="shake" key={`error-${i}`}>
+          <li className="animated pulse" key={`error-${i}`}>
             {error}
           </li>
         ))}

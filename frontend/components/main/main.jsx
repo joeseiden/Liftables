@@ -60,7 +60,7 @@ class Main extends React.Component{
   }
 
   _closeForm(){
-    this.setState({modalOpen:false});
+    this.setState({modalOpen:false}, this.props.clearErrors);
   }
 
   render(){
