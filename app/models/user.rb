@@ -18,7 +18,7 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
   before_validation :ensure_session_token_uniqueness
 
-  has_many :articles
+  has_many :articles, dependent: :destroy
 
   attr_reader :password
 
