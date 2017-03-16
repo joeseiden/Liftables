@@ -4,35 +4,47 @@ html {
 }
 
 body {
-	width: 80%;
+	width: 95%;
 	margin: 0 auto;
 	font-size: 12px;
+	background: $lightestgrey;
 }
 
 button {
-	color: black;
+	color: $black;
 	font-weight: bold;
 	padding: 7px 9px;
-	border-radius: 3px;
+	border-radius: 10px;
 	transition: background-color 0.3s;
 	text-transform: uppercase;
 	font-size: 14px;
 	text-align: center;
-  background-color: grey;
+  background-color: $green;
+	border: 2px solid $green;
   margin: 5px;
 }
 
 button:hover {
-  background-color: darkgrey;
+  background-color: $darkergreen;
+}
+
+a {
+
 }
 
 a:hover {
-	text-decoration: underline;
+	color: $darkergreen
 }
 
 .hidden {
 	display: none;
 }
+
+/*
+	Errors
+*/
+
+
 
 /*
 	Font Elements

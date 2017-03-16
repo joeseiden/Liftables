@@ -1,31 +1,61 @@
-  .auth-form-container {
-      position: absolute;
-      top: 40px;
-      left: 40px;
-      right: 40px;
-      bottom: 40px;
-      border: 1px solid #ccc;
-      background: #fff;
-      overflow: auto;
-      border-radius: 4px;
-      outline: none;
-      padding: 20px;
+.auth-form-container {
+    font-family: 'Coming Soon', cursive;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
 
-      button, #auth-form-submit {
+    h2 {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 14px;
+    }
 
-      }
+    #auth-form {
+      display: flex;
+      flex-direction: column;
+    }
 
-      #form-toggle {
-        color: blue;
-        transition: text-direction 0.3s;
-        background-color: transparent;
-        padding: 0;
-        font-weight: normal;
-        text-transform: none;
-        margin: auto;
-      }
 
-      #form-toggle:hover {
-        text-decoration: underline;
-      }
-  }
+    #close-button, #auth-form-submit {
+      padding: 5px 7px;
+      font-size: 12px;
+      border-radius: 10px;
+      transition: background-color 0.3s;
+      text-align: center;
+      background-color: $green;
+      border: 2px solid $green;
+      font-family: 'Permanent Marker', cursive;
+    }
+
+    #form-toggle {
+      border-radius: 0;
+      color: $green;
+      transition: text-decoration 1s;
+      background-color: transparent;
+      padding: 0;
+      font-weight: normal;
+      text-transform: none;
+      margin: auto;
+      border: none;
+      font-size: 12px;
+    }
+
+    #form-toggle:hover {
+      color: $darkergreen;
+      border-bottom: solid 1px $darkergreen;
+    }
+
+    label {
+      width: 50%;
+    }
+
+    .auth-input {
+      border: solid 1px $lightestgrey;
+      border-radius: 5px;
+      width: auto;
+    }
+
+    .errors li {
+    	color: $maroon;
+    }
+}

@@ -27,6 +27,7 @@ class Main extends React.Component{
     if (this.props.currentUser) {
       return(
         <div className="right-nav">
+          <span id="user-greeting">Hi {this.props.currentUser.username}!</span>
           <button onClick={this.props.logout}>Log Out</button>
         </div>
       );
@@ -64,27 +65,26 @@ class Main extends React.Component{
 
   render(){
     return (
-      <div>
-        <div id='main-nav' className="nav-bar">
-          <div className="left-nav">
-            <img id='logo' className="thumbnail"
-              src="http://www.free-icons-download.net/images/weightlifting-icon-78421.png"/>
-            <h1 id='logo-name'>Liftables</h1>
-          </div>
-            {this.rightNav()}
-            <Modal
-              isOpen={this.state.modalOpen}
-              contentLabel="auth-modal"
-              onRequestClose={this._closeForm}
-              shouldCloseOnOverlayClick={true}
-              className="auth-form-modal">
-              <AuthFormContainer
-                formType={this.state.formType}
-                closeModal={this._closeForm}
-                setFormType={this.setFormType}/>
-            </Modal>
+
+      <div id='main-nav' className="nav-bar">
+        <div className="left-nav">
+          <img id='logo' className="thumbnail"
+            src="http://www.free-icons-download.net/images/weightlifting-icon-78421.png"/>
+          <h1 id='logo-name'>Liftables</h1>
         </div>
-        <div>I am splash page</div>
+          {this.rightNav()}
+          <Modal
+            isOpen={this.state.modalOpen}
+            contentLabel="auth-modal"
+            onRequestClose={this._closeForm}
+            shouldCloseOnOverlayClick={true}
+            id="auth-form-modal"
+            className="modal">
+            <AuthFormContainer
+              formType={this.state.formType}
+              closeModal={this._closeForm}
+              setFormType={this.setFormType}/>
+          </Modal>
       </div>
     );
   }

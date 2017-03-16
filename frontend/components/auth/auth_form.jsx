@@ -35,7 +35,7 @@ class AuthForm extends React.Component {
     return(
       <ul className="errors">
         {this.props.errors.map((error, i) =>(
-          <li key={`error-${i}`}>
+          <li className="shake" key={`error-${i}`}>
             {error}
           </li>
         ))}
@@ -56,14 +56,18 @@ class AuthForm extends React.Component {
   formToggleButton() {
       if (this.props.formType === "login") {
   			return(
+      <span>
         <button id="form-toggle" onClick={this.formToggle}>
           Sign Up
-        </button>);
+        </button> instead?
+      </span>);
   		} else {
   			return(
+        <span>
           <button id="form-toggle" onClick={this.formToggle}>
             Log In
-          </button>
+          </button> instead?
+        </span>
       );
   	}
   }
@@ -73,10 +77,12 @@ class AuthForm extends React.Component {
     return(
       <div className="auth-form-container">
         {this.handleErrors()}
-        {formType} or {this.formToggleButton()} instead
+        <h2 className="form-header">{formType}</h2>
+        <br/>
         <form id="auth-form" onSubmit={this.handleSubmit}>
           <label id="username">
-            Username:
+            Username
+            <br/>
             <input type="text"
                    value={this.state.username}
                    onChange={this.update("username")}
@@ -84,7 +90,8 @@ class AuthForm extends React.Component {
                    placeholder="Username"/>
           </label>
           <br/>
-          <label id="password"> Password:
+          <label id="password"> Password
+            <br/>
             <input type="password"
                    value={this.state.password}
                    onChange={this.update("password")}
@@ -94,6 +101,8 @@ class AuthForm extends React.Component {
           <br/>
           <input id="auth-form-submit" type="submit" value={formType}/>
         </form>
+        {this.formToggleButton()}
+        <br/>
         <button id="close-button" onClick={this.props.closeModal}>Close</button>
       </div>
     );
