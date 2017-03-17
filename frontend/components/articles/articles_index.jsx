@@ -14,11 +14,11 @@ class ArticlesIndex extends React.Component {
 
   render() {
     const articles = this.props.articles;
-    console.log(articles);
+
     if (!articles){ return null; }
     return (
-      <section className="articles-index">
-        <ul>
+      <section>
+        <ul className="articles-index">
           {articles.map(article => <ArticleIndexItem key={article.id} article={article}/>)}
         </ul>
       </section>

@@ -15,6 +15,7 @@ class Header extends React.Component{
     this._closeForm = this._closeForm.bind(this);
     this._openForm = this._openForm.bind(this);
     this.setFormType = this.setFormType.bind(this);
+    this.logInAsGuest = this.logInAsGuest.bind(this);
   }
 
   componentWillMount() {
@@ -22,6 +23,13 @@ class Header extends React.Component{
   }
 
   componentDidMount(){
+  }
+
+  logInAsGuest(e){
+    e.preventDefault();
+    // figure out how to animate filling in form
+    this.props.login({username: "barry_bluejeans",
+                   password: "password"});
   }
 
   rightNav(){
@@ -37,6 +45,9 @@ class Header extends React.Component{
         <div className="right-nav">
           <button onClick={this._openForm('login')} id="nav-login">
             Log In
+          </button>
+          <button onClick={this.logInAsGuest} id="nav-demo">
+            Demo
           </button>
           <button onClick={this._openForm('signup')} id="nav-signup">
             Sign Up

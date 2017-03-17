@@ -6,8 +6,7 @@ import {
 import merge from 'lodash/merge';
 
 const _nullArticles = Object.freeze({
-  articles: null,
-  errors: []
+  articles: null
 });
 
 const ArticlesReducer = (state = _nullArticles, action) => {

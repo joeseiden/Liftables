@@ -84,6 +84,14 @@ class AuthForm extends React.Component {
   	}
   }
 
+  demoButton() {
+    if (this.props.formType ==="login") {
+      return (
+      <button id="guest-login" onClick={this.logInAsGuest}>Demo</button>
+      );
+    }
+  }
+
   render() {
     const formType = (this.props.formType === 'login' ? "Log In" : "Sign Up");
     return(
@@ -112,7 +120,7 @@ class AuthForm extends React.Component {
           </label>
           <br/>
           <input id="auth-form-submit" type="submit" value={formType}/>
-          <button id="guest-login" onClick={this.logInAsGuest}>Demo</button>
+          {this.demoButton()}
         </form>
         {this.formToggleButton()}
         <button id="close-button" onClick={this.props.closeModal}>Close</button>
