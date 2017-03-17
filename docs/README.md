@@ -34,7 +34,7 @@ Liftables is a web application inspired by Instructables to help people learn ho
 
 **Objective:** Articles can be created, read, edited and destroyed through the API. Images and videos can be uploaded/embedded. Article form will be completely styled.
 
-### Phase 3: Steps (1 day)
+### Phase 3: Steps (2 day)
 
 **Objective:** Steps belonging to the articles can be created, read, edited and destroyed through the API. Step form will be styled.
 
