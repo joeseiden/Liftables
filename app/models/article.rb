@@ -17,6 +17,7 @@ class Article < ApplicationRecord
 
   belongs_to :user
   has_many :steps
+  has_many :article_images
 
   def self.find_by_title(title)
     Article.find_by_title(title).includes(:steps)

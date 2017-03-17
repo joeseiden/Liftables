@@ -16,10 +16,8 @@ guest_user = User.create!(username: "barry_bluejeans", password: "password");
 article1 = Article.create!(
               title: 'First article',
               description: 'This is the first article',
-              image_url: 'http://www.drodd.com/images15/number1-7.jpg',
               user_id: guest_user.id)
 article2 = Article.create!(
               title: 'Second article',
               description: 'This is the second article',
-              image_url: 'http://www.drodd.com/images15/number2-23.jpg',
               user_id: guest_user.id)
