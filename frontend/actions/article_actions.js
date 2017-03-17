@@ -7,37 +7,28 @@ export const REMOVE_ARTICLE = "REMOVE_ARTICLE";
 
 export const requestAllArticles = () => dispatch => (
   ArticleAPIUtil.fetchAllArticles()
-    .this(articles =>
-    dispatch(receiveArticles(articles)),
-    err => dispatch(receiveErrors(err)))
+    .then(articles => dispatch(receiveArticles(articles)))
 );
 
 export const requestSingleArticle = article => dispatch => (
   ArticleAPIUtil.fetchSingleArticle(article)
-    .this(fetchedArticle =>
-    dispatch(receiveArticle(fetchedArticle)),
-    err => dispatch(receiveErrors(err)))
+    .then(fetchedArticle => dispatch(receiveArticle(fetchedArticle)))
 );
 
 export const createArticle = article => dispatch => (
   ArticleAPIUtil.createArticle(article)
-  .then(newArticle =>
-    dispatch(receiveArticle(newArticle)),
-    err => dispatch(receiveErrors(err)))
+  .then(newArticle => dispatch(receiveArticle(newArticle)))
   );
 
 export const editArticle = article => dispatch => (
   ArticleAPIUtil.editArticle(article)
-  .then(updatedArticle =>
-    dispatch(receiveArticle(updatedArticle)),
-    err => dispatch(receiveErrors(err)))
+  .then(updatedArticle => dispatch(receiveArticle(updatedArticle)))
 );
 
-export const deleteAccount = article => dispatch => (
+export const deleteArticle = article => dispatch => (
   ArticleAPIUtil.deleteArticle(article)
-  .then(res =>
-    dispatch(removeArticle(res)),
-    err => dispatch(receiveErrors(err)))
+  .then(res => dispatch(removeArticle(res)),
+        err => dispatch(receiveErrors(err)))
 );
 
 export const receiveArticle = article => ({

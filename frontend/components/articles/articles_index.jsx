@@ -13,7 +13,9 @@ class ArticlesIndex extends React.Component {
   }
 
   render() {
-    const { articles } = this.props;
+    const articles = this.props.articles;
+    console.log(articles);
+    if (!articles){ return null; }
     return (
       <section className="articles-index">
         <ul>
