@@ -9,6 +9,7 @@ import {
 import { receiveErrors } from '../actions/session_actions';
 import App from './app';
 import Home from './home/home';
+import ArticlesIndexContainer from './articles/articles_index_container';
 
 const Root = ({ store }) => {
 
@@ -18,6 +19,7 @@ const Root = ({ store }) => {
     <Router history={hashHistory}>
       <Route path="/" component={ App }>
         <IndexRoute component={ Home }/>
+        <Route path="articles" component={ ArticlesIndexContainer } />
       </Route>
     </Router>
   </Provider>

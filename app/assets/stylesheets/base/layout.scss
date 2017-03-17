@@ -6,7 +6,7 @@ html {
 body {
 	width: 95%;
 	margin: 0 auto;
-	font-size: 12px;
+	font-size: 16px;
 	background: lightgrey;
 }
 
@@ -19,8 +19,8 @@ button {
 	text-transform: uppercase;
 	font-size: 14px;
 	text-align: center;
-  background-color: $green;
-	border: 2px solid $green;
+  background-color: $lightergreen;
+	border: 2px solid $lightergreen;
   margin: 5px;
 }
 
