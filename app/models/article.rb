@@ -9,6 +9,7 @@
 #  user_id     :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  published   :boolean          default("false")
 #
 
 class Article < ApplicationRecord
@@ -20,4 +21,5 @@ class Article < ApplicationRecord
   def self.find_by_title(title)
     Article.find_by_title(title).includes(:steps)
   end
+
 end

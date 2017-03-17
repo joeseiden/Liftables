@@ -18,7 +18,7 @@ title        | string    | not null
 description  | text      | not null
 img_url      | string    | not null
 user_id      | integer   | not null, foreign key (references user), indexed
-
+published    | boolean   | default: false
 has_many steps, comments
 
 ## Steps
