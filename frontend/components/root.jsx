@@ -8,9 +8,8 @@ import {
 } from 'react-router';
 import { receiveErrors } from '../actions/session_actions';
 import App from './app';
-import AuthFormContainer from './auth/auth_form_container';
-import MainContainer from './main/main_container';
-
+import HomeContainer from './home/home_container';
+import Home from './home/home';
 
 const Root = ({ store }) => {
 
@@ -19,11 +18,7 @@ const Root = ({ store }) => {
   <Provider store={ store }>
     <Router history={hashHistory}>
       <Route path="/" component={ App }>
-        <IndexRoute component={MainContainer}/>
-        <Route path="/login"
-               component={AuthFormContainer}/>
-        <Route path="/signup"
-               component={AuthFormContainer}/>
+        <IndexRoute component={ Home }/>
       </Route>
     </Router>
   </Provider>

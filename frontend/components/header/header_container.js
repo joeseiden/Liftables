@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Main from './main';
+import Header from './header';
 import {
   signup,
   login,
@@ -19,4 +19,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Main);
+)(Header);

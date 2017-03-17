@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import AuthFormContainer from '../auth/auth_form_container';
+import {hashHistory} from 'react-router';
 
-class Main extends React.Component{
+class Header extends React.Component{
   constructor(props){
     super(props);
 
@@ -50,6 +51,11 @@ class Main extends React.Component{
     this.props.clearErrors();
   }
 
+  backToHome(e) {
+    e.preventDefault();
+    hashHistory.push('/');
+  }
+
   _openForm(formType){
     return (e) => {
       e.preventDefault();
@@ -71,8 +77,8 @@ class Main extends React.Component{
       <div id='main-nav' className="nav-bar">
         <div className="left-nav">
           <img id='logo' className="thumbnail"
-            src="http://www.free-icons-download.net/images/weightlifting-icon-78421.png"/>
-          <h1 id='logo-name'>Liftables</h1>
+            src="http://www.free-icons-download.net/images/weightlifting-icon-78421.png" onClick={this.backToHome}/>
+          <h1 id='logo-name' onClick={this.backToHome}>Liftables</h1>
         </div>
           {this.rightNav()}
           <Modal
@@ -92,4 +98,4 @@ class Main extends React.Component{
   }
 }
 
-export default Main;
+export default Header;

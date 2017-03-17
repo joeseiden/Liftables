@@ -4,13 +4,16 @@
 - Sign Up
 - Log In
 
-**MainContainer**
-- Home
+**HeaderContainer**
 - NavBar
   - SearchBar
+
+**MainContainer**
+- Home
 - ArticleIndexContainer
   - ArticleIndex
     - ArticleIndexItem
+
 
 **ArticleDetailContainer**
 - ArticleDetail
