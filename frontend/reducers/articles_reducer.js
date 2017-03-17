@@ -20,11 +20,6 @@ const ArticlesReducer = (state = _nullArticles, action) => {
       });
     case REMOVE_ARTICLE:
       return merge({}, _nullArticles);
-    case RECEIVE_ERRORS:
-      const errors = action.errors;
-      return merge({}, _nullArticles, {
-        errors
-      });
     default:
       return state;
   }
