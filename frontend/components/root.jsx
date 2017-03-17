@@ -8,7 +8,6 @@ import {
 } from 'react-router';
 import { receiveErrors } from '../actions/session_actions';
 import App from './app';
-import HomeContainer from './home/home_container';
 import Home from './home/home';
 
 const Root = ({ store }) => {
