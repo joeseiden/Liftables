@@ -12,6 +12,7 @@
 
 - `POST /api/users`
 - `PATCH /api/users`
+- `DELETE /api/users/:id`
 
 ### SESSION
 

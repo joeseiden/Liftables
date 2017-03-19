@@ -1,0 +1,50 @@
+// Place all the styles related to the API::Articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.articles-index {
+  display: flex;
+  font-color: $black;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+.article-index-item {
+  background-color: whitesmoke;
+  border: 1px solid $lightergrey;
+  border-radius: 5px;
+  height: 250px;
+  width: 200px;
+  margin: 15px;
+  transition: box-shadow 0.2s;
+}
+
+.article-index-item:hover {
+  -moz-box-shadow:    4px 4px 4px 0px $lightergrey;
+  -webkit-box-shadow: 4px 4px 4px 0px $lightergrey;
+  box-shadow:         4px 4px 4px 0px $lightergrey;
+}
+
+.article-info {
+  color: $black;
+  border-top: 1px solid $lightergrey;
+  .article-index-title {
+    font-weight: bold;
+  }
+}
+
+.article-info:hover {
+  color: $black;
+}
+
+
+.article-thumbnail {
+  width: 200px;
+  height: 200px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.article-thumbnail:hover {
+  font-color: $black;
+}

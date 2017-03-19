@@ -1,0 +1,37 @@
+#main-nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Permanent Marker', cursive;
+  border-bottom: 2px solid $black;
+
+  #user-greeting {
+    font-size: 16px;
+    font-family: "Coming Soon", cursive;
+  }
+
+  #logo-name {
+    font-size: 34px;
+    font-weight: normal;
+  }
+
+  #logo {
+    width: 65px;
+    height: 65px;
+  }
+
+  .left-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 15px;
+  }
+
+  .right-nav {
+    padding-right: 15px;
+    button {
+      font-size: 12px;
+    }
+  }
+}

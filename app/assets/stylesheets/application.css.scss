@@ -10,6 +10,22 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+
+// Reset
+@import "base/reset.scss";
+
+// Core
+@import "base/palette.scss";
+@import "base/fonts.scss";
+@import "base/layout.scss";
+
+//animations
+@import "animations/animate.css";
+
+// Grid
+@import "base/grid.scss";
+
+// Components
+@import "components/*";

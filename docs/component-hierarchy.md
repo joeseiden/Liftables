@@ -4,13 +4,16 @@
 - Sign Up
 - Log In
 
-**MainContainer**
-- Home
+**HeaderContainer**
 - NavBar
   - SearchBar
+
+**MainContainer**
+- Home
 - ArticleIndexContainer
   - ArticleIndex
     - ArticleIndexItem
+
 
 **ArticleDetailContainer**
 - ArticleDetail
@@ -29,8 +32,8 @@
 ## Routes
 |Path                              |Component               |
 |----------------------------------|------------------------|
-|"/sign-up"                        |"AuthFormContainer"     |
-|"/log-in"                         |"AuthFormContainer"     |
+|"/signup"                         |"AuthFormContainer"     |
+|"/login"                          |"AuthFormContainer"     |
 |"/"                               |"MainContainer"         |
 |"/articles(/keyword=search_query)"|"ArticleIndexContainer" |
 |"/articles/:id"                   |"ArticleDetailContainer"|
