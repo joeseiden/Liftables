@@ -6,18 +6,38 @@ class ArticleView extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.requestSingleArticle(this.props.params.id);
   }
 
   renderImages() {
     return (this.props.article.images.map((image, idx) => (
-      <img key={idx} src={image.url}/>
+      <li key={idx}>
+        <img src={image.url}/>
+      </li>
     )));
   }
 
+  renderSteps() {
+
+    return (this.props.article.steps.map((step, idx)=> (
+      <li key={idx}>
+        <h3>{step.title}</h3>
+        <div className="images-container">
+          <ul className="step-images">
+            {step.images.map((image, imgIdx) => (
+              <li key={imgIdx}><img src={image.url}/></li>
+            ))}
+          </ul>
+        </div>
+        <p>{step.body}</p>
+      </li>
+    )));
+  }
+
+
   render() {
-    const article = this.props.article;
+    let article = this.props.article;
 
     if (!article){ return null; }
     return (
@@ -26,13 +46,19 @@ class ArticleView extends React.Component {
           <h2 className="article-title">{article.title}</h2>
           <span>by {article.user.username}</span>
         </div>
-        <div className="article-images">
-          {this.renderImages()}
+        <div className="images-container">
+          <ul className="article-images">
+            {this.renderImages()}
+          </ul>
         </div>
         <div className="article-description">
           <p>{article.description}</p>
         </div>
-        <p>Steps go here</p>
+        <div className="steps-container">
+          <ul className="steps">
+            {this.renderSteps()}
+          </ul>
+        </div>
       </section>
     );
   }

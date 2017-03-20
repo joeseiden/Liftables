@@ -1,4 +1,4 @@
-json.extract! step, :id, :title, :body
+json.extract! step, :id, :title, :body, :order
 
 json.images do
   json.array! (step.images) do |image|

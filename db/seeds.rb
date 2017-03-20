@@ -33,3 +33,40 @@ url: "http://www.drodd.com/images15/number2-13.jpeg"
 )
 article2_image.imageable = article2
 article2_image.save!
+
+article1_step1 = Step.create!(
+title: 'Step 1',
+body: 'open the door',
+order: 1,
+article_id: article1.id
+)
+article1_step2 = Step.create!(
+title: 'Step 2',
+body: 'get on the floor',
+order: 2,
+article_id: article1.id
+)
+article1_step3 = Step.create!(
+title: 'Step 3',
+body: 'everybody walk the dinosaur',
+order: 3,
+article_id: article1.id
+)
+
+step1_image = Image.new(
+url: "http://lda.lowes.com/is/image/Lowes/WND_door_4COL_steel-entry-doors?$JPEG-HQ$&wid=234"
+)
+step1_image.imageable = article1_step1
+step1_image.save!
+
+step2_image = Image.new(
+url: "https://www.lowes.com/projects/images/thumbnails/grout-bg-beige-tile-floor-TH.jpg"
+)
+step2_image.imageable = article1_step2
+step2_image.save!
+
+step3_image = Image.new(
+url: "https://i.ytimg.com/vi/hM-kd_IC9Uc/hqdefault.jpg"
+)
+step3_image.imageable = article1_step3
+step3_image.save!
