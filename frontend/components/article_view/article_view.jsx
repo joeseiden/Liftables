@@ -18,7 +18,7 @@ class ArticleView extends React.Component {
 
   render() {
     const article = this.props.article;
-    console.log(this.props.article);
+
     if (!article){ return null; }
     return (
       <section className="article-view">

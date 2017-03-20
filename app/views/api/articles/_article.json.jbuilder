@@ -8,3 +8,9 @@ json.images do
     json.url image.url
   end
 end
+
+json.steps do
+  json.array! (article.steps) do |step|
+    json.partial! 'api/steps/step', step: step
+  end
+end

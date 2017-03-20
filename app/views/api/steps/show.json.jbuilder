@@ -1,1 +1,1 @@
-json.extract! step, :id, :title, :body
+json.partial! 'api/steps/step', step: @step
