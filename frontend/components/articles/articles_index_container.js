@@ -4,9 +4,9 @@ import { requestAllArticles } from '../../actions/article_actions';
 import { selectAllArticles } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
-  if (state.articles.articles){
-    return {articles: Object.keys(state.articles.articles).map(
-      id => state.articles.articles[id]
+  if (state.articles){
+    return {articles: Object.keys(state.articles).map(
+      id => state.articles[id]
     )};
   } else {
     return {articles: null};

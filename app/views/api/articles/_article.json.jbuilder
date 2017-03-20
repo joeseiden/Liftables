@@ -3,6 +3,8 @@ json.user do
   json.partial! 'api/users/user', user: article.user
 end
 
-json.array! (article.article_images) do |image|
-  json.url image.image_url
+json.images do
+  json.array! (article.article_images) do |image|
+    json.url image.url
+  end
 end

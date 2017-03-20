@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const ArticleIndexItem = ({article, router}) => (
   <li className="article-index-item">
     <Link to={`/articles/${article.id}`}>
-      <img src={article.image_url} alt={article.title} className="article-thumbnail"/>
+      <img src={article.images[0].url} alt={article.title} className="article-thumbnail"/>
       <div className="article-info">
           <span className="article-index-title">{article.title}</span>
           <br/>
