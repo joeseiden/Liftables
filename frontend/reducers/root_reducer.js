@@ -6,8 +6,7 @@ import ArticleViewReducer from './article_view_reducer';
 
 const RootReducer = combineReducers({
   session: SessionReducer,
-  articles: ArticlesReducer,
-  articleView: ArticleViewReducer
+  articles: ArticlesReducer
 });
 
 export default RootReducer;

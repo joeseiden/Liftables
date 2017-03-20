@@ -1,14 +1,13 @@
 import {
   RECEIVE_ARTICLE,
-  REMOVE_ARTICLE,
-  RECEIVE_ERRORS
+  REMOVE_ARTICLE
 } from '../actions/article_actions';
 import merge from 'lodash/merge';
 
 const _nullArticleView = {
   title: '',
   description: '',
-  image_url: '',
+  images: [],
   user: {}
 };
 
@@ -22,11 +21,6 @@ const ArticleViewReducer = (state = _nullArticleView, action) => {
       });
     case REMOVE_ARTICLE:
       return merge({}, _nullArticleView);
-    case RECEIVE_ERRORS:
-      const errors = action.errors;
-      return merge({}, _nullArticleView, {
-        errors
-      });
     default:
       return state;
   }

@@ -1,6 +1,6 @@
 import {
   RECEIVE_ARTICLES,
-  RECEIVE_ERRORS,
+  RECEIVE_ARTICLE,
   REMOVE_ARTICLE
 } from '../actions/article_actions';
 import merge from 'lodash/merge';
@@ -11,8 +11,12 @@ const ArticlesReducer = (state = {}, action) => {
     case RECEIVE_ARTICLES:
       const articles = action.articles;
       return merge({}, articles);
+    case RECEIVE_ARTICLE:
+      let newState = {};
+      newState[action.article.id]=action.article;
+      return newState;
     case REMOVE_ARTICLE:
-      return merge({});
+      return {};
     default:
       return state;
   }

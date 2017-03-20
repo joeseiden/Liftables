@@ -9,19 +9,25 @@
 }
 
 .articles-index {
+  position: relative;
+  margin-left: 75px;
+  margin-right: 75px;
+  top: 30px;
   display: flex;
   font-color: $black;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
+  max-width: 80vw;
 }
 
 
 .article-index-item {
   background-color: whitesmoke;
   border: 1px solid $lightergrey;
-  border-radius: 5px;
-  height: 250px;
-  width: 200px;
+  border-radius: 3px;
+  height: 300px;
+  width: 250px;
   margin: 15px;
   transition: box-shadow 0.2s;
 }
@@ -33,6 +39,7 @@
 }
 
 .article-info {
+  padding: 2px;
   color: $black;
   border-top: 1px solid $lightergrey;
   .article-index-title {
@@ -46,8 +53,8 @@
 
 
 .article-thumbnail {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
 }

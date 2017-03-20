@@ -5,10 +5,10 @@ export const fetchAllArticles = () => (
   })
 );
 
-export const fetchSingleArticle = article => (
+export const fetchSingleArticle = articleId => (
   $.ajax({
     type: 'GET',
-    url: `api/articles/${article.id}`
+    url: `api/articles/${articleId}`
   })
 );
 
