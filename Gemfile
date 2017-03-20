@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'figaro'
+
 gem 'rails_12factor'
 
 gem 'annotate'

@@ -4,7 +4,7 @@ json.user do
 end
 
 json.images do
-  json.array! (article.article_images) do |image|
+  json.array! (article.images) do |image|
     json.url image.url
   end
 end

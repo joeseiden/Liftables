@@ -8,7 +8,7 @@
 
 User.destroy_all
 Article.destroy_all
-ArticleImage.destroy_all
+Image.destroy_all
 
 guest_user = User.create!(username: "barry_bluejeans", password: "password")
 
@@ -22,11 +22,14 @@ article2 = Article.create!(
               description: 'This is the second article',
               user_id: guest_user.id)
 
-article1_image = ArticleImage.create!(
-url: "https://rlv.zcache.com/table_number_1_statuette-r483eb68376aa458cb281c4762fb0cd47_x7saw_8byvr_324.jpg",
-article_id: article1.id)
-
-article2_image = ArticleImage.create!(
-url: "http://www.drodd.com/images15/number2-13.jpeg",
-article_id: article2.id
+article1_image = Image.new(
+url: "https://rlv.zcache.com/table_number_1_statuette-r483eb68376aa458cb281c4762fb0cd47_x7saw_8byvr_324.jpg"
 )
+article1_image.imageable = article1
+article1_image.save!
+
+article2_image = Image.new(
+url: "http://www.drodd.com/images15/number2-13.jpeg"
+)
+article2_image.imageable = article2
+article2_image.save!

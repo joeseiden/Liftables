@@ -1,6 +1,6 @@
 class Api::ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @articles = Article.includes(:images).all
   end
 
   def show
@@ -15,6 +15,7 @@ class Api::ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user_id = current_user.id
 
     if @article.save
       render 'api/articles/show'
@@ -46,6 +47,6 @@ class Api::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :description, :image_url, :user_id, :published)
+    params.require(:article).permit(:title, :description, :published)
   end
 end

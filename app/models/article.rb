@@ -15,11 +15,8 @@ class Article < ApplicationRecord
   validates :title, :description, :user_id, presence: true
 
   belongs_to :user
-  has_many :steps
-  has_many :article_images,
-    class_name: 'ArticleImage',
-    foreign_key: :article_id,
-    primary_key: :id
+  # has_many :steps, dependent: :delete_all
+  has_many :images, as: :imageable, dependent: :delete_all, inverse_of: :imageable
 
   def self.find_by_title(title)
     Article.find_by_title(title).includes(:steps)
