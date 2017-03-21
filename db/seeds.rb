@@ -14,7 +14,8 @@ guest_user = User.create!(username: "barry_bluejeans", password: "password")
 
 article1 = Article.create!(
               title: 'First article',
-              description: 'This is the first article',
+              description: "This is the first article. \n
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
               user_id: guest_user.id)
 
 article2 = Article.create!(
@@ -27,6 +28,12 @@ url: "https://rlv.zcache.com/table_number_1_statuette-r483eb68376aa458cb281c4762
 )
 article1_image.imageable = article1
 article1_image.save!
+
+article1_image2 = Image.new(
+url: "http://dinoxp.com/wp-content/uploads/2016/02/dinort.png"
+)
+article1_image2.imageable = article1
+article1_image2.save!
 
 article2_image = Image.new(
 url: "http://www.drodd.com/images15/number2-13.jpeg"

@@ -6,13 +6,15 @@
   text-align: left;
   position: relative;
   left: 30px;
+
 }
 
 .articles-index {
   position: relative;
   margin-left: 75px;
   margin-right: 75px;
-  top: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   display: flex;
   font-color: $black;
   flex-direction: row;
@@ -24,24 +26,26 @@
 
 .article-index-item {
   background-color: whitesmoke;
-  border: 1px solid $lightergrey;
-  border-radius: 3px;
+  border: 3px solid $black;
+  border-radius: 5px;
   height: 300px;
   width: 250px;
   margin: 15px;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.3s;
+  transition: background-color 0.3s;
 }
 
 .article-index-item:hover {
-  -moz-box-shadow:    4px 4px 4px 0px $lightergrey;
-  -webkit-box-shadow: 4px 4px 4px 0px $lightergrey;
-  box-shadow:         4px 4px 4px 0px $lightergrey;
+  background-color: lightgrey;
+  -moz-box-shadow:    0 2px 4px 0px $black;
+  -webkit-box-shadow: 0 2px 4px 0px $black;
+  box-shadow:         0 2px 4px 0px $black;
 }
 
 .article-info {
   padding: 2px;
   color: $black;
-  border-top: 1px solid $lightergrey;
+  border-top: 3px solid $black;
   .article-index-title {
     font-weight: bold;
   }

@@ -22,7 +22,7 @@ class ArticleView extends React.Component {
 
     return (this.props.article.steps.map((step, idx)=> (
       <li key={idx}>
-        <h3>{step.title}</h3>
+        <h3 className="step-header">{step.title}</h3>
         <div className="images-container">
           <ul className="step-images">
             {step.images.map((image, imgIdx) => (
@@ -30,7 +30,7 @@ class ArticleView extends React.Component {
             ))}
           </ul>
         </div>
-        <p>{step.body}</p>
+        <p className="step-body">{step.body}</p>
       </li>
     )));
   }

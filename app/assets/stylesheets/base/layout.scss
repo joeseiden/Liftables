@@ -7,7 +7,7 @@ body {
 	width: 100%;
 	margin: 0 auto;
 	font-size: 16px;
-	background: lightgrey;
+	background: $maroon;
 }
 
 button {
@@ -20,7 +20,7 @@ button {
 	font-size: 14px;
 	text-align: center;
   background-color: $lightergreen;
-	border: 2px solid $lightergreen;
+	border: 2px solid $black;
   margin: 5px;
 }
 
@@ -41,8 +41,9 @@ a:hover {
 }
 
 .section-header-bar {
-	border-bottom: 2px solid $black;
+	border-bottom: 3px solid $black;
 	padding: 10px;
+	background: $lightergrey;
 }
 
 /*
@@ -68,6 +69,11 @@ h2 {
 	font-size: 24px;
 	text-align: center;
 	font-weight: bold;
+	font-family: 'Permanent Marker', cursive;
+}
+
+h3 {
+	font-size: 22px;
 	font-family: 'Permanent Marker', cursive;
 }
 
