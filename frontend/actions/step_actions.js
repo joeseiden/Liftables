@@ -6,31 +6,36 @@ export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 export const fetchSteps = articleId => dispatch => (
   StepAPIUtil.fetchSteps(articleId).then(
-    steps => dispatch(receiveSteps(steps))
+    steps => dispatch(receiveSteps(steps),
+      err => dispatch(receiveErrors(err.responseJSON)))
   )
 );
 
 export const fetchStep = (articleId, stepId) => dispatch => (
   StepAPIUtil.fetchStep(articleId, stepId).then(
-    step => dispatch(receiveStep(step))
+    step => dispatch(receiveStep(step),
+      err => dispatch(receiveErrors(err.responseJSON)))
   )
 );
 
 export const createStep = (articleId, step) => dispatch => (
   StepAPIUtil.createStep(articleId, step).then(
-    newStep => dispatch(receiveStep(step))
+    newStep => dispatch(receiveStep(step),
+      err => dispatch(receiveErrors(err.responseJSON)))
   )
 );
 
 export const updateStep = (articleId, step) => dispatch => (
   StepAPIUtil.updateStep(articleId, step).then(
-    updatedStep => dispatch(receiveStep(updatedStep))
+    updatedStep => dispatch(receiveStep(updatedStep),
+      err => dispatch(receiveErrors(err.responseJSON)))
   )
 );
 
 export const deleteStep = (articleId, stepId) => dispatch => (
   StepAPIUtil.deleteStep(articleId, stepId).then(
-    step => dispatch(removeStep(step))
+    step => dispatch(removeStep(step),
+      err => dispatch(receiveErrors(err.responseJSON)))
   )
 );
 

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import AuthFormContainer from '../auth/auth_form_container';
+import NewArticleModalContainer from '../article_form/new_article_modal_container';
 import {hashHistory} from 'react-router';
 
 class Header extends React.Component{
@@ -9,11 +10,14 @@ class Header extends React.Component{
     super(props);
 
     this.state = {
-      modalOpen: false,
+      newArticleModalOpen: false,
+      authModalOpen: false,
       formType: null
     };
-    this._closeForm = this._closeForm.bind(this);
-    this._openForm = this._openForm.bind(this);
+    this._closeAuthForm = this._closeAuthForm.bind(this);
+    this._openAuthForm = this._openAuthForm.bind(this);
+    this._closeNewArticleForm = this._closeNewArticleForm.bind(this);
+    this._openNewArticleForm = this._openNewArticleForm.bind(this);
     this.setFormType = this.setFormType.bind(this);
     this.logInAsGuest = this.logInAsGuest.bind(this);
   }
@@ -36,20 +40,21 @@ class Header extends React.Component{
     if (this.props.currentUser) {
       return(
         <div className="right-nav">
+          <button onClick={this._openNewArticleForm()} id='new-article-button'>New Article</button>
           <span id="user-greeting">Hi {this.props.currentUser.username}!</span>
-          <button onClick={this.props.logout}>Log Out</button>
+          <button onClick={this.props.logout} id='logout-button'>Log Out</button>
         </div>
       );
     } else {
       return(
         <div className="right-nav">
-          <button onClick={this._openForm('login')} id="nav-login">
+          <button onClick={this._openAuthForm('login')} id="nav-login">
             Log In
           </button>
           <button onClick={this.logInAsGuest} id="nav-demo">
             Demo
           </button>
-          <button onClick={this._openForm('signup')} id="nav-signup">
+          <button onClick={this._openAuthForm('signup')} id="nav-signup">
             Sign Up
           </button>
         </div>
@@ -67,18 +72,32 @@ class Header extends React.Component{
     hashHistory.push('/');
   }
 
-  _openForm(formType){
+  _openAuthForm(formType){
     return (e) => {
       e.preventDefault();
       this.setState({
-        modalOpen: true,
+        authModalOpen: true,
         formType
       });
     };
   }
 
-  _closeForm(){
-    this.setState({modalOpen:false});
+  _closeAuthForm(){
+    this.setState({authModalOpen:false});
+    this.props.clearErrors();
+  }
+
+  _openNewArticleForm(){
+    return (e) => {
+      e.preventDefault();
+      this.setState({
+        newArticleModalOpen: true
+      });
+    };
+  }
+
+  _closeNewArticleForm(){
+    this.setState({newArticleModalOpen: false});
     this.props.clearErrors();
   }
 
@@ -93,16 +112,26 @@ class Header extends React.Component{
         </div>
           {this.rightNav()}
           <Modal
-            isOpen={this.state.modalOpen}
+            isOpen={this.state.authModalOpen}
             contentLabel="auth-modal"
-            onRequestClose={this._closeForm}
+            onRequestClose={this._closeAuthForm}
             shouldCloseOnOverlayClick={true}
             id="auth-form-modal"
             className="modal">
             <AuthFormContainer
               formType={this.state.formType}
-              closeModal={this._closeForm}
+              closeModal={this._closeAuthForm}
               setFormType={this.setFormType}/>
+          </Modal>
+          <Modal
+            isOpen={this.state.newArticleModalOpen}
+            contentLabel="new-article-modal"
+            onRequestClose={this._closeNewArticleForm}
+            shouldCloseOnOverlayClick={true}
+            id="new-article-form-modal"
+            className="modal">
+            <NewArticleModalContainer
+              closeModal={this._closeNewArticleForm} />
           </Modal>
       </div>
     );

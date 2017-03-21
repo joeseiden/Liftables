@@ -11,6 +11,7 @@ import App from './app';
 import Home from './home/home';
 import ArticlesIndexContainer from './articles/articles_index_container';
 import ArticleViewContainer from './article_view/article_view_container';
+import NewArticleModalContainer from './article_form/new_article_modal_container';
 
 const Root = ({ store }) => {
 

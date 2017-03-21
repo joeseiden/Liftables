@@ -1,15 +1,17 @@
 import { connect } from 'react-redux';
 import NewArticleModal from './new_article_modal';
-import { createArticle } from '../../actions/article_actions';
+import { createArticle, receiveErrors } from '../../actions/article_actions';
 
-const mapStateToProps = () => ({
-  concept: {title: '', description: '', images: [], publish: false, user_id: null, steps: [], modalOpen: true};
+const mapStateToProps = (state) => ({
+  errors: state.errors
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  createArticle: article => dispatch(createArticle(article))
+  createArticle: article => dispatch(createArticle(article)),
+  clearErrors: () => dispatch(receiveErrors([]))
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps)(NewArticleModal);
+  mapDispatchToProps
+)(NewArticleModal);

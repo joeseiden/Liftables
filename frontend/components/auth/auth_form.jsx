@@ -33,7 +33,6 @@ class AuthForm extends React.Component {
   }
 
   handleErrors() {
-    // figure out why errors is disappearing from session
     if (this.props.errors){
     return(
       <ul className="errors">
