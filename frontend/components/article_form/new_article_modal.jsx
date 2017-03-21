@@ -8,12 +8,10 @@ class NewArticleModal extends React.Component {
     super(props);
     this.state = {
       title: '',
-      description: '',
-      modalOpen: true
+      description: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this._closeForm = this._closeForm.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
   }
 
@@ -25,7 +23,7 @@ class NewArticleModal extends React.Component {
       description: this.state.description
     }).then((response) => {
       let url = `articles/${response.article.id}/edit`;
-      that._closeForm();
+      that.props.closeModal();
       hashHistory.push(url);
     });
   }
@@ -34,10 +32,6 @@ class NewArticleModal extends React.Component {
     return (e) => {
       this.setState({[field]: e.target.value});
     };
-  }
-
-  _closeForm(){
-    this.setState({modalOpen: false});
   }
 
   handleErrors() {
@@ -68,7 +62,7 @@ class NewArticleModal extends React.Component {
           <textarea id='article-modal-description-input'
                  wrap='hard'
                  placeholder='Description'
-                 onChange={this.update('description')}></textarea>
+                 onChange={this.update('description')}/>
           <input type='submit'
             id='article-modal-submit'
             value='Start Article'/>
