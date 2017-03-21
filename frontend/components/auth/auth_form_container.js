@@ -6,9 +6,9 @@ import {
   receiveErrors
 } from '../../actions/session_actions';
 
-const mapStateToProps = ({session}, ownProps) => ({
-    loggedIn: Boolean(session.currentUser),
-    errors: session.errors,
+const mapStateToProps = (state, ownProps) => ({
+    loggedIn: Boolean(state.session.currentUser),
+    errors: state.errors,
     formType: ownProps.formType
   });
 
