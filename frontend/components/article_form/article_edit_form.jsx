@@ -6,9 +6,9 @@ class ArticleEditForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: this.props.article.id,
       title: this.props.article.title,
-      description: this.props.article.description,
-      steps: []
+      description: this.props.article.description
     }
 
     this.update = this.update.bind(this);
@@ -38,14 +38,17 @@ class ArticleEditForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
+    let that = this;
+    this.props.editArticle(this.state).then((response) => {
+      hashHistory.push(`articles/${response.article.id}`)
+    });
   }
 
   render() {
 
     return (
       <div className="article-form-container">
-        <form id="article-edit-form">
+        <form id="article-edit-form" onSubmit={this.handleSubmit}>
           <input type='text'
                  id='article-modal-title-input'
                  value={this.state.title}
@@ -56,7 +59,7 @@ class ArticleEditForm extends React.Component {
                  value={this.state.description}
                  placeholder='Description'
                  onChange={this.update('description')}/>
-          <input type='submit' onClick={this.handleSubmit} value='Save Article'/>
+          <input type='submit' value='Save Article'/>
         </form>
       </div>
     )

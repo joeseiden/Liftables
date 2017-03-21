@@ -3,7 +3,7 @@ import ArticleEditForm from './article_edit_form';
 import {
   fetchArticles,
   fetchArticle,
-  updateArticle,
+  editArticle,
   deleteArticle
 } from '../../actions/article_actions';
 
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) =>({
   fetchArticles: () => dispatch(fetchArticles()),
   fetchArticle: (articleId) => dispatch(fetchArticle(articleId)),
   deleteArticle: (articleId) => dispatch(deleteArticle(articleId)),
-  updateArticle: (article) => dispatch(updateArticle(article))
+  editArticle: (article) => dispatch(editArticle(article))
 });
 
 export default connect(
