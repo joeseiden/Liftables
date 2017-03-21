@@ -48,18 +48,25 @@ class ArticleEditForm extends React.Component {
 
     return (
       <div className="article-form-container">
+      {this.handleErrors()}
         <form id="article-edit-form" onSubmit={this.handleSubmit}>
+          <label for='article-edit-title-input'>
+          <h3>Title</h3>
+          </label>
           <input type='text'
-                 id='article-modal-title-input'
+                 id='article-edit-title-input'
                  value={this.state.title}
                  placeholder='Title'
                  onChange={this.update('title')}/>
-          <textarea id='article-modal-description-input'
+          <label for='article-edit-description-input'>
+          <h3>Description</h3>
+          </label>
+          <textarea id='article-edit-description-input'
                  wrap='hard'
                  value={this.state.description}
                  placeholder='Description'
                  onChange={this.update('description')}/>
-          <input type='submit' value='Save Article'/>
+          <input type='submit' id="article-edit-submit" value='Save Article'/>
         </form>
       </div>
     )

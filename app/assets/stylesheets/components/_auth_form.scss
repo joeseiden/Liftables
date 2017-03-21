@@ -24,8 +24,8 @@
       border-radius: 10px;
       transition: background-color 0.3s;
       text-align: center;
-      background-color: $green;
-      border: 2px solid $green;
+      background-color: $lightergreen;
+      border: 2px solid $black;
       font-family: 'Permanent Marker', cursive;
     }
 
@@ -55,9 +55,14 @@
     }
 
     label {
-      width: 50%;
+
     }
 
+    #guest-login, #auth-form-submit {
+      width: 75px;
+      position: relative;
+      left: 25px;
+    }
     .auth-input {
       border: solid 1px $lightestgrey;
       border-radius: 5px;
