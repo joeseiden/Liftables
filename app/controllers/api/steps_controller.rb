@@ -6,6 +6,7 @@ class Api::StepsController < ApplicationController
 
   def create
     @step = Step.new(step_params)
+    @step.article_id = params[:article_id]
     @step.save!
     render 'api/steps/show'
   end
@@ -32,7 +33,7 @@ class Api::StepsController < ApplicationController
   private
 
   def step_params
-    params.require(:step).permit(:body, :order, :title, :article_id)
+    params.require(:step).permit(:body, :order, :title)
   end
 
 end

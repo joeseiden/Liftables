@@ -1,20 +1,21 @@
 import { connect } from 'react-redux';
 import ArticleEditForm from './article_edit_form';
 import {
-  fetchArticles,
-  fetchArticle,
+  requestAllArticles,
+  requestSingleArticle,
   editArticle,
   deleteArticle
 } from '../../actions/article_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   errors: state.errors,
-  article: state.articles[ownProps.params.id]
-})
+  article: state.articles[ownProps.params.id],
+  articleId: ownProps.params.id
+});
 
 const mapDispatchToProps = (dispatch, ownProps) =>({
-  fetchArticles: () => dispatch(fetchArticles()),
-  fetchArticle: (articleId) => dispatch(fetchArticle(articleId)),
+  requestAllArticles: () => dispatch(requestAllArticles()),
+  requestSingleArticle: (articleId) => dispatch(requestSingleArticle(articleId)),
   deleteArticle: (articleId) => dispatch(deleteArticle(articleId)),
   editArticle: (article) => dispatch(editArticle(article))
 });

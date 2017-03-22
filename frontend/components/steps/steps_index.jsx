@@ -14,7 +14,6 @@ class StepsIndex extends React.Component {
 
   render() {
     const steps = this.props.steps;
-    console.log(this.props);
     if (!steps){ return null; }
     return (
       <section>
