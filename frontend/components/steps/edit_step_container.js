@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import StepEditForm from './edit_step.jsx';
 import {
-  editStep,
+  updateStep,
   fetchSteps,
   fetchStep,
   deleteStep
@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) =>({
   fetchSteps: (articleId) => dispatch(fetchSteps(articleId)),
   fetchStep: (articleId, stepId) => dispatch(fetchStep(articleId, stepId)),
-  editStep: (articleId, step) => dispatch(editStep(articleId, step)),
+  updateStep: (articleId, step) => dispatch(updateStep(articleId, step)),
   deleteStep: (articleId, stepId) => dispatch(deleteStep(articleId, stepId))
 });
 

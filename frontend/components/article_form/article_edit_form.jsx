@@ -10,7 +10,7 @@ class ArticleEditForm extends React.Component {
       id: this.props.article.id,
       title: this.props.article.title,
       description: this.props.article.description
-    }
+    };
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +18,7 @@ class ArticleEditForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.requestSingleArticle(this.props.articleId);
+    this.props.requestSingleArticle(this.props.params.id);
   }
 
   handleErrors() {
@@ -45,7 +45,7 @@ class ArticleEditForm extends React.Component {
     e.preventDefault();
     let that = this;
     this.props.editArticle(this.state).then((response) => {
-      hashHistory.push(`articles/${response.article.id}`)
+      hashHistory.push(`articles/${response.article.id}`);
     });
   }
 
@@ -55,7 +55,7 @@ class ArticleEditForm extends React.Component {
       <div className="article-form-container">
       {this.handleErrors()}
         <form id="article-edit-form" onSubmit={this.handleSubmit}>
-          <label for='article-edit-title-input'>
+          <label htmlFor='article-edit-title-input'>
           <h3>Title</h3>
           </label>
           <input type='text'
@@ -63,7 +63,7 @@ class ArticleEditForm extends React.Component {
                  value={this.state.title}
                  placeholder='Title'
                  onChange={this.update('title')}/>
-          <label for='article-edit-description-input'>
+               <label htmlFor='article-edit-description-input'>
           <h3>Description</h3>
           </label>
           <textarea id='article-edit-description-input'
@@ -75,7 +75,7 @@ class ArticleEditForm extends React.Component {
         </form>
         <StepsIndexContainer articleId={this.state.id} />
       </div>
-    )
+    );
   }
 }
 

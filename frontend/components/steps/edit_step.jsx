@@ -6,10 +6,14 @@ class StepEditForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.step.id,
+      id: this.props.stepId,
       title: this.props.step.title,
       body: this.props.step.body
-    }
+    };
+
+    this.handleErrors = this.handleErrors.bind(this);
+    this.update = this.update.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -40,18 +44,38 @@ class StepEditForm extends React.Component {
     e.preventDefault();
     let articleId = this.props.articleId;
     let step = this.state;
-
-    this.props.editStep(articleId, step).then((response) => {
-      hashHistory.push(`articles/${response.article.id}/edit`)
+    console.log(this.props);
+    this.props.updateStep(articleId, step).then((response) => {
+      console.log(response);
+      hashHistory.push(`articles/${response.step.article_id}/edit`);
     });
   }
 
   render() {
     return (
-      <div>
-        I am not finished yet.
+      <div className="step-form-container">
+        {this.handleErrors()}
+        <form id="step-edit-form" onSubmit={this.handleSubmit}>
+          <label htmlFor='step-edit-title-input'>
+            <h3>Title</h3>
+          </label>
+          <input type='text'
+                 id='step-edit-title-input'
+                 value={this.state.title}
+                 placeholder='Title'
+                 onChange={this.update('title')}/>
+               <label htmlFor='step-edit-body-input'>
+            <h3>Body</h3>
+          </label>
+          <textarea id='step-edit-body-input'
+                     wrap='hard'
+                     value={this.state.body}
+                     placeholder='Body goes here'
+                     onChange={this.update('body')}/>
+          <input type='submit' id='step-edit-submit' value='Save Step'/>
+        </form>
       </div>
-    )
+    );
   }
 }
 

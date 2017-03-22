@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router';
 
 class ArticleView extends React.Component {
   constructor(props){
@@ -18,9 +19,39 @@ class ArticleView extends React.Component {
     )));
   }
 
+  mergeSteps(left, right) {
+    const results = [];
+
+    while (left.length > 0 && right.length >0) {
+      switch (left[0].order < right[0].order) {
+        case true:
+          results.push(left.shift());
+          break;
+        default:
+          results.push(right.shift());
+      }
+    }
+
+    return results.concat(left, right);
+  }
+
+  mergeSortSteps(arr){
+    if (arr.length < 2) {
+      return arr;
+    } else {
+      const middle = Math.floor(arr.length / 2);
+      const left = this.mergeSortSteps(arr.slice(0, middle));
+      const right = this.mergeSortSteps(arr.slice(middle));
+
+      return this.mergeSteps(left, right);
+    }
+  }
+
   renderSteps() {
 
-    return (this.props.article.steps.map((step, idx)=> (
+    const orderedSteps = this.mergeSortSteps(this.props.article.steps);
+
+    return (orderedSteps.map((step, idx)=> (
       <li key={idx}>
         <h3 className="step-header">{step.title}</h3>
         <div className="images-container">
@@ -34,7 +65,6 @@ class ArticleView extends React.Component {
       </li>
     )));
   }
-
 
   render() {
     let article = this.props.article;
@@ -59,6 +89,7 @@ class ArticleView extends React.Component {
             {this.renderSteps()}
           </ul>
         </div>
+        <Link to={`/articles/${article.id}/edit`}>Edit</Link>
       </section>
     );
   }
