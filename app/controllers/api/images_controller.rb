@@ -4,16 +4,18 @@ class Api::ImagesController < ApplicationController
     @images = @imageable.images
   end
 
-  def create_table
-    @image = @imageable.images.new(image_params)
-    @image.save
-    render 'api/images/show'
+  def create
+    @image = Image.new(image_params)
+    if @image.save
+      render 'api/images/show'
+    end
   end
 
   def destroy
     @image = Image.find(params[:id])
-    @image.destroy
-    render 'api/images/show'
+    if @image.destroy
+      render 'api/images/show'
+    end
   end
 
   def update
@@ -30,6 +32,6 @@ class Api::ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:url)
+    params.permit(:image)
   end
 end

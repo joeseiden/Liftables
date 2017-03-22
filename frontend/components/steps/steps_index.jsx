@@ -51,9 +51,14 @@ class StepsIndex extends React.Component {
 
   addStep(e) {
     e.preventDefault();
-    const nextOrder = (this.props.steps[-1].order + 1);
+    let nextOrder;
+    if (this.props.steps.length > 0) {
+      nextOrder = (this.props.steps.slice(-1)[0].order + 1);
+    } else {
+      nextOrder = 1;
+    }
     const newStep = {
-      title: `New Step`,
+      title: `Step ${nextOrder}`,
       body: '',
       order: nextOrder,
       article_id: this.props.articleId
