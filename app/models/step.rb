@@ -1,5 +1,5 @@
 class Step < ApplicationRecord
-  validates :article_id, presence: true
+  validates :title, :order, :article_id, presence: true
 
   has_many :images,
       as: :imageable,

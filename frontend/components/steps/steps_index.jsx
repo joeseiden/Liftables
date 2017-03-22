@@ -6,10 +6,19 @@ import StepsIndexItem from './steps_index_item';
 class StepsIndex extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      steps: []
+    };
+
+    this.addStep = this.addStep.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchSteps(this.props.articleId);
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.setState({steps: newProps.steps});
   }
 
   mergeSteps(left, right) {
@@ -40,18 +49,35 @@ class StepsIndex extends React.Component {
     }
   }
 
+  addStep(e) {
+    e.preventDefault();
+    const nextOrder = (this.props.steps.length + 1);
+    const newStep = {
+      title: `Step ${nextOrder}`,
+      body: '',
+      order: nextOrder,
+      article_id: this.props.articleId
+    };
+    this.props.createStep(this.props.articleId, newStep);
+    this.props.fetchSteps(this.props.articleId);
+  }
+
   render() {
-    const steps = this.props.steps;
+    const steps = this.state.steps;
+
     if (!steps){ return null; }
     const orderedSteps = this.mergeSortSteps(steps);
     return (
       <section>
         <ul className="steps-index">
-          {orderedSteps.map(step => <StepsIndexItem
-                            key={step.id}
+          {orderedSteps.map((step, idx) => <StepsIndexItem
+                            key={idx}
                             step={step}
                             articleId={this.props.articleId}/>)}
         </ul>
+        <button id="add-step-button" onClick={this.addStep}>
+          Add Step
+        </button>
       </section>
     );
   }

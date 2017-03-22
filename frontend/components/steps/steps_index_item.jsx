@@ -11,7 +11,7 @@ const StepsIndexItem = props => {
         </Link>
       </div>
     </li>
-  )
+  );
 };
 
 export default StepsIndexItem;

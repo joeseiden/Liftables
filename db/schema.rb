@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 20170320184802) do
   end
 
   create_table "steps", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",      null: false
     t.text     "body"
-    t.integer  "order"
+    t.integer  "order",      null: false
     t.integer  "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

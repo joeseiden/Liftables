@@ -6,10 +6,11 @@ import { Link, hashHistory } from 'react-router';
 class ArticleEditForm extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      id: this.props.article.id,
-      title: this.props.article.title,
-      description: this.props.article.description
+      id: this.props.articleId,
+      title: '',
+      description: ''
     };
 
     this.update = this.update.bind(this);
@@ -19,6 +20,16 @@ class ArticleEditForm extends React.Component {
 
   componentDidMount() {
     this.props.requestSingleArticle(this.props.params.id);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.article) {
+      this.setState({
+        id: newProps.articleId,
+        title: newProps.article.title,
+        description: newProps.article.description
+      });
+    }
   }
 
   handleErrors() {
@@ -50,7 +61,8 @@ class ArticleEditForm extends React.Component {
   }
 
   render() {
-
+    let article = this.state;
+    if (!article){ return null; }
     return (
       <div className="article-form-container">
       {this.handleErrors()}

@@ -44,9 +44,7 @@ class StepEditForm extends React.Component {
     e.preventDefault();
     let articleId = this.props.articleId;
     let step = this.state;
-    console.log(this.props);
     this.props.updateStep(articleId, step).then((response) => {
-      console.log(response);
       hashHistory.push(`articles/${response.step.article_id}/edit`);
     });
   }

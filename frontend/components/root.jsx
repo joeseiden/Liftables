@@ -23,7 +23,7 @@ const Root = ({ store }) => {
     <Router history={hashHistory}>
       <Route path="/" component={ App }>
         <IndexRoute component={ Home }/>
-        <Route path="articles" component={ ArticlesIndexContainer } />
+        <Route path="articles" component={ ArticlesIndexContainer }/>
         <Route path="articles/:id" component={ ArticleViewContainer } />
         <Route path="articles/:id/edit" component={ ArticleEditFormContainer } />
         <Route path="articles/:articleId/steps/:stepId/edit" component={ StepEditFormContainer } />

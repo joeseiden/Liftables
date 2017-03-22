@@ -20,7 +20,7 @@ export const fetchStep = (articleId, stepId) => dispatch => (
 
 export const createStep = (articleId, step) => dispatch => (
   StepAPIUtil.createStep(articleId, step).then(
-    newStep => dispatch(receiveStep(step),
+    newStep => dispatch(receiveSteps({step}),
       err => dispatch(receiveErrors(err.responseJSON)))
   )
 );
@@ -57,4 +57,4 @@ export const removeStep = step => ({
 export const receiveErrors = errors => ({
   type: RECEIVE_ERRORS,
   errors
-})
+});

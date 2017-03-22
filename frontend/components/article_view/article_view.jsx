@@ -7,7 +7,7 @@ class ArticleView extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.requestSingleArticle(this.props.params.id);
   }
 
