@@ -1,6 +1,6 @@
 .article-form-container {
   max-width: 80vw;
-  height: 800px;
+  min-height: 600px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -12,10 +12,11 @@
   border-radius: 15px;
   font-family: 'Noto Serif', serif;
   background: whitesmoke;
+  padding: 30px;
 }
 
+
 #article-edit-form {
-  margin-top: 30px;
   background: lightgrey;
   width: 80%;
   display: flex;
@@ -57,4 +58,6 @@
   #article-edit-submit:hover {
     background-color: $darkergreen;
   }
+
+
 }

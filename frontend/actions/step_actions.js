@@ -20,7 +20,7 @@ export const fetchStep = (articleId, stepId) => dispatch => (
 
 export const createStep = (articleId, step) => dispatch => (
   StepAPIUtil.createStep(articleId, step).then(
-    newStep => dispatch(receiveSteps({step}),
+    newStep => dispatch(receiveStep(newStep),
       err => dispatch(receiveErrors(err.responseJSON)))
   )
 );

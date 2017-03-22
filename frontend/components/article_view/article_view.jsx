@@ -89,7 +89,10 @@ class ArticleView extends React.Component {
             {this.renderSteps()}
           </ul>
         </div>
-        <Link to={`/articles/${article.id}/edit`}>Edit</Link>
+        <div className='edit-link-container'>
+          <Link to={`/articles/${article.id}/edit`}
+            className={'edit-article-link'}>Edit Article</Link>
+        </div>
       </section>
     );
   }

@@ -59,7 +59,6 @@ class StepsIndex extends React.Component {
       article_id: this.props.articleId
     };
     this.props.createStep(this.props.articleId, newStep);
-    this.props.fetchSteps(this.props.articleId);
   }
 
   render() {
@@ -68,12 +67,13 @@ class StepsIndex extends React.Component {
     if (!steps){ return null; }
     const orderedSteps = this.mergeSortSteps(steps);
     return (
-      <section>
+      <section className="steps-index-container">
         <ul className="steps-index">
           {orderedSteps.map((step, idx) => <StepsIndexItem
                             key={idx}
                             step={step}
-                            articleId={this.props.articleId}/>)}
+                            articleId={this.props.articleId}
+                            deleteStep={this.props.deleteStep}/>)}
         </ul>
         <button id="add-step-button" onClick={this.addStep}>
           Add Step

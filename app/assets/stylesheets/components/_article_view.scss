@@ -12,6 +12,23 @@
   font-family: 'Noto Serif', serif;
   background: whitesmoke;
 }
+.edit-link-container {
+  padding: 15px;
+  border-top: 1px solid $black;
+  background: lightgrey;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: inherit;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  a {
+    font-family: 'Permanent Marker', cursive;
+  }
+  a:hover {
+    color: $black;
+    text-decoration: underline;
+  }
+}
 
 .article-view-header {
   text-align: left;

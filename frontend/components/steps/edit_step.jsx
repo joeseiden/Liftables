@@ -7,8 +7,8 @@ class StepEditForm extends React.Component {
     super(props);
     this.state = {
       id: this.props.stepId,
-      title: this.props.step.title,
-      body: this.props.step.body
+      title: '',
+      body: ''
     };
 
     this.handleErrors = this.handleErrors.bind(this);
@@ -16,8 +16,12 @@ class StepEditForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchStep(this.props.articleId, this.props.stepId);
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.setState({title: newProps.step.title, body: newProps.step.body});
   }
 
   handleErrors() {

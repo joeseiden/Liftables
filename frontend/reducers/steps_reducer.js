@@ -7,16 +7,20 @@ import {merge} from 'lodash';
 
 const StepsReducer = (state = {}, action) => {
   Object.freeze(state);
+  let newState;
   switch (action.type) {
     case RECEIVE_STEPS:
       const steps = action.steps;
       return merge({}, state, steps);
     case RECEIVE_STEP:
-      let newState = {};
-      newState[action.step.id]=action.article;
+      newState = merge({}, state);
+      newState[action.step.id]=action.step;
       return newState;
     case REMOVE_STEP:
-      return {};
+      const stepId = action.step.id;
+      newState = merge({}, state);
+      delete newState[stepId];
+      return newState;
     default:
       return state;
   }
