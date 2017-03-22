@@ -1,21 +1,21 @@
 export const fetchSteps = (articleId) => (
   $.ajax({
     type: 'GET',
-    url: `api/${articleId}/steps`
+    url: `api/articles/${articleId}/steps`
   })
 );
 
 export const fetchStep = (articleId, stepId) => (
   $.ajax({
     type: 'GET',
-    url: `api/${articleId}/steps/${stepId}`
+    url: `api/articles/${articleId}/steps/${stepId}`
   })
 );
 
 export const createStep = (articleId, step) => (
   $.ajax({
     type: 'POST',
-    url: `api/${articleId}/steps`,
+    url: `api/articles/${articleId}/steps`,
     data: { step }
   })
 );
@@ -23,7 +23,7 @@ export const createStep = (articleId, step) => (
 export const updateStep = (articleId, step) => (
   $.ajax({
     type: 'PATCH',
-    url: `api/${articleId}/steps/${step.id}`,
+    url: `api/articles/${articleId}/steps/${step.id}`,
     data: { step }
   })
 );
@@ -31,6 +31,6 @@ export const updateStep = (articleId, step) => (
 export const deleteStep = (articleId, stepId) => (
   $.ajax({
     type: 'DELETE',
-    url: `api/${articleId}/steps/${stepId}`
+    url: `api/articles/${articleId}/steps/${stepId}`
   })
 );

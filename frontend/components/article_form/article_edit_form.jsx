@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import StepsIndexContainer from '../steps/steps_index_container';
 import { Link, hashHistory } from 'react-router';
 
 class ArticleEditForm extends React.Component {
@@ -68,6 +69,7 @@ class ArticleEditForm extends React.Component {
                  onChange={this.update('description')}/>
           <input type='submit' id="article-edit-submit" value='Save Article'/>
         </form>
+        <StepsIndexContainer articleId={this.state.id} />
       </div>
     )
   }

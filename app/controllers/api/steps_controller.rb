@@ -1,7 +1,7 @@
 class Api::StepsController < ApplicationController
 
   def index
-    @steps = Step.where(article_id: step_params[:article_id])
+    @steps = Step.where(article_id: params[:article_id])
   end
 
   def create
