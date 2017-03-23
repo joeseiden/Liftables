@@ -67,7 +67,8 @@ class ArticleEditForm extends React.Component {
     return (
       <div className="article-form-container">
       {this.handleErrors()}
-        <ImageBarContainer imageableType={'Article'} imageableId={this.state.id} />
+        <ImageBarContainer imageableType={'Article'}
+          imageableId={this.state.id} />
         <form id="article-edit-form" onSubmit={this.handleSubmit}>
           <label htmlFor='article-edit-title-input'>
           <h3>Title</h3>

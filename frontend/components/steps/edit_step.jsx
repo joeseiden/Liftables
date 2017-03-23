@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, hashHistory } from 'react-router';
+import ImageBarContainer from '../images/image_bar_container';
 
 class StepEditForm extends React.Component {
   constructor(props) {
@@ -57,6 +58,8 @@ class StepEditForm extends React.Component {
     return (
       <div className="step-form-container">
         {this.handleErrors()}
+        <ImageBarContainer imageableType={'Step'}
+          imageableId={this.state.id} />
         <form id="step-edit-form" onSubmit={this.handleSubmit}>
           <label htmlFor='step-edit-title-input'>
             <h3>Title</h3>

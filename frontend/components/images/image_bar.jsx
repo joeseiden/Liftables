@@ -18,7 +18,6 @@ class ImageBar extends React.Component {
       },
       uploadedFileCloudinaryUrl: ''
     };
-
   }
 
   componentDidMount() {
@@ -50,13 +49,19 @@ class ImageBar extends React.Component {
         this.setState({
           uploadedFileCloudinaryUrl: response.body.secure_url
         });
+        this.saveImage(response.body.secure_url);
       }
     });
   }
 
+  saveImage(url) {
+    this.props.createImage(this.state.imageable, {url: url});
+  }
+
   render() {
+    console.log(this.state);
     return (
-      <div>
+      <div className='image-upload'>
         <div className='file-upload'>
           <Dropzone
             multiple={false}
@@ -66,12 +71,11 @@ class ImageBar extends React.Component {
           </Dropzone>
         </div>
 
+        {this.state.images.length === 0 ? null:
         <div className='image-preview'>
-          {this.state.uploadedFileCloudinaryUrl === '' ? null:
-          <div>
-            <img src={this.state.uploadedFileCloudinaryUrl} />
-          </div>}
-        </div>
+          <img className='preview-thumb'
+               src={this.state.uploadedFileCloudinaryUrl} />
+        </div>}
       </div>
 
     );
