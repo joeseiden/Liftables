@@ -1,12 +1,11 @@
 export const fetchImages = (imageable) => (
   $.ajax({
     type: 'GET',
-    url: `api/images?type=${imageable.type}&id=${imageable.id}`,
-    data: {imageable}
+    url: `api/images?type=${imageable.type}&id=${imageable.id}`
   })
 );
 
-export const createImage = (image, imageable) => (
+export const createImage = (imageable, image) => (
   $.ajax({
     type: 'POST',
     url: `api/images?type=${imageable.type}&id=${imageable.id}`,

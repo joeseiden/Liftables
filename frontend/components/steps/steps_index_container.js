@@ -6,7 +6,7 @@ import {
   createStep,
   updateStep,
   deleteStep
-} from '../../actions/step_actions.js';
+} from '../../actions/step_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   steps: Object.keys(state.steps).map(id => state.steps[id]),

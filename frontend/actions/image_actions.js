@@ -9,9 +9,9 @@ export const fetchImages = imageable => dispatch => (
   )
 );
 
-export const createImage = imageable => dispatch => (
-  ImageAPIUtil.createImage(imageable).then(
-    image => dispatch(receiveImage(image))
+export const createImage = (imageable, image) => dispatch => (
+  ImageAPIUtil.createImage(imageable, image).then(
+    newImage => dispatch(receiveImage(newImage))
   )
 );
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import StepsIndexContainer from '../steps/steps_index_container';
+import ImageBarContainer from '../images/image_bar_container';
 import { Link, hashHistory } from 'react-router';
 
 class ArticleEditForm extends React.Component {
@@ -66,6 +67,7 @@ class ArticleEditForm extends React.Component {
     return (
       <div className="article-form-container">
       {this.handleErrors()}
+        <ImageBarContainer imageableType={'Article'} imageableId={this.state.id} />
         <form id="article-edit-form" onSubmit={this.handleSubmit}>
           <label htmlFor='article-edit-title-input'>
           <h3>Title</h3>
