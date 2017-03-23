@@ -1,5 +1,6 @@
 class Api::ImagesController < ApplicationController
   before_action :find_imageable
+  skip_before_action :find_imageable, only: [:destroy, :update]
 
 
   def index

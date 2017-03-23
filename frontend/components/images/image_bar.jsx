@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 
-const CLOUDINARY_UPLOAD_PRESET = 'ykgtnmrm';
-const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/liftables/upload';
 
 class ImageBar extends React.Component {
   constructor(props) {
     super(props);
+    this.CLOUDINARY_UPLOAD_PRESET = window.CLOUDINARY_OPTIONS.upload_preset;
+    this.CLOUDINARY_UPLOAD_URL = window.CLOUDINARY_OPTIONS.upload_url;
 
     this.state = {
       images: [],
@@ -20,7 +20,8 @@ class ImageBar extends React.Component {
     };
   }
 
-  componentDidMount() {
+
+  componentWillMount() {
     this.props.fetchImages(this.state.imageable);
   }
 
@@ -37,9 +38,10 @@ class ImageBar extends React.Component {
   }
 
   handleImageUpload(file) {
-    let upload = request.post(CLOUDINARY_UPLOAD_URL)
-                        .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+    let upload = request.post(window.CLOUDINARY_OPTIONS.upload_url)
+                        .field('upload_preset', window.CLOUDINARY_OPTIONS.upload_preset)
                         .field('file', file);
+                        debugger;
     upload.end((err, response) => {
       if (err) {
         console.error(err);
@@ -58,15 +60,26 @@ class ImageBar extends React.Component {
     this.props.createImage(this.state.imageable, {url: url});
   }
 
+  deleteImage(id){
+    this.props.deleteImage(id)
+    .then(this.props.fetchImages(this.state.imageable));
+  }
+
   renderImages() {
     return (
       this.state.images.map((image, idx) =>
-      <img className='image-preview-thumb' src={image.url} key={idx} />)
+      (
+      <li className='image-preview-item' key={image.id}>
+        <img className='image-preview-thumb'
+          src={image.url}
+          onClick={this.deleteImage.bind(this, image.id)}/>
+      </li>
+        )
+      )
     );
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className='image-upload'>
         <div className='file-upload'>

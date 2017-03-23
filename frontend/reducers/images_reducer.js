@@ -11,7 +11,7 @@ const ImagesReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_IMAGES:
       const images = action.images;
-      return merge({}, state, images);
+      return images;
     case RECEIVE_IMAGE:
       newState = merge({}, state);
       newState[action.image.id]=action.image;
