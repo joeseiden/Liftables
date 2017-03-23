@@ -19,6 +19,7 @@ class User < ApplicationRecord
   before_validation :ensure_session_token_uniqueness
 
   has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   attr_reader :password
 
