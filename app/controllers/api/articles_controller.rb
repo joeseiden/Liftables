@@ -1,6 +1,8 @@
 class Api::ArticlesController < ApplicationController
   def index
-    @articles = Article.includes(:images).all
+    @articles = Article.includes(:images,
+                                  steps: [:images],
+                                  comments: [:user]).all
   end
 
   def show
