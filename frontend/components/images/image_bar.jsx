@@ -1,5 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Dropzone from 'react-dropzone';
+import request from 'superagent';
+
+const CLOUDINARY_UPLOAD_PRESET = 'ykgtnmrm';
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/liftables/upload';
 
 class ImageBar extends React.Component {
   constructor(props) {
@@ -10,10 +15,10 @@ class ImageBar extends React.Component {
       imageable: {
         type: this.props.imageableType,
         id: this.props.imageableId
-      }
+      },
+      uploadedFileCloudinaryUrl: ''
     };
 
-    this.upload = this.upload.bind(this);
   }
 
   componentDidMount() {
@@ -24,24 +29,51 @@ class ImageBar extends React.Component {
     this.setState({images: newProps.images});
   }
 
-  upload(e) {
-    e.preventDefault();
-    const imageable = this.state.imageable;
-    const createImage = this.props.createImage;
-    window.cloudinary.openUploadWidget(window.cloudinary_options,
-      (error, images) => {
-        if (error === null) {
-          createImage(imageable, images[0]);
-        }
-      });
-    }
+  onImageDrop(files) {
+    this.setState({
+      uploadedFile: files[0]
+    });
+
+    this.handleImageUpload(files[0]);
+  }
+
+  handleImageUpload(file) {
+    let upload = request.post(CLOUDINARY_UPLOAD_URL)
+                        .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+                        .field('file', file);
+    upload.end((err, response) => {
+      if (err) {
+        console.error(err);
+      }
+
+      if (response.body.secure_url !== '') {
+        this.setState({
+          uploadedFileCloudinaryUrl: response.body.secure_url
+        });
+      }
+    });
+  }
 
   render() {
     return (
+      <div>
+        <div className='file-upload'>
+          <Dropzone
+            multiple={false}
+            accept="image/*"
+            onDrop={this.onImageDrop.bind(this)}>
+            <p>Drop an image or click to select a file to upload.</p>
+          </Dropzone>
+        </div>
 
-      <button onClick={this.upload}>
-        Click To Add Image
-      </button>
+        <div className='image-preview'>
+          {this.state.uploadedFileCloudinaryUrl === '' ? null:
+          <div>
+            <img src={this.state.uploadedFileCloudinaryUrl} />
+          </div>}
+        </div>
+      </div>
+
     );
   }
 }
