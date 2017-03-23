@@ -1,4 +1,6 @@
 class Api::ImagesController < ApplicationController
+  before_filter :find_imageable
+
 
   def index
     @images = @imageable.images
@@ -6,6 +8,7 @@ class Api::ImagesController < ApplicationController
 
   def create
     @image = Image.new(image_params)
+    @image.imageable = @imageable
     if @image.save
       render 'api/images/show'
     end
@@ -26,12 +29,12 @@ class Api::ImagesController < ApplicationController
 
   private
 
-  def load_imageable
-    resource, id = request.path.split('/')[2, 3]
-    @imageable = resource.singularize.classify.constantize.find(id)
+  def find_imageable
+    type, id = params[:type, :id]
+    @imageable = type.singularize.classify.constantize.find(id)
   end
 
   def image_params
-    params.permit(:image)
+    params.require(:image).permit(:url)
   end
 end
