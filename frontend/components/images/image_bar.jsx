@@ -7,8 +7,6 @@ import request from 'superagent';
 class ImageBar extends React.Component {
   constructor(props) {
     super(props);
-    this.CLOUDINARY_UPLOAD_PRESET = window.CLOUDINARY_OPTIONS.upload_preset;
-    this.CLOUDINARY_UPLOAD_URL = window.CLOUDINARY_OPTIONS.upload_url;
 
     this.state = {
       images: [],
@@ -38,11 +36,12 @@ class ImageBar extends React.Component {
   }
 
   handleImageUpload(file) {
-    let upload = request.post(window.CLOUDINARY_OPTIONS.upload_url)
-                        .field('upload_preset', window.CLOUDINARY_OPTIONS.upload_preset)
+    debugger;
+    let upload = request.post(CLOUDINARY_UPLOAD_URL)
+                        .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
                         .field('file', file);
-                        debugger;
     upload.end((err, response) => {
+      debugger;
       if (err) {
         console.error(err);
       }
