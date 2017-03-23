@@ -1,2 +1,1 @@
-json.extract! image, :id, :imageable_id, :imageable_type
-json.image_url image.image.url
+json.extract! image, :id, :imageable_id, :imageable_type, :url

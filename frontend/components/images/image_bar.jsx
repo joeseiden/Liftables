@@ -58,6 +58,13 @@ class ImageBar extends React.Component {
     this.props.createImage(this.state.imageable, {url: url});
   }
 
+  renderImages() {
+    return (
+      this.state.images.map((image, idx) =>
+      <img className='image-preview-thumb' src={image.url} key={idx} />)
+    );
+  }
+
   render() {
     console.log(this.state);
     return (
@@ -71,11 +78,11 @@ class ImageBar extends React.Component {
           </Dropzone>
         </div>
 
-        {this.state.images.length === 0 ? null:
         <div className='image-preview'>
-          <img className='preview-thumb'
-               src={this.state.uploadedFileCloudinaryUrl} />
-        </div>}
+          <ul>
+            {this.renderImages()}
+          </ul>
+        </div>
       </div>
 
     );

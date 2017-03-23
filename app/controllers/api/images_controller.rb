@@ -1,5 +1,5 @@
 class Api::ImagesController < ApplicationController
-  before_filter :find_imageable
+  before_action :find_imageable
 
 
   def index
@@ -30,7 +30,7 @@ class Api::ImagesController < ApplicationController
   private
 
   def find_imageable
-    type, id = params[:type, :id]
+    type, id = params[:type], params[:id]
     @imageable = type.singularize.classify.constantize.find(id)
   end
 
