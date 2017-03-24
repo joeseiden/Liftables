@@ -11,7 +11,7 @@ const CommentsReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_COMMENTS:
       const comments = action.comments;
-      return merge({}, state, comments);
+      return merge({}, comments);
     case RECEIVE_COMMENT:
       newState = merge({}, state);
       newState[action.comment.id]=action.comment;
