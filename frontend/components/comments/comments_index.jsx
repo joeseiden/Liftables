@@ -8,7 +8,7 @@ class CommentsIndex extends React.Component {
     this.state = {
       comments: [],
       commentBody: '',
-      userId: this.props.currentUser.id
+      userId: null
     };
 
     this.addComment = this.addComment.bind(this);
@@ -16,6 +16,9 @@ class CommentsIndex extends React.Component {
 
   componentWillMount() {
     this.props.fetchComments(this.props.articleId);
+    if (this.props.currentUser && this.props.currentUser.id !== this.state.userId) {
+      this.setState({userId: this.props.currentUser.id});
+    }
   }
 
   componentWillReceiveProps(newProps) {
@@ -36,11 +39,13 @@ class CommentsIndex extends React.Component {
     };
 
     this.props.createComment(this.props.articleId, comment);
+    this.setState({commentBody: ''});
   }
 
   render() {
     return (
       <section className="comments-section">
+        <h3>Comments</h3>
         <div className="comments-index-container">
           <ul className="comments-index">
             {this.state.comments.map((comment, idx) => <CommentsIndexItem
