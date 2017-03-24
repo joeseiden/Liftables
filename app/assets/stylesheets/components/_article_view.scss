@@ -7,15 +7,14 @@
   margin-right: 10vw;
   top: 30px;
   justify-content: center;
-  border: 5px solid $black;
+
   border-radius: 15px;
   font-family: 'Droid Serif', serif;
   background: whitesmoke;
 }
 .edit-link-container {
   padding: 15px;
-  border-top: 1px solid $black;
-  border-bottom: 1px solid $black;
+
   background: lightgrey;
   display:flex;
   flex-direction: row;
@@ -51,17 +50,19 @@
   flex-wrap: wrap;
   justify-content: center;
   background-color: lightgrey;
-  border: 1px solid $black;
   border-radius: 3px;
   li {
-    height: 300px;
-    width: 300px;
+    max-height: 300px;
     padding: 5px;
+    img {
+      max-height: 290px;
+      width: auto;
+    }
   }
 }
 
 .article-description {
-  padding: 15px;
+  padding: 15px 60px;
   font-family: 'Droid Serif', serif;
 }
 
@@ -92,7 +93,8 @@
   }
 
   .step-body {
-    padding: 15px;
+    padding: 15px 60px;
+
   }
 
 }
