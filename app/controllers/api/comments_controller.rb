@@ -1,3 +1,4 @@
+
 class Api::CommentsController < ApplicationController
 
   def index
