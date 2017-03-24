@@ -1,12 +1,19 @@
 class Api::ArticlesController < ApplicationController
   def index
-    @articles = Article.includes(:images,
-                                  steps: [:images],
-                                  comments: [:user]).all
+    if params[:search_query]
+      query = params[:search_query].downcase
+      @articles = Article
+                .includes(:images, :user)
+                .where("lower(title) LIKE ?", "%#{query}%")
+    else
+      @articles = Article.includes(:images, :user).all
+    end
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = Article..includes(:images, :user,
+                                 steps: [:images],
+                                 comments: [:user]).find(params[:id])
 
     if @article
       render 'api/articles/show'

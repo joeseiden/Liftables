@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import AuthFormContainer from '../auth/auth_form_container';
 import NewArticleModalContainer from '../article_form/new_article_modal_container';
 import {hashHistory} from 'react-router';
+import SearchBar from '../search/search_bar';
 
 class Header extends React.Component{
   constructor(props){
@@ -109,6 +110,7 @@ class Header extends React.Component{
           <img id='logo' className="thumbnail"
             src="http://www.free-icons-download.net/images/weightlifting-icon-78421.png" onClick={this.backToHome}/>
           <h1 id='logo-name' onClick={this.backToHome}>Liftables</h1>
+          <SearchBar />
         </div>
           {this.rightNav()}
           <Modal

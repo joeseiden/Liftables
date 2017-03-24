@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 import ArticlesIndex from './articles_index';
-import { requestAllArticles } from '../../actions/article_actions';
+import {
+  requestAllArticles,
+  requestSpecificArticles
+ } from '../../actions/article_actions';
 import { selectAllArticles } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
@@ -15,7 +18,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  requestAllArticles: () => dispatch(requestAllArticles())
+  requestAllArticles: () => dispatch(requestAllArticles()),
+  requestSpecificArticles: searchQuery => dispatch(requestSpecificArticles(searchQuery))
 });
 
 export default connect(

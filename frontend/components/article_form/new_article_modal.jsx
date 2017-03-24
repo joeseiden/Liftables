@@ -1,5 +1,5 @@
 import React from 'react';
-import ReacDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import {Link, hashHistory} from 'react-router';
 import Modal from 'react-modal';
 
@@ -68,8 +68,8 @@ class NewArticleModal extends React.Component {
             value='Start Article'/>
         </div>
       </form>
-    )
-  };
+    );
+  }
 }
 
 export default NewArticleModal;

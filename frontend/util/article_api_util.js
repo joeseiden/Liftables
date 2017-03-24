@@ -12,6 +12,13 @@ export const fetchSingleArticle = articleId => (
   })
 );
 
+export const fetchSpecificArticles = searchQuery => (
+  $.ajax({
+    type: 'GET',
+    url: `api/articles?search_query=${searchQuery}`
+  })
+);
+
 export const createArticle = article => (
   $.ajax({
     type: 'POST',

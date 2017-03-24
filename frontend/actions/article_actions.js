@@ -17,6 +17,12 @@ export const requestSingleArticle = article => dispatch => (
       err => dispatch(receiveErrors(err.responseJSON)))
 );
 
+export const requestSpecificArticles = searchQuery => dispatch => (
+  ArticleAPIUtil.fetchSpecificArticles(searchQuery)
+    .then(articles => dispatch(receiveArticles(articles))),
+    err => dispatch(receiveErrors(err.responseJSON))
+);
+
 export const createArticle = article => dispatch => (
   ArticleAPIUtil.createArticle(article)
   .then(newArticle => dispatch(receiveArticle(newArticle)),
