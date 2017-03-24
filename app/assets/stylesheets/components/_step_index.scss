@@ -1,0 +1,58 @@
+.steps-index-container {
+  width: 100%;
+  font-family: 'Permanent Marker';
+  ul.steps-index {
+    li.step-index-item {
+      background: lightgrey;
+      margin: 5px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      max-width: 50vw;
+      div.step-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        span {
+          margin-right: 50px;
+          font-size: 22px;
+          margin: 0;
+        }
+        p {
+          font-family: 'Coming Soon';
+          background: whitesmoke;
+          padding: 5px;
+          border-radius: 5px;
+          white-space: pre-wrap;
+          max-width: 60%;
+        }
+      }
+      div.step-buttons {
+        display: flex;
+        flex-direction: row;
+        a, button {
+          color: $black;
+        	font-weight: bold;
+        	padding: 7px 9px;
+        	border-radius: 10px;
+        	transition: background-color 0.3s;
+        	text-transform: uppercase;
+        	font-size: 14px;
+        	text-align: center;
+          background-color: $lightergreen;
+        	border: 2px solid $black;
+          margin: 5px;
+          padding: 5px;
+        }
+        a:hover, button:hover {
+          background-color: $darkergreen;
+        }
+      }
+    }
+  }
+}

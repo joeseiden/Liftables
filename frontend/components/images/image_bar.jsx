@@ -84,7 +84,7 @@ class ImageBar extends React.Component {
             multiple={false}
             accept="image/*"
             onDrop={this.onImageDrop.bind(this)}>
-            <p>Drop an image or click to select a file to upload.</p>
+            <p>Drop an image or click to select a file to upload</p>
           </Dropzone>
         </div>
 

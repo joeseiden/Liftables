@@ -1,4 +1,4 @@
-.article-form-container {
+.step-form-container {
   max-width: 80vw;
   min-height: 600px;
   position: relative;
@@ -16,7 +16,7 @@
 }
 
 
-#article-edit-form {
+#step-edit-form {
   background: lightgrey;
   width: 80%;
   display: flex;
@@ -24,6 +24,7 @@
   align-items: center;
   padding: 15px;
   border-radius: 10px;
+  justify-content: center;
   input, textarea {
     border: solid 1px $lightestgrey;
     border-radius: 5px;
@@ -43,7 +44,7 @@
     text-align: center;
   }
 
-  #article-edit-submit {
+  #step-edit-submit {
     padding: 5px 7px;
     font-size: 14px;
     border-radius: 10px;
@@ -55,7 +56,7 @@
     width: 100px;
   }
 
-  #article-edit-submit:hover {
+  #step-edit-submit:hover {
     background-color: $darkergreen;
   }
 }
