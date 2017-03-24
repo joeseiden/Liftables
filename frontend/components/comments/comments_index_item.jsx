@@ -12,8 +12,7 @@ const CommentsIndexItem = props => {
         <span className="comment-author">{props.comment.user.username}</span>
         <p className="comment-body">
           {props.comment.content}
-        </p>
-        <button onClick={deleteComment}>Delete</button>
+        </p><button onClick={deleteComment}>Delete</button>
       </div>
     </li>
   );

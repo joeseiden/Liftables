@@ -1,0 +1,33 @@
+.splash-container {
+  max-width: 50vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-left: 25vw;
+  margin-right: 25vw;
+  top: 30vh;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid $black;
+  border-radius: 15px;
+  font-family: 'Coming Soon', cursive;
+  background: lightgrey;
+  padding: 10px;
+  .welcome {
+    h1 {
+      text-align: center;
+      font-size: 40px;
+    }
+    p {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+
+  .splash-nav {
+    margin-top: 50px;
+    a {
+      text-decoration: underline;
+    }
+  }
+}
