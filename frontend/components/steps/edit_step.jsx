@@ -17,7 +17,7 @@ class StepEditForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchStep(this.props.articleId, this.props.stepId);
   }
 

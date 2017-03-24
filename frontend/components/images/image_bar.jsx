@@ -36,12 +36,10 @@ class ImageBar extends React.Component {
   }
 
   handleImageUpload(file) {
-    debugger;
     let upload = request.post(CLOUDINARY_UPLOAD_URL)
                         .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
                         .field('file', file);
     upload.end((err, response) => {
-      debugger;
       if (err) {
         console.error(err);
       }

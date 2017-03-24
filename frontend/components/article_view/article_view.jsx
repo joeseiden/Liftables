@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
+import CommentsIndexContainer from '../comments/comments_index_container';
 
 class ArticleView extends React.Component {
   constructor(props){
     super(props);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.requestSingleArticle(this.props.params.id);
   }
 
@@ -93,6 +94,7 @@ class ArticleView extends React.Component {
           <Link to={`/articles/${article.id}/edit`}
             className={'edit-article-link'}>Edit Article</Link>
         </div>
+        <CommentsIndexContainer articleId={article.id} />
       </section>
     );
   }

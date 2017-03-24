@@ -19,7 +19,7 @@ class ArticleEditForm extends React.Component {
     this.handleErrors = this.handleErrors.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.requestSingleArticle(this.props.params.id);
   }
 

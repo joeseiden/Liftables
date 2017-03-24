@@ -13,7 +13,7 @@ class StepsIndex extends React.Component {
     this.addStep = this.addStep.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchSteps(this.props.articleId);
   }
 
