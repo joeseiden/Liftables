@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import AuthFormContainer from '../auth/auth_form_container';
 import NewArticleModalContainer from '../article_form/new_article_modal_container';
-import {hashHistory} from 'react-router';
+import {Link, hashHistory} from 'react-router';
 import SearchBar from '../search/search_bar';
 
 class Header extends React.Component{
@@ -21,6 +21,7 @@ class Header extends React.Component{
     this._openNewArticleForm = this._openNewArticleForm.bind(this);
     this.setFormType = this.setFormType.bind(this);
     this.logInAsGuest = this.logInAsGuest.bind(this);
+    this.goToArticles = this.goToArticles.bind(this);
   }
 
   componentWillMount() {
@@ -102,6 +103,13 @@ class Header extends React.Component{
     this.props.clearErrors();
   }
 
+  goToArticles(e){
+    e.preventDefault();
+    if (this.props.pathname !== "articles"){
+      hashHistory.push('articles');
+    }
+  }
+
   render(){
     return (
 
@@ -111,6 +119,7 @@ class Header extends React.Component{
             src="http://www.free-icons-download.net/images/weightlifting-icon-78421.png" onClick={this.backToHome}/>
           <h1 id='logo-name' onClick={this.backToHome}>Liftables</h1>
           <SearchBar />
+          <Link to="/articles">All Articles</Link>
         </div>
           {this.rightNav()}
           <Modal

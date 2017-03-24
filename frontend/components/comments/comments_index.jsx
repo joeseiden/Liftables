@@ -16,13 +16,18 @@ class CommentsIndex extends React.Component {
 
   componentWillMount() {
     this.props.fetchComments(this.props.articleId);
-    if (this.props.currentUser && this.props.currentUser.id !== this.state.userId) {
-      this.setState({userId: this.props.currentUser.id});
-    }
   }
 
   componentWillReceiveProps(newProps) {
     this.setState({comments: newProps.comments});
+
+    if (newProps.articleId !== this.props.articleId ){
+      this.props.fetchComments(newProps.articleId);
+    }
+
+    if (this.props.currentUser && this.props.currentUser.id !== this.state.userId) {
+      this.setState({userId: this.props.currentUser.id});
+    }
   }
 
   update(field) {

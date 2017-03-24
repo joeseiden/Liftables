@@ -11,7 +11,7 @@ class Api::ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article..includes(:images, :user,
+    @article = Article.includes(:images, :user,
                                  steps: [:images],
                                  comments: [:user]).find(params[:id])
 

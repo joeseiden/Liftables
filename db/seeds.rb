@@ -206,12 +206,6 @@ url: "http://dinoxp.com/wp-content/uploads/2016/02/dinort.png"
 article1_image2.imageable = article1
 article1_image2.save!
 
-article2_image = Image.new(
-url: "http://www.drodd.com/images15/number2-13.jpeg"
-)
-article2_image.imageable = article2
-article2_image.save!
-
 article1_step1 = Step.create!(
 title: "Step 1",
 body: "open the door",

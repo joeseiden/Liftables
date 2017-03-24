@@ -14,7 +14,12 @@ class SearchBar extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    hashHistory.push(`articles?search_query=${this.state.query}`);
+    if (this.state.query.length > 0){
+      hashHistory.push(`articles?search_query=${this.state.query}`);
+      this.setState({query: ''});
+    } else {
+      hashHistory.push('articles');
+    }
   }
 
   update(field) {
@@ -29,9 +34,11 @@ class SearchBar extends React.Component {
       <span className="search-bar">
         <form onSubmit={this.handleSubmit}>
           <input
+            className="search-input"
             type="search"
-            placeholder="Enter text to search" onChange={this.update('query')}/>
-          <input type="submit" value="Search"/>
+            placeholder="Enter text to search" onChange={this.update('query')}
+            value={this.state.query}/>
+          <input className="search-submit" type="submit" value="Search"/>
         </form>
       </span>
     );
