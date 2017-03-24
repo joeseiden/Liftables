@@ -20,6 +20,7 @@ class Api::CommentsController < ApplicationController
       render 'api/comments/show'
     else
       render json: @comment.errors.full_messages, status: 401
+    end
   end
 
   def update
