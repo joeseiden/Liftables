@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'http'
 gem 'figaro'
 
 gem 'rails_12factor'
