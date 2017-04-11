@@ -101,6 +101,7 @@ class ArticleView extends React.Component {
             {this.renderSteps()}
           </ul>
         </div>
+        {this.renderEditLink()}
         <CommentsIndexContainer articleId={article.id} />
       </section>
     );
