@@ -6,7 +6,7 @@ import {
  } from '../../actions/article_actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  article: state.articles[ownProps.params.id],
+  article: state.articles[ownProps.params.aritcleId],
   currentUser: ((state.session.currentUser) ? state.session.currentUser.username : null)
 });
 

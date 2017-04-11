@@ -12,8 +12,8 @@ import {
 
 const mapStateToProps = (state, ownProps) => ({
   errors: state.errors,
-  article: state.articles[ownProps.params.id],
-  articleId: ownProps.params.id
+  article: state.articles[ownProps.params.articleId],
+  articleId: ownProps.params.articleId
 });
 
 const mapDispatchToProps = (dispatch, ownProps) =>({

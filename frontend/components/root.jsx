@@ -6,6 +6,7 @@ import {
   IndexRoute,
   hashHistory
 } from 'react-router';
+import { requestSingleArticle } from '../actions/article_actions';
 import { receiveErrors } from '../actions/session_actions';
 import App from './app';
 import Home from './home/home';
@@ -17,6 +18,26 @@ import StepEditFormContainer from './steps/edit_step_container';
 
 const Root = ({ store }) => {
 
+  const _ensureLoggedIn = (nextState, replace) => {
+    const currentUser = store.getState().session.currentUser;
+    if (!currentUser) {
+      replace('/');
+    }
+  };
+
+  const _ensureAuthor = (nextState, replace, aSync) => {
+    const currentUser = store.getState().session.currentUser;
+    if(!currentUser){
+      replace('/');
+      aSync();
+    }
+    store.dispatch(requestSingleArticle(nextState.params.articleId)).then(() =>{
+      if (!currentUser || store.getState().articles[nextState.params.articleId].user.id !== currentUser.id) {
+        replace("/");
+      }
+      aSync();
+    });
+  };
 
   return (
   <Provider store={ store }>
@@ -25,9 +46,9 @@ const Root = ({ store }) => {
         <IndexRoute component={ Home }/>
         <Route path="articles" component={ ArticlesIndexContainer }/>
         <Route path="articles?search_query=:searchQuery" component= { ArticlesIndexContainer } />
-        <Route path="articles/:id" component={ ArticleViewContainer } />
-        <Route path="articles/:id/edit" component={ ArticleEditFormContainer } />
-        <Route path="articles/:articleId/steps/:stepId/edit" component={ StepEditFormContainer } />
+        <Route path="articles/:articleId" component={ ArticleViewContainer } />
+        <Route path="articles/:articleId/edit" component={ ArticleEditFormContainer } onEnter={ _ensureAuthor }/>
+        <Route path="articles/:articleId/steps/:stepId/edit" component={ StepEditFormContainer } onEnter={ _ensureAuthor }/>
       </Route>
     </Router>
   </Provider>

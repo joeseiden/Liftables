@@ -20,7 +20,7 @@ class ArticleEditForm extends React.Component {
   }
 
   componentWillMount() {
-    this.props.requestSingleArticle(this.props.params.id);
+    this.props.requestSingleArticle(this.props.params.articleId);
   }
 
   componentWillReceiveProps(newProps) {
