@@ -67,6 +67,17 @@ class ArticleView extends React.Component {
     )));
   }
 
+  renderEditLink() {
+    const currentUser = this.props.currentUser;
+
+    if (currentUser.id === this.props.article.user.id) {
+      return (<div className='edit-link-container'>
+        <Link to={`/articles/${article.id}/edit`}
+          className={'edit-article-link'}>Edit Article</Link>
+      </div>);
+    }
+  }
+
   render() {
     let article = this.props.article;
 
@@ -89,10 +100,6 @@ class ArticleView extends React.Component {
           <ul className="steps">
             {this.renderSteps()}
           </ul>
-        </div>
-        <div className='edit-link-container'>
-          <Link to={`/articles/${article.id}/edit`}
-            className={'edit-article-link'}>Edit Article</Link>
         </div>
         <CommentsIndexContainer articleId={article.id} />
       </section>
