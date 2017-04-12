@@ -15,7 +15,6 @@ class CommentsIndex extends React.Component {
   }
 
   componentWillMount() {
-    debugger;
     this.props.fetchComments(this.props.articleId);
   }
 

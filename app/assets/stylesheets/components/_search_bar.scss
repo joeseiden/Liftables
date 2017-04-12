@@ -12,6 +12,7 @@
       border-bottom-right-radius: 0;
       text-align: left;
       border: 1px solid $black;
+      width: 145px;
     }
     .search-submit {
       width: 50px;
@@ -26,5 +27,8 @@
     .search-submit:hover {
       background: $darkergreen;
     }
+    }
   }
+  a {
+    margin-left: 10px;
 }

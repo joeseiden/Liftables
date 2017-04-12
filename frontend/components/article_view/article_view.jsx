@@ -70,11 +70,12 @@ class ArticleView extends React.Component {
   renderEditLink() {
     const currentUser = this.props.currentUser;
 
-    if (currentUser.id === this.props.article.user.id) {
-      return (<div className='edit-link-container'>
-        <Link to={`/articles/${article.id}/edit`}
+    if (this.props.currentUser && this.props.currentUser.id === this.props.article.user.id) {
+      return (
+        <div className='edit-link-container'>
+          <Link to={`/articles/${this.props.article.id}/edit`}
           className={'edit-article-link'}>Edit Article</Link>
-      </div>);
+        </div>);
     }
   }
 

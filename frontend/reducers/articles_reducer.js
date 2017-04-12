@@ -13,7 +13,7 @@ const ArticlesReducer = (state = {}, action) => {
       return merge({}, articles);
     case RECEIVE_ARTICLE:
       let newState = {};
-      newState[action.article.articleId]=action.article;
+      newState[action.article.id]=action.article;
       return newState;
     case REMOVE_ARTICLE:
       return {};
