@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  requestSingleArticle: article => dispatch(requestSingleArticle(article))
+  requestSingleArticle: article => dispatch(requestSingleArticle(article)),
+  deleteArticle: article => dispatch(deleteArticle(article))
 });
 
 export default connect(

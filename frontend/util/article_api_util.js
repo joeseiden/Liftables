@@ -35,7 +35,7 @@ export const editArticle = article => (
   })
 );
 
-export const deleteAccount = article => (
+export const deleteArticle = article => (
   $.ajax({
     type: 'DELETE',
     url: `api/articles/${article.id}`

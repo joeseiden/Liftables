@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
       id => state.articles[id]
     )};
   } else {
-    return {articles: null};
+    return {articles: []};
   }
 
 };

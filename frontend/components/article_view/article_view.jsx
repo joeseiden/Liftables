@@ -1,11 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Link } from 'react-router';
+import Modal from 'react-modal';
+import { Link, hashHistory } from 'react-router';
 import CommentsIndexContainer from '../comments/comments_index_container';
 
 class ArticleView extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      confirmationModalOpen: false
+    };
+    this.deleteArticle = this.deleteArticle.bind(this);
+    this._openConfirmationWindow = this._openConfirmationWindow.bind(this);
+    this._closeConfirmationWindow = this._closeConfirmationWindow.bind(this);
   }
 
   componentWillMount() {
@@ -67,15 +74,35 @@ class ArticleView extends React.Component {
     )));
   }
 
-  renderEditLink() {
+  deleteArticle() {
+    this.props.deleteArticle(this.props.article);
+    this._closeConfirmationWindow();
+    hashHistory.push("/articles");
+  }
+
+  _openConfirmationWindow() {
+    this.setState({confirmationModalOpen: true});
+  }
+
+  _closeConfirmationWindow() {
+    this.setState({confirmationModalOpen: false});
+  }
+
+  renderAuthorActions() {
     const currentUser = this.props.currentUser;
 
     if (this.props.currentUser && this.props.currentUser.id === this.props.article.user.id) {
       return (
+      <div className='author-actions-container'>
         <div className='edit-link-container'>
           <Link to={`/articles/${this.props.article.id}/edit`}
           className={'edit-article-link'}>Edit Article</Link>
-        </div>);
+        </div>
+        <div className='delete-button-container'>
+          <button onClick={this._openConfirmationWindow}>Delete Article</button>
+        </div>
+      </div>
+      );
     }
   }
 
@@ -102,8 +129,21 @@ class ArticleView extends React.Component {
             {this.renderSteps()}
           </ul>
         </div>
-        {this.renderEditLink()}
+        {this.renderAuthorActions()}
         <CommentsIndexContainer articleId={article.id} />
+        <Modal
+          isOpen={this.state.confirmationModalOpen}
+          contentLabel="confirmation-window"
+          onRequestClose={this._closeConfirmationWindow}
+          shouldCloseOnOverlayClick={true}
+          id="delete-article-confirmation-modal"
+          className="modal">
+          <div>Are you sure you want to permanently delete this article?</div>
+          <div className="confirmation-buttons">
+            <button onClick={this.deleteArticle}>Yes</button>
+            <button onClick={this._closeConfirmationWindow}>No</button>
+          </div>
+        </Modal>
       </section>
     );
   }
