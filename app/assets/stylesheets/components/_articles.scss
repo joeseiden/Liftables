@@ -25,32 +25,28 @@
 
 
 .article-index-item {
-  background-color: whitesmoke;
-  border: 3px solid $black;
-  border-radius: 5px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.10);
   min-height: 300px;
   width: 250px;
   margin: 15px;
-  transition: box-shadow 0.3s;
-  transition: -moz-box-shadow 0.3s;
-  transition: -webkit-box-shadow 0.3s;
-  transition: background-color 0.2s;
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.15)
 }
 
 .article-index-item:hover {
-  background-color: lightgrey;
-  -moz-box-shadow:    0 2px 4px 0px $black;
-  -webkit-box-shadow: 0 2px 4px 0px $black;
-  box-shadow:         0 2px 4px 0px $black;
+  border: 1px solid rgba(0, 0, 0, 0.20);
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.20);
 }
 
 .article-info {
   padding: 2px;
   color: $black;
-  border-top: 3px solid $black;
-  .article-index-title {
-    font-weight: bold;
-  }
+  font-size: 14px;
+  font-weight: lighter;
+}
+.article-index-title {
+  font-size: 16px;
+  font-weight: 800;
 }
 
 .article-info:hover {

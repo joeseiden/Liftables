@@ -3,18 +3,16 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Permanent Marker', cursive;
-  border-bottom: 5px solid $black;
-  background: lightgrey;
+  background: $lightestgrey;
 
   #user-greeting {
     font-size: 16px;
-    font-family: "Coming Soon", cursive;
   }
 
   #logo-name {
     font-size: 42px;
     font-weight: normal;
+    text-transform: lowercase;
   }
 
   #logo-name:hover, #logo:hover {

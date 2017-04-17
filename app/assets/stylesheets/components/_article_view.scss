@@ -1,16 +1,15 @@
 .article-view {
-  max-width: 80vw;
+  width: 970px;
+  max-width: 100vw;
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-left: 10vw;
-  margin-right: 10vw;
   top: 30px;
   justify-content: center;
-
-  border-radius: 15px;
-  font-family: 'Droid Serif', serif;
-  background: whitesmoke;
+  margin: 0 auto;
+  border-radius: 9px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 .edit-link-container {
   padding: 15px;
@@ -20,7 +19,6 @@
   flex-direction: row;
   justify-content: center;
   a {
-    font-family: 'Permanent Marker', cursive;
   }
   a:hover {
     color: $black;
@@ -33,10 +31,10 @@
   h2 {
     text-align: inherit;
   }
-  background-color: lightgrey;
+  background-color: $lightestgrey;
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
-  border-bottom: 1px solid $black;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 15px;
 }
 
@@ -49,52 +47,55 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: lightgrey;
+  background-color: $lightestgrey;
   border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
   li {
-    max-height: 300px;
-    padding: 5px;
-    img {
-      max-height: 290px;
-      width: auto;
-    }
+    padding: 10px;
   }
 }
 
 .article-description {
   padding: 15px 60px;
-  font-family: 'Droid Serif', serif;
 }
 
 .steps-container {
-  font-family: 'Droid Serif', serif;
-
-  .step-header {
-    position: relative;
-    left: 20px;
-  }
-
-  .step-images {
-    max-width: 95%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 10px;
+  .steps {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: lightgrey;
-    border-radius: 3px;
+    flex-direction: column;
     li {
-      height: 300px;
-      width: 300px;
-      padding: 5px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      .step-header {
+        position: relative;
+        left: 20px;
+      }
+      .images-container {
+        display: flex;
+        justify-content: center;
+        .step-images {
+          margin-left: 2.5%;
+          margin-right: 2.5%;
+          margin-top: 10px;
+          display: inline-block;
+          justify-content: center;
+          background-color: $lightestgrey;
+          border-radius: 3px;
+          border: 1px solid rgba(0, 0, 0, 0.10);
+          white-space: nowrap;
+          li {
+            padding: 10px;
+          }
+        }
+      }
     }
   }
 
+
   .step-body {
     padding: 15px 60px;
-
+    margin-top: 30px;
   }
 
 }
@@ -112,32 +113,32 @@
   .comments-index {
     .comments-index-item{
       margin-bottom: 10px;
-      background-color: lightgrey;
+      background-color: $lightestgrey;
+      border-top: 1px solid rgba(0, 0, 0, 0.20);
     }
   }
 
   .comment-info {
+    padding: 3px;
     width: 100%;
-    background-color: lightgrey;
+    background-color: $lightestgrey;
     margin-bottom: 10px;
     .comment-author {
       width: 100%;
       font-weight: bold;
-      border-bottom: 1px solid $lightestgrey;
-      font-family: sans-serif;
+      color: $orange;
     }
     .comment-body {
       padding: 5px;
       white-space: pre-wrap;
     }
     button {
-      padding: 1px;
-      border-radius: 3px;
+      padding: 3px;
+      border-radius: 1px;
       font-size: 12px;
       text-transform: none;
       position: relative;
-      left: 91%;
-      font-family: 'Open Sans';
+      left: 93%;
     }
   }
 
@@ -160,7 +161,6 @@
     text-align: center;
     background-color: $lightergreen;
     border: 2px solid $black;
-    font-family: 'Permanent Marker', cursive;
     width: 100px;
   }
   input:hover {

@@ -7,10 +7,12 @@ body {
 	width: 100%;
 	margin: 0 auto;
 	font-size: 16px;
-	background: url('http://res.cloudinary.com/liftables/image/upload/v1490382397/background_ruydfp.jpg') no-repeat center center fixed;
+	// background: url('http://res.cloudinary.com/liftables/image/upload/v1490382397/background_ruydfp.jpg') no-repeat center center fixed;
+	background: $lightgrey;
 	-webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
+	font-family: $roboto;
 }
 
 button {
@@ -23,12 +25,10 @@ button {
 	font-size: 14px;
 	text-align: center;
   background-color: $orange;
-	border: 2px solid $black;
   margin: 5px;
 }
 
 button:hover {
-  background-color: $darkergreen;
 }
 
 a {
@@ -36,8 +36,7 @@ a {
 }
 
 a:hover {
-	color: $darkergreen
-}
+	}
 
 .hidden {
 	display: none;
@@ -46,7 +45,6 @@ a:hover {
 .section-header-bar {
 	border-bottom: 3px solid $black;
 	padding: 10px;
-	background: $lightergrey;
 }
 
 /*
@@ -65,19 +63,16 @@ a:hover {
 h1 {
 	font-size: 34px;
 	font-weight: bold;
-	font-family: 'Permanent Marker', cursive;
 }
 
 h2 {
 	font-size: 24px;
 	text-align: center;
 	font-weight: bold;
-	font-family: 'Permanent Marker', cursive;
 }
 
 h3 {
 	font-size: 22px;
-	font-family: 'Permanent Marker', cursive;
 }
 
 p {
