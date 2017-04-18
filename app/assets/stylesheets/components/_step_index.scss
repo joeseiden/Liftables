@@ -1,6 +1,5 @@
 .steps-index-container {
   width: 100%;
-  font-family: 'Permanent Marker';
   ul.steps-index {
     li.step-index-item {
       background: lightgrey;
@@ -24,7 +23,6 @@
           margin: 0;
         }
         p {
-          font-family: 'Coming Soon';
           background: whitesmoke;
           padding: 5px;
           border-radius: 5px;
@@ -39,18 +37,17 @@
           color: $black;
         	font-weight: bold;
         	padding: 7px 9px;
-        	border-radius: 10px;
+        	border-radius: 6px;
         	transition: background-color 0.3s;
         	text-transform: uppercase;
         	font-size: 14px;
         	text-align: center;
-          background-color: $lightergreen;
-        	border: 2px solid $black;
+          background-color: $orange;
           margin: 5px;
           padding: 5px;
         }
         a:hover, button:hover {
-          background-color: $darkergreen;
+
         }
       }
     }

@@ -51,7 +51,7 @@
   border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.10);
   li {
-    padding: 10px;
+    padding: 15px;
   }
 }
 
@@ -85,7 +85,7 @@
           border: 1px solid rgba(0, 0, 0, 0.10);
           white-space: nowrap;
           li {
-            padding: 10px;
+            padding: 15px;
           }
         }
       }
@@ -159,11 +159,9 @@
     border-radius: 10px;
     transition: background-color 0.3s;
     text-align: center;
-    background-color: $lightergreen;
-    border: 2px solid $black;
+    background-color: $orange;
     width: 100px;
   }
   input:hover {
-    background-color: $darkergreen;
   }
 }
