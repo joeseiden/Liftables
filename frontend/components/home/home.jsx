@@ -17,8 +17,7 @@ class Home extends React.Component {
             </p>
           </div>
           <div className='splash-nav'>
-            <span>See <Link to='articles'>all articles</Link> or enter a term to search below...</span>
-            <SearchBar />
+            <span>I want to learn how to <SearchBar /></span>
           </div>
         </div>
         <ArticlesIndexContainer />
