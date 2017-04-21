@@ -9,7 +9,7 @@
   margin: 0 auto;
   border-radius: 9px;
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(119,130,135,.4);
 }
 .edit-link-container {
   padding: 15px;
@@ -36,8 +36,19 @@
   border-top-right-radius: inherit;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 15px;
+  span {
+    color: #999;
+    font-size: 14px;
+    name {
+      color: #555;
+    }
+  }
 }
 
+.images-container {
+  display: flex;
+  justify-content: center;
+}
 .article-images {
   max-width: 95%;
   margin-left: 2.5%;
@@ -49,6 +60,8 @@
   justify-content: center;
   background-color: $lightestgrey;
   border-radius: 3px;
+  display: inline-block;
+
   border: 1px solid rgba(0, 0, 0, 0.10);
   li {
     padding: 15px;

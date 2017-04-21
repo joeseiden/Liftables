@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 import StepsIndexContainer from '../steps/steps_index_container';
 import ImageBarContainer from '../images/image_bar_container';
 import { Link, hashHistory } from 'react-router';
@@ -11,12 +12,16 @@ class ArticleEditForm extends React.Component {
     this.state = {
       id: this.props.articleId,
       title: '',
-      description: ''
+      description: '',
+      confirmationModalOpen: false
     };
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
+    this.deleteArticle = this.deleteArticle.bind(this);
+    this._openConfirmationWindow = this._openConfirmationWindow.bind(this);
+    this._closeConfirmationWindow = this._closeConfirmationWindow.bind(this);
   }
 
   componentWillMount() {
@@ -28,7 +33,8 @@ class ArticleEditForm extends React.Component {
       this.setState({
         id: newProps.articleId,
         title: newProps.article.title,
-        description: newProps.article.description
+        description: newProps.article.description,
+        confirmationModalOpen: false
       });
     }
   }
@@ -61,6 +67,20 @@ class ArticleEditForm extends React.Component {
     });
   }
 
+  deleteArticle() {
+    this.props.deleteArticle(this.props.article);
+    this._closeConfirmationWindow();
+    hashHistory.push("/articles");
+  }
+
+  _openConfirmationWindow() {
+    this.setState({confirmationModalOpen: true});
+  }
+
+  _closeConfirmationWindow() {
+    this.setState({confirmationModalOpen: false});
+  }
+
   render() {
     let article = this.state;
     if (!article){ return null; }
@@ -88,6 +108,22 @@ class ArticleEditForm extends React.Component {
                  onChange={this.update('description')}/>
           <input type='submit' id="article-edit-submit" value='Save Article'/>
         </form>
+        <div className='delete-button-container'>
+          <button onClick={this._openConfirmationWindow}>Delete Article</button>
+        </div>
+        <Modal
+          isOpen={this.state.confirmationModalOpen}
+          contentLabel="confirmation-window"
+          onRequestClose={this._closeConfirmationWindow}
+          shouldCloseOnOverlayClick={true}
+          id="delete-article-confirmation-modal"
+          className="modal">
+          <div>Are you sure you want to permanently delete this article?</div>
+          <div className="confirmation-buttons">
+            <button onClick={this.deleteArticle}>Yes</button>
+            <button onClick={this._closeConfirmationWindow}>No</button>
+          </div>
+        </Modal>
         <StepsIndexContainer articleId={this.state.id} />
       </div>
     );

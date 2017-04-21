@@ -7,12 +7,7 @@ import CommentsIndexContainer from '../comments/comments_index_container';
 class ArticleView extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      confirmationModalOpen: false
-    };
-    this.deleteArticle = this.deleteArticle.bind(this);
-    this._openConfirmationWindow = this._openConfirmationWindow.bind(this);
-    this._closeConfirmationWindow = this._closeConfirmationWindow.bind(this);
+
   }
 
   componentWillMount() {
@@ -74,19 +69,7 @@ class ArticleView extends React.Component {
     )));
   }
 
-  deleteArticle() {
-    this.props.deleteArticle(this.props.article);
-    this._closeConfirmationWindow();
-    hashHistory.push("/articles");
-  }
 
-  _openConfirmationWindow() {
-    this.setState({confirmationModalOpen: true});
-  }
-
-  _closeConfirmationWindow() {
-    this.setState({confirmationModalOpen: false});
-  }
 
   renderAuthorActions() {
     const currentUser = this.props.currentUser;
@@ -97,9 +80,6 @@ class ArticleView extends React.Component {
         <div className='edit-link-container'>
           <Link to={`/articles/${this.props.article.id}/edit`}
           className={'edit-article-link'}>Edit Article</Link>
-        </div>
-        <div className='delete-button-container'>
-          <button onClick={this._openConfirmationWindow}>Delete Article</button>
         </div>
       </div>
       );
@@ -114,8 +94,9 @@ class ArticleView extends React.Component {
       <section className="article-view">
         <div className="article-view-header">
           <h2 className="article-title">{article.title}</h2>
-          <span>by {article.user.username}</span>
+          <span>by <name>{article.user.username}</name></span>
         </div>
+        {this.renderAuthorActions()}
         <div className="images-container">
           <ul className="article-images">
             {this.renderImages()}
@@ -129,21 +110,8 @@ class ArticleView extends React.Component {
             {this.renderSteps()}
           </ul>
         </div>
-        {this.renderAuthorActions()}
         <CommentsIndexContainer articleId={article.id} />
-        <Modal
-          isOpen={this.state.confirmationModalOpen}
-          contentLabel="confirmation-window"
-          onRequestClose={this._closeConfirmationWindow}
-          shouldCloseOnOverlayClick={true}
-          id="delete-article-confirmation-modal"
-          className="modal">
-          <div>Are you sure you want to permanently delete this article?</div>
-          <div className="confirmation-buttons">
-            <button onClick={this.deleteArticle}>Yes</button>
-            <button onClick={this._closeConfirmationWindow}>No</button>
-          </div>
-        </Modal>
+
       </section>
     );
   }
