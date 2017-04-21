@@ -13,7 +13,7 @@ class ArticlesIndex extends React.Component {
   }
 
   componentWillMount() {
-    if (this.props.location.query.search_query) {
+    if (this.props.location && this.props.location.query.search_query) {
       this.props.requestSpecificArticles(this.props.location.query.search_query);
     } else {
       this.props.requestAllArticles();

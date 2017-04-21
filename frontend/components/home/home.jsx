@@ -21,6 +21,7 @@ class Home extends React.Component {
             <SearchBar />
           </div>
         </div>
+        <ArticlesIndexContainer />
       </div>
     );
   }

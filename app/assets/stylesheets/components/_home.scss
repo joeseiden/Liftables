@@ -1,16 +1,15 @@
 .splash-container {
-  max-width: 50vw;
-  position: relative;
+  width: 100vw;
+  height: 650px;
   display: flex;
   flex-direction: column;
-  margin-left: 25vw;
-  margin-right: 25vw;
-  top: 30vh;
-  justify-content: center;
+  top: 50px;
   align-items: center;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  color: #fff;
 
-  border-radius: 15px;
-  background: $lightestgrey;
+  background: url('http://res.cloudinary.com/liftables/image/upload/v1490382397/background_ruydfp.jpg') no-repeat center center;
+  background-size: cover;
   padding: 10px;
   .welcome {
     h1 {
@@ -23,7 +22,13 @@
       text-align: center;
     }
   }
-
+  .welcome {
+    color: #fff;
+    h1 {
+      font-family: $marker;
+      font-size: 65px;
+    }
+  }
   .splash-nav {
     margin-top: 50px;
     a {
