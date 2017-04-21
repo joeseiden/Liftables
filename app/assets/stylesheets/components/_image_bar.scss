@@ -7,20 +7,28 @@
 }
 
 .file-upload {
+  width: 100%;
   padding: none;
   margin-left: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  div {
+  .dropzone {
+  border-radius: 9px;
   display: flex;
   align-items: center;
   padding: 15px;
+  margin: 1%;
+  width: 90%;
+  height: 100px;
+  justify-content: center;
+  background: $lightestgrey;
+  box-shadow: inset 0 0 25px $lightergrey;
   }
 }
 
 .image-preview {
-  width: 60%;
+  width: 93%;
   min-height: 110px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -28,12 +36,11 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: lightgrey;
-  border-radius: 10px;
+  border-radius: 9px;
+  border: 1px solid $lightergrey;
   ul {
     display: flex;
     flex-direction: row;
-    background: lightgrey;
     border-radius: 15px;
     padding: 5px;
     .image-preview-thumb {
@@ -47,6 +54,7 @@
       -moz-filter: blur(2px);
       filter: blur(2px);
       display: block;
+      cursor: pointer;
     }
   }
 }
