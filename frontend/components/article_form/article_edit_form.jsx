@@ -17,7 +17,7 @@ class ArticleEditForm extends React.Component {
     };
 
     this.update = this.update.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.saveArticle = this.saveArticle.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
     this.deleteArticle = this.deleteArticle.bind(this);
     this._openConfirmationWindow = this._openConfirmationWindow.bind(this);
@@ -67,6 +67,12 @@ class ArticleEditForm extends React.Component {
     });
   }
 
+  saveArticle() {
+    this.props.editArticle(this.state).then((response) => {
+      hashHistory.push(`articles/${response.article.id}`);
+    });
+  }
+
   deleteArticle() {
     this.props.deleteArticle(this.props.article);
     this._closeConfirmationWindow();
@@ -87,9 +93,15 @@ class ArticleEditForm extends React.Component {
     return (
       <div className="article-form-container">
       {this.handleErrors()}
-        <ImageBarContainer imageableType={'Article'}
-          imageableId={this.state.id} />
-        <form id="article-edit-form" onSubmit={this.handleSubmit}>
+        <div className='article-form-header'>
+          <ImageBarContainer imageableType={'Article'}
+            imageableId={this.state.id} />
+          <div className='buttons'>
+            <button id='delete-button' onClick={this._openConfirmationWindow}>Delete Article</button>
+            <button id='submit-button' onClick={this.saveArticle}>Save Article</button>
+          </div>
+        </div>
+        <form id="article-edit-form">
           <label htmlFor='article-edit-title-input'>
           <h3>Title</h3>
           </label>
@@ -106,10 +118,9 @@ class ArticleEditForm extends React.Component {
                  value={this.state.description}
                  placeholder='Description'
                  onChange={this.update('description')}/>
-          <input type='submit' id="article-edit-submit" value='Save Article'/>
         </form>
         <div className='delete-button-container'>
-          <button onClick={this._openConfirmationWindow}>Delete Article</button>
+
         </div>
         <Modal
           isOpen={this.state.confirmationModalOpen}

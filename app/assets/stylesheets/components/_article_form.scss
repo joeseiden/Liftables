@@ -7,15 +7,31 @@
   margin: 0 auto;
   top: 30px;
   align-items: center;
-  border: 1px solid $lightgrey;
+  border: 1px solid $lightergrey;
   border-radius: 9px;
   background: white;
 }
 
+.article-form-header {
+  width: 100%;
+  background: $lightestgrey;
+  border-bottom: 1px solid $lightergrey;
+  margin-bottom: 15px;
+  justify-content: center;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 25px 10px;
+  }
+}
+
 
 #article-edit-form {
-  background: lightgrey;
-  width: 80%;
+  background: $lightestgrey;
+  border: 1px solid $lightergrey;
+  width: 850px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,27 +47,13 @@
   }
 
   textarea {
-    width: 80%;
+    width: 800px;
     min-height: 50px;
+    height: 300px;
   }
 
   input {
     width: 50%;
     text-align: center;
-  }
-
-  #article-edit-submit {
-    padding: 5px 7px;
-    font-size: 14px;
-    border-radius: 6px;
-    transition: background-color 0.3s;
-    text-align: center;
-    background-color: $orange;
-
-    width: 100px;
-  }
-
-  #article-edit-submit:hover {
-
   }
 }

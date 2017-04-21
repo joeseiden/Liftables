@@ -168,12 +168,15 @@
   input {
     padding: 5px 7px;
     font-size: 14px;
-    border-radius: 10px;
+    border-radius: 4px;
     transition: background-color 0.3s;
     text-align: center;
     background-color: $orange;
+    border-color: #cf6000;
     width: 100px;
   }
   input:hover {
+    background-color: #df6902;
+    border-color: #c55b00;
   }
 }

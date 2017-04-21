@@ -7,7 +7,6 @@ body {
 	width: 100%;
 	margin: 0 auto;
 	font-size: 16px;
-	// background: url('http://res.cloudinary.com/liftables/image/upload/v1490382397/background_ruydfp.jpg') no-repeat center center fixed;
 	background: $lightgrey;
 	-webkit-background-size: cover;
   -moz-background-size: cover;
@@ -16,19 +15,22 @@ body {
 }
 
 button {
-	color: $black;
+	color: white;
 	font-weight: bold;
 	padding: 7px 9px;
-	border-radius: 10px;
-	transition: background-color 0.3s;
+	border-radius: 4px;
+	transition: background-color 0.1s;
 	text-transform: uppercase;
 	font-size: 14px;
 	text-align: center;
   background-color: $orange;
+	border-color: #cf6000;
   margin: 5px;
 }
 
 button:hover {
+	background-color: #df6902;
+	border-color: #c55b00;
 }
 
 a {
