@@ -68,8 +68,7 @@ class ImageBar extends React.Component {
       (
       <li className='image-preview-item' key={image.id}>
         <img className='image-preview-thumb'
-          src={image.url}
-          onClick={this.deleteImage.bind(this, image.id)}/>
+          src={image.url}/>
       </li>
         )
       )
