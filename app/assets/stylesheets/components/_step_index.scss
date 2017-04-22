@@ -2,37 +2,30 @@
   width: 100%;
   ul.steps-index {
     li.step-index-item {
-      background: lightgrey;
+      background: $lightestgrey;
       margin: 5px;
-      padding: 10px;
+      padding: 15px;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       justify-content: space-between;
-      align-items: center;
-      justify-content: center;
       border-radius: 10px;
-      max-width: 50vw;
-      div.step-info {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        span {
-          margin-right: 50px;
-          font-size: 22px;
-          margin: 0;
-        }
-        p {
-          background: whitesmoke;
-          padding: 5px;
-          border-radius: 5px;
-          white-space: pre-wrap;
-          max-width: 60%;
-        }
+      border: 1px solid $lightergrey;
+      width: 850px;
+      align-items: center;
+      .step-index-item-title {
+        font-size: 22px;
+      }
+      .step-index-item-body {
+        background: white;
+        padding: 5px;
+        border-radius: 5px;
+        white-space: pre-wrap;
+        width: 600px;
+        min-height: 50px;
       }
       div.step-buttons {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         a, button {
           color: white;
         	font-weight: bold;
