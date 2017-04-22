@@ -128,24 +128,6 @@ hr {
 	Inputs
 */
 
-.input-wrapper {
-	display: flex;
-	margin: 5px 0;
-}
-
-.input-wrapper input {
-	flex: 1;
-	padding: 0 10px;
-	border-right: none;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-}
-
-.input-wrapper button {
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-}
-
 input[type="search"] {
 	padding: 5px;
 }

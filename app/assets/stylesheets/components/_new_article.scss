@@ -21,24 +21,24 @@ textarea {
 }
 
 input {
-  width: 50%;
   text-align: center;
 }
 
 #article-modal-submit {
   position: relative;
   bottom: 10%;
-  padding: 5px 7px;
+  padding: 7px 9px;
   font-size: 14px;
-  border-radius: 10px;
+  border-radius: 4px;
   transition: background-color 0.3s;
   text-align: center;
-  background-color: $green;
-  border: 2px solid $black;
-  font-family: 'Permanent Marker', cursive;
-  width: 100px;
+  background-color: $orange;
+  border: 1px solid #cf6000;
+  color: white;
+  text-transform: uppercase;
 }
 
 #article-modal-submit:hover {
-  background-color: $darkergreen;
+  background-color: #df6902;
+	border-color: #c55b00;
 }
