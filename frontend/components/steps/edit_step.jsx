@@ -14,7 +14,7 @@ class StepEditForm extends React.Component {
 
     this.handleErrors = this.handleErrors.bind(this);
     this.update = this.update.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.saveStep = this.saveStep.bind(this);
   }
 
   componentWillMount() {
@@ -45,7 +45,7 @@ class StepEditForm extends React.Component {
     };
   }
 
-  handleSubmit(e) {
+  saveStep(e) {
     e.preventDefault();
     let articleId = this.props.articleId;
     let step = this.state;
@@ -56,15 +56,21 @@ class StepEditForm extends React.Component {
 
   render() {
     return (
-      <div className="step-form-container">
+      <div className="step-form-container form-container">
         {this.handleErrors()}
-        <ImageBarContainer imageableType={'Step'}
-          imageableId={this.state.id} />
-        <form id="step-edit-form" onSubmit={this.handleSubmit}>
+        <div className='step-form-header form-header'>
+          <ImageBarContainer imageableType={'Step'}
+            imageableId={this.state.id} />
+          <div className='buttons'>
+            <button className='submit-button' onClick={this.saveStep}>Save Step</button>
+          </div>
+        </div>
+        <form id="step-edit-form" className='edit-form'>
           <label htmlFor='step-edit-title-input'>
             <h3>Title</h3>
           </label>
           <input type='text'
+                className='title-input'
                  id='step-edit-title-input'
                  value={this.state.title}
                  placeholder='Title'
@@ -73,11 +79,11 @@ class StepEditForm extends React.Component {
             <h3>Body</h3>
           </label>
           <textarea id='step-edit-body-input'
+                    className='body-input'
                      wrap='hard'
                      value={this.state.body}
                      placeholder='Body goes here'
                      onChange={this.update('body')}/>
-          <input type='submit' id='step-edit-submit' value='Save Step'/>
         </form>
       </div>
     );

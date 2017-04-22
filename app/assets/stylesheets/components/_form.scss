@@ -1,18 +1,18 @@
-.article-form-container {
+.form-container {
   width: 1016px;
   min-height: 600px;
   position: relative;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  top: 30px;
+  margin: 30px auto;
   align-items: center;
   border: 1px solid $lightergrey;
   border-radius: 9px;
   background: white;
+  padding-bottom: 15px;
 }
 
-.article-form-header {
+.form-header {
   width: 100%;
   background: $lightestgrey;
   border-bottom: 1px solid $lightergrey;
@@ -28,7 +28,7 @@
 }
 
 
-#article-edit-form {
+.edit-form {
   background: $lightestgrey;
   border: 1px solid $lightergrey;
   width: 850px;

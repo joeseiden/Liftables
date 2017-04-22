@@ -91,17 +91,17 @@ class ArticleEditForm extends React.Component {
     let article = this.state;
     if (!article){ return null; }
     return (
-      <div className="article-form-container">
+      <div className="article-form-container form-container">
       {this.handleErrors()}
-        <div className='article-form-header'>
+        <div className='article-form-header form-header'>
           <ImageBarContainer imageableType={'Article'}
             imageableId={this.state.id} />
           <div className='buttons'>
             <button id='delete-button' onClick={this._openConfirmationWindow}>Delete Article</button>
-            <button id='submit-button' onClick={this.saveArticle}>Save Article</button>
+            <button className='submit-button' onClick={this.saveArticle}>Save Article</button>
           </div>
         </div>
-        <form id="article-edit-form">
+        <form id="article-edit-form" className='edit-form'>
           <label htmlFor='article-edit-title-input'>
           <h3>Title</h3>
           </label>
