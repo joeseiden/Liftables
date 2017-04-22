@@ -73,3 +73,8 @@
 .article-thumbnail:hover {
   font-color: $black;
 }
+
+.dummy-thumbnail {
+  object-fit: scale-down;
+  background: white;
+}

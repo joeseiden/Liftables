@@ -7,13 +7,13 @@ const ArticleIndexItem = ({article, router}) => {
     if(article.images[0]){
       return (
         <img src={article.images[0].url} alt={article.title} className="article-thumbnail"/>
-      )
+      );
     } else {
       return (
-        <img src='https://dummyimage.com/300.png/09f/fff' alt={article.title} className="article-thumbnail"/>
-      )
+        <img src='https://image.flaticon.com/icons/png/512/8/8928.png' alt={article.title} className="article-thumbnail dummy-thumbnail" />
+      );
     }
-  }
+  };
 
   return (
   <li className="article-index-item">
@@ -26,7 +26,7 @@ const ArticleIndexItem = ({article, router}) => {
       </div>
     </Link>
   </li>
-  )
+);
 };
 
 export default ArticleIndexItem;

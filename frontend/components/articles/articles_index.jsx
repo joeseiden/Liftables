@@ -22,13 +22,15 @@ class ArticlesIndex extends React.Component {
 
   componentWillReceiveProps(newProps) {
     this.setState({articles: newProps.articles});
-    let searchQuery = newProps.location.query.search_query;
-    if ( searchQuery !== this.props.location.query.search_query ) {
-      if (searchQuery){
-        newProps.requestSpecificArticles(searchQuery);
-      } else {
-        this.props.requestAllArticles();
+    if (this.props.location && this.props.location.query.search_query) {
+      let searchQuery = newProps.location.query.search_query;
+      if ( searchQuery !== this.props.location.query.search_query ) {
+        if (searchQuery){
+          newProps.requestSpecificArticles(searchQuery);
+        }
       }
+    } else {
+      this.props.requestAllArticles();
     }
   }
 
