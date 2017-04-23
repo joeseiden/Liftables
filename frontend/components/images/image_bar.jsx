@@ -65,12 +65,16 @@ class ImageBar extends React.Component {
   renderImages() {
     return (
       this.state.images.map((image, idx) =>
-      (
-      <li className='image-preview-item' key={image.id}>
-        <img className='image-preview-thumb'
-          src={image.url}/>
-      </li>
-        )
+      {
+        if (image.imageable_id == this.props.imageableId && image.imageable_type == this.props.imageableType ) {
+          return (
+            <li className='image-preview-item' key={image.id}>
+              <img className='image-preview-thumb'
+                src={image.url}/>
+            </li>
+            );
+          }
+        }
       )
     );
   }

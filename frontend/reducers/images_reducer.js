@@ -11,7 +11,13 @@ const ImagesReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_IMAGES:
       const images = action.images;
-      return images;
+      let newImages = merge({}, state);
+      console.log(images);
+      console.log(newImages);
+      images.forEach((img) => {
+        newImages[img.id]=img;
+      });
+      return merge({}, newImages);
     case RECEIVE_IMAGE:
       newState = merge({}, state);
       newState[action.image.id]=action.image;
