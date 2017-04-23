@@ -129,7 +129,7 @@ class ArticleEditForm extends React.Component {
           shouldCloseOnOverlayClick={true}
           id="delete-article-confirmation-modal"
           className="modal">
-          <div>Are you sure you want to permanently delete this article?</div>
+          <div className="confirmation-message">Are you sure you want to permanently delete this article?</div>
           <div className="confirmation-buttons">
             <button onClick={this.deleteArticle}>Yes</button>
             <button onClick={this._closeConfirmationWindow}>No</button>
