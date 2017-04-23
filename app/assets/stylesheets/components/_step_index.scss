@@ -1,8 +1,11 @@
 .steps-index-container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   ul.steps-index {
     li.step-index-item {
-      div.step-preview {
+      .step-preview {
         background: $lightestgrey;
         margin: 5px;
         padding: 15px;
@@ -47,6 +50,19 @@
           }
         }
       }
+      .step-form-container {
+        background: $lightestgrey;
+        border-radius: 10px;
+        border: 1px solid $lightergrey;
+        width: 850px;
+        .image-preview {
+        }
+        #step-edit-form {
+          background: none;
+          border: none;
+        }
+      }
+
     }
   }
 }
