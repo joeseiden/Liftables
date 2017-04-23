@@ -36,7 +36,7 @@ class SearchBar extends React.Component {
           <input
             className="search-input"
             type="search"
-            placeholder="Enter text to search" onChange={this.update('query')}
+            onChange={this.update('query')}
             value={this.state.query}/>
           <span onClick={this.search} className="fa fa-search search-submit" aria-hidden="true"></span>
         </form>

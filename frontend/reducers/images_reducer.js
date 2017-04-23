@@ -12,8 +12,6 @@ const ImagesReducer = (state = {}, action) => {
     case RECEIVE_IMAGES:
       const images = action.images;
       let newImages = merge({}, state);
-      console.log(images);
-      console.log(newImages);
       images.forEach((img) => {
         newImages[img.id]=img;
       });

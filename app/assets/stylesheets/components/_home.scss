@@ -38,19 +38,25 @@
     .search-bar {
       margin-left: 10px;
       form {
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+
         .search-input {
           background: none;
           color: white;
           border-radius: 0;
           border: none;
           border-bottom: 2px solid white;
+          font-size: 20px;
+          font-family: $arimo;
+          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 1px 0px rgba(0, 0, 0, 0.5);
         }
         .search-input::-webkit-input-placeholder {
           color: transparent;
+          text-shadow: 0 0 0 0;
         }
         .search-input::-moz-placeholder {
           color: transparent;
+          text-shadow: 0 0 0 0;
         }
         .search-submit {
           font-size: 25px;
