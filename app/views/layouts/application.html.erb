@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Liftables</title>
+    <script src="https://use.fontawesome.com/28bbb07d56.js"></script>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -11,7 +12,6 @@
       window.CLOUDINARY_NAME = "<%=  ENV['CLOUD_NAME']%>"
       window.CLOUDINARY_UPLOAD_PRESET = "<%= ENV['CLOUDINARY_UPLOAD_PRESET'] %>"
       window.CLOUDINARY_UPLOAD_URL= "<%= ENV['CLOUDINARY_UPLOAD_URL'] %>"
-      window.test="test"
     </script>
   </head>
 

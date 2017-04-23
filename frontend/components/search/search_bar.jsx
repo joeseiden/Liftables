@@ -9,10 +9,10 @@ class SearchBar extends React.Component {
       query: ''
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.search = this.search.bind(this);
   }
 
-  handleSubmit(e){
+  search(e){
     e.preventDefault();
     if (this.state.query.length > 0){
       hashHistory.push(`articles?search_query=${this.state.query}`);
@@ -32,13 +32,13 @@ class SearchBar extends React.Component {
 
     return (
       <span className="search-bar">
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <input
             className="search-input"
             type="search"
             placeholder="Enter text to search" onChange={this.update('query')}
             value={this.state.query}/>
-          <input className="search-submit" type="submit" value="Search"/>
+          <span onClick={this.search} className="fa fa-search search-submit" aria-hidden="true"></span>
         </form>
       </span>
     );

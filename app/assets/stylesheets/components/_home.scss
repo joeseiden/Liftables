@@ -1,4 +1,5 @@
 .splash-container {
+  font-family: $comingsoon;
   width: 100vw;
   height: 650px;
   display: flex;
@@ -10,8 +11,8 @@
 
   background: url('http://res.cloudinary.com/liftables/image/upload/v1490382397/background_ruydfp.jpg') no-repeat center center;
   background-size: cover;
-  padding: 10px;
   .welcome {
+    margin-top: 50px;
     h1 {
       text-align: center;
       font-size: 40px;
@@ -30,9 +31,34 @@
     }
   }
   .splash-nav {
+    display: flex;
+    align-items: center;
     margin-top: 50px;
-    a {
-      text-decoration: underline;
+    font-size: 25px;
+    .search-bar {
+      margin-left: 10px;
+      form {
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+        .search-input {
+          background: none;
+          color: white;
+          border-radius: 0;
+          border: none;
+          border-bottom: 2px solid white;
+        }
+        .search-input::-webkit-input-placeholder {
+          color: transparent;
+        }
+        .search-input::-moz-placeholder {
+          color: transparent;
+        }
+        .search-submit {
+          font-size: 25px;
+          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+          background: none;
+          border: none;
+        }
+      }
     }
   }
 }
