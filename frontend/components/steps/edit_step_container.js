@@ -9,9 +9,10 @@ import {
 
 const mapStateToProps = (state, ownProps) => ({
   errors: state.errors,
-  step: state.steps[ownProps.params.stepId],
-  articleId: ownProps.params.articleId,
-  stepId: ownProps.params.stepId
+  step: state.steps[ownProps.stepId],
+  articleId: ownProps.articleId,
+  stepId: ownProps.stepId,
+  stopEditing: ownProps.stopEditing
 });
 
 const mapDispatchToProps = (dispatch, ownProps) =>({
