@@ -51,19 +51,29 @@
     flex-direction: row;
     border-radius: 15px;
     padding: 5px;
+    .image-preview-item {
+      margin: 5px;
+    }
+    .delete-button {
+      position: absolute;
+      z-index: 1000;
+    }
+    .delete-button:hover {
+      color: red;
+      cursor: pointer;
+    }
     .image-preview-thumb {
       width: 100px;
       height: 100px;
-      margin: 5px;
       border-radius: 10px;
       object-fit: cover;
     }
-    .image-preview-thumb:hover {
-      -webkit-filter: blur(2px);
-      -moz-filter: blur(2px);
-      filter: blur(2px);
-      display: block;
-      cursor: -webkit-grab;
-    }
+    // .image-preview-thumb:hover {
+    //   -webkit-filter: blur(2px);
+    //   -moz-filter: blur(2px);
+    //   filter: blur(2px);
+    //   display: block;
+    //   cursor: -webkit-grab;
+    // }
   }
 }

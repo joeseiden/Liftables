@@ -69,8 +69,10 @@ class ImageBar extends React.Component {
         if (image.imageable_id == this.props.imageableId && image.imageable_type == this.props.imageableType ) {
           return (
             <li className='image-preview-item' key={image.id}>
-              <img className='image-preview-thumb'
-                src={image.url}/>
+              <span className="fa fa-times delete-button"
+                aria-hidden="true"
+                onClick={this.deleteImage.bind(this, image.id)}></span>
+              <img className='image-preview-thumb' src={image.url}/>
             </li>
             );
           }

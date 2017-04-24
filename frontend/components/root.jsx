@@ -48,7 +48,7 @@ const Root = ({ store }) => {
         <Route path="articles?search_query=:searchQuery" component= { ArticlesIndexContainer } />
         <Route path="articles/:articleId" component={ ArticleViewContainer } />
         <Route path="articles/:articleId/edit" component={ ArticleEditFormContainer } onEnter={ _ensureAuthor }/>
-        <Route path="articles/:articleId/steps/:stepId/edit" component={ StepEditFormContainer } onEnter={ _ensureAuthor }/>
+        // <Route path="articles/:articleId/steps/:stepId/edit" component={ StepEditFormContainer } onEnter={ _ensureAuthor }/>
       </Route>
     </Router>
   </Provider>
