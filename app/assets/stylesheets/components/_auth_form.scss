@@ -1,74 +1,74 @@
 .auth-form-container {
-    font-family: 'Coming Soon', cursive;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+
+  h2 {
+    background: none;
+    border-radius: 0;
+  }
+
+  #auth-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 35px;
+    align-items: center;
+  }
+
+
+  #guest-login, #close-button, #auth-form-submit {
+    padding: 5px 7px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-align: center;
+    background: $orange;
+    width: 75px;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  #guest-login:hover, #close-button:hover, #auth-form-submit:hover {
+
+  }
+
+  #close-button {
+    margin: 6px;
+  }
+
+  #form-toggle {
+    border-radius: 0;
+    color: black;
+    background-color: transparent;
+    padding: 0;
+    font-weight: normal;
+    text-transform: none;
+    margin: auto;
+    border: none;
+    font-size: 14px;
+  }
+
+  #form-toggle:hover {
+    text-decoration: underline;
+  }
+
+  label {
+
+  }
+
+  #guest-login, #auth-form-submit {
+
+  }
+  .auth-input {
+    border: solid 1px $lightestgrey;
+    border-radius: 5px;
+    width: auto;
+    padding: 3px;
+  }
+
+  .auth-form-bottom {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 14px;
-
-    h2 {
-      font-family: 'Permanent Marker', cursive;
-      font-size: 20px;
-      margin-bottom: 0;
-    }
-
-    #auth-form {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 35px;
-    }
-
-
-    #guest-login, #close-button, #auth-form-submit {
-      padding: 5px 7px;
-      font-size: 14px;
-      border-radius: 10px;
-      transition: background-color 0.3s;
-      text-align: center;
-      background-color: $lightergreen;
-      border: 2px solid $black;
-      font-family: 'Permanent Marker', cursive;
-    }
-
-    #guest-login:hover, #close-button:hover, #auth-form-submit:hover {
-      background-color: $darkergreen;
-    }
-
-    #close-button {
-      margin: 6px;
-    }
-
-    #form-toggle {
-      border-radius: 0;
-      color: $green;
-      background-color: transparent;
-      padding: 0;
-      font-weight: normal;
-      text-transform: none;
-      margin: auto;
-      border: none;
-      font-size: 14px;
-    }
-
-    #form-toggle:hover {
-      color: $darkergreen;
-      text-decoration: underline;
-    }
-
-    label {
-
-    }
-
-    #guest-login, #auth-form-submit {
-      width: 75px;
-      position: relative;
-      left: 25px;
-    }
-    .auth-input {
-      border: solid 1px $lightestgrey;
-      border-radius: 5px;
-      width: auto;
-      padding: 3px;
-    }
-
-
+  }
 }

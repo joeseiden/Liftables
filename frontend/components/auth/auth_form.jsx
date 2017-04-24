@@ -121,8 +121,10 @@ class AuthForm extends React.Component {
           <input id="auth-form-submit" type="submit" value={formType}/>
           {this.demoButton()}
         </form>
-        {this.formToggleButton()}
-        <button id="close-button" onClick={this.props.closeModal}>Close</button>
+        <div className="auth-form-bottom">
+          {this.formToggleButton()}
+          <button id="close-button" onClick={this.props.closeModal}>Close</button>
+        </div>
       </div>
     );
   }

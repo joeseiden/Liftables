@@ -16,13 +16,13 @@
 // Reset
 @import "base/reset.scss";
 
+//animations
+@import "animations/animate.css";
+
 // Core
 @import "base/palette.scss";
 @import "base/fonts.scss";
 @import "base/layout.scss";
-
-//animations
-@import "animations/animate.css";
 
 // Grid
 @import "base/grid.scss";
