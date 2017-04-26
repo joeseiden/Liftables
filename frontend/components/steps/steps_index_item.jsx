@@ -44,9 +44,9 @@ class StepsIndexItem extends React.Component {
               </span>
               <p className="step-index-item-body">{this.props.step.body}</p>
               <div className="step-buttons">
-                <button onClick={this.startEditing}>
+                <Link to={`/articles/${this.props.articleId}/steps/${this.props.step.id}/edit`}>
                   Edit
-                </button>
+                </Link>
                 <button onClick={this.deleteStep}>Delete</button>
               </div>
             </div>;
@@ -57,7 +57,18 @@ class StepsIndexItem extends React.Component {
 
     return (
       <li className="step-index-item">
-        {this.renderItem()}
+        <div className="step-preview">
+          <span className="step-index-item-title">
+            {this.props.step.title}
+          </span>
+          <p className="step-index-item-body">{this.props.step.body}</p>
+          <div className="step-buttons">
+            <Link to={`/articles/${this.props.articleId}/steps/${this.props.step.id}/edit`}>
+              Edit
+            </Link>
+            <button onClick={this.deleteStep}>Delete</button>
+          </div>
+        </div>
       </li>
     );
   }

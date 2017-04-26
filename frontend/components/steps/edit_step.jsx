@@ -49,8 +49,10 @@ class StepEditForm extends React.Component {
     e.preventDefault();
     let articleId = this.props.articleId;
     let step = this.state;
-    this.props.updateStep(articleId, step);
-    this.props.stopEditing();
+    this.props.updateStep(articleId, step).then((response) => {
+      hashHistory.push(`articles/${response.step.article_id}/edit`);
+    });
+    // this.props.stopEditing();
   }
 
   render() {
@@ -58,7 +60,8 @@ class StepEditForm extends React.Component {
       <div className="step-form-container form-container">
         {this.handleErrors()}
         <div className='step-form-header form-header'>
-          <ImageBarContainer imageableType={'Step'}
+          <ImageBarContainer
+            imageableType={'Step'}
             imageableId={this.state.id} />
           <div className='buttons'>
             <button className='submit-button' onClick={this.saveStep}>Save Step</button>
