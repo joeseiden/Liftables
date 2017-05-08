@@ -15,6 +15,7 @@ import ArticleViewContainer from './article_view/article_view_container';
 import NewArticleModalContainer from './article_form/new_article_modal_container';
 import ArticleEditFormContainer from './article_form/article_edit_form_container';
 import StepEditFormContainer from './steps/edit_step_container';
+import UserProfileContainer from './user_profile/user_profile_container';
 
 const Root = ({ store }) => {
 
@@ -49,6 +50,7 @@ const Root = ({ store }) => {
         <Route path="articles/:articleId" component={ ArticleViewContainer } />
         <Route path="articles/:articleId/edit" component={ ArticleEditFormContainer } onEnter={ _ensureAuthor }/>
         <Route path="articles/:articleId/steps/:stepId/edit" component={ StepEditFormContainer } onEnter={ _ensureAuthor }/>
+        <Route path="user/:userId" component={UserProfileContainer} />
       </Route>
     </Router>
   </Provider>

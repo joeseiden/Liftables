@@ -8,5 +8,8 @@ json.articles do
         json.url image.url
       end
     end
+    json.user do
+      json.username user.username
+    end
   end
 end
