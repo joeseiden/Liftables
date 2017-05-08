@@ -19,6 +19,13 @@ export const fetchSpecificArticles = searchQuery => (
   })
 );
 
+export const fetchUserArticles = userId => (
+  $.ajax({
+    type: 'GET',
+    url: `api/users/${userId}/articles`
+  })
+);
+
 export const createArticle = article => (
   $.ajax({
     type: 'POST',
