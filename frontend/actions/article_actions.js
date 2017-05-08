@@ -23,6 +23,12 @@ export const requestSpecificArticles = searchQuery => dispatch => (
     err => dispatch(receiveErrors(err.responseJSON))
 );
 
+export const requestUserArticles = userId => dispatch => (
+  ArticleAPIUtil.fetchUserArticles(userId)
+    .then(articles => dispatch(receiveArticles(articles))),
+    err => dispatch(receiveErrors(err.responseJSON))
+);
+
 export const createArticle = article => dispatch => (
   ArticleAPIUtil.createArticle(article)
   .then(newArticle => dispatch(receiveArticle(newArticle)),

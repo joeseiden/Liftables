@@ -5,6 +5,8 @@ class Api::ArticlesController < ApplicationController
       @articles = Article
                 .includes(:images, :user)
                 .where("lower(title) LIKE ?", "%#{query}%")
+    # elsif params[:user_id]
+    #   @articles = Article.includes(:images).where(user_id: params[:user_id])
     else
       @articles = Article.includes(:images, :user).all
     end

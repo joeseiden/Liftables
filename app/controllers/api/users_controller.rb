@@ -1,5 +1,11 @@
 class Api::UsersController < ApplicationController
 
+  def show
+    @user = User.includes(:articles).find(params[:id])
+
+    render 'api/users/show'
+  end
+
   def create
     @user = User.new(user_params)
 
