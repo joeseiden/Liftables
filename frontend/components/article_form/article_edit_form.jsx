@@ -13,13 +13,16 @@ class ArticleEditForm extends React.Component {
       id: this.props.articleId,
       title: '',
       description: '',
-      confirmationModalOpen: false
+      confirmationModalOpen: false,
+      saveButtonText: "Save Article",
+      published: this.props.article.published
     };
 
     this.update = this.update.bind(this);
     this.saveArticle = this.saveArticle.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
     this.deleteArticle = this.deleteArticle.bind(this);
+    this.publishArticle = this.publishArticle.bind(this);
     this._openConfirmationWindow = this._openConfirmationWindow.bind(this);
     this._closeConfirmationWindow = this._closeConfirmationWindow.bind(this);
   }
@@ -59,18 +62,16 @@ class ArticleEditForm extends React.Component {
     };
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    let that = this;
+  saveArticle() {
     this.props.editArticle(this.state).then((response) => {
-      hashHistory.push(`articles/${response.article.id}`);
+      this.setState({saveButtonText: "Saved"});
+      setTimeout(() => this.setState({saveButtonText: "Save Article"}), 1500);
     });
   }
 
-  saveArticle() {
-    this.props.editArticle(this.state).then((response) => {
-      hashHistory.push(`articles/${response.article.id}`);
-    });
+  publishArticle() {
+    this.setState({published: !this.state.published});
+    this.saveArticle();
   }
 
   deleteArticle() {
@@ -89,6 +90,7 @@ class ArticleEditForm extends React.Component {
 
   render() {
     let article = this.state;
+    let publishButtonText = this.state.published ? "Unpublish" : "Publish";
     if (!article){ return null; }
     return (
       <div className="article-form-container form-container">
@@ -98,7 +100,8 @@ class ArticleEditForm extends React.Component {
             imageableId={this.state.id} />
           <div className='buttons'>
             <button id='delete-button' onClick={this._openConfirmationWindow}>Delete Article</button>
-            <button className='submit-button' onClick={this.saveArticle}>Save Article</button>
+            <button className='submit-button' id="article-save-button" onClick={this.saveArticle}>{this.state.saveButtonText}</button>
+            <button className='submit-button' id="article-publish-button" onClick={this.publishArticle}>{publishButtonText}</button>
           </div>
         </div>
         <form id="article-edit-form" className='edit-form'>
