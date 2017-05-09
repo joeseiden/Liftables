@@ -9,12 +9,14 @@ class StepEditForm extends React.Component {
     this.state = {
       id: this.props.stepId,
       title: '',
-      body: ''
+      body: '',
+      saveButtonText: "Save Step"
     };
-
+    this.autoSave();
     this.handleErrors = this.handleErrors.bind(this);
     this.update = this.update.bind(this);
     this.saveStep = this.saveStep.bind(this);
+    this.doneEditing = this.doneEditing.bind(this);
   }
 
   componentWillMount() {
@@ -50,9 +52,17 @@ class StepEditForm extends React.Component {
     let articleId = this.props.articleId;
     let step = this.state;
     this.props.updateStep(articleId, step).then((response) => {
-      hashHistory.push(`articles/${response.step.article_id}/edit`);
+      this.setState({saveButtonText: "Saved"});
+      setTimeout(() => this.setState({saveButtonText: "Save Step"}), 1500);
     });
-    // this.props.stopEditing();
+  }
+
+  autoSave() {
+    setInterval(() => this.saveArticle(), 60000);
+  }
+
+  doneEditing() {
+    hashHistory.push(`/articles/${this.props.articleId}/edit`);
   }
 
   render() {
@@ -64,7 +74,8 @@ class StepEditForm extends React.Component {
             imageableType={'Step'}
             imageableId={this.state.id} />
           <div className='buttons'>
-            <button className='submit-button' onClick={this.saveStep}>Save Step</button>
+            <button className='submit-button' onClick={this.saveStep}>{this.state.saveButtonText}</button>
+            <button className='submit-button' onClick={this.doneEditing}>Done</button>
           </div>
         </div>
         <form id="step-edit-form" className='edit-form'>

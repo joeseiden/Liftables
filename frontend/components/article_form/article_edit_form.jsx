@@ -77,7 +77,7 @@ class ArticleEditForm extends React.Component {
 
   autoSave() {
     setInterval(() =>
-    this.saveArticle(), 300000);
+    this.saveArticle(), 60000);
   }
 
   deleteArticle() {
