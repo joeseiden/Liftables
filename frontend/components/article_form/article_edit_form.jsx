@@ -87,7 +87,7 @@ class ArticleEditForm extends React.Component {
   }
 
   doneEditing() {
-    this.hashHistory.push(`/articles/${this.state.id}`);
+    hashHistory.push(`/articles/${this.state.id}`);
   }
 
   _openConfirmationWindow() {
