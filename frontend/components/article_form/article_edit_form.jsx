@@ -17,12 +17,13 @@ class ArticleEditForm extends React.Component {
       saveButtonText: "Save Article",
       published: this.props.article.published
     };
-
+    this.autoSave();
     this.update = this.update.bind(this);
     this.saveArticle = this.saveArticle.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
     this.deleteArticle = this.deleteArticle.bind(this);
     this.publishArticle = this.publishArticle.bind(this);
+    this.doneEditing = this.doneEditing.bind(this);
     this._openConfirmationWindow = this._openConfirmationWindow.bind(this);
     this._closeConfirmationWindow = this._closeConfirmationWindow.bind(this);
   }
@@ -74,10 +75,19 @@ class ArticleEditForm extends React.Component {
     this.saveArticle();
   }
 
+  autoSave() {
+    setInterval(() =>
+    this.saveArticle(), 300000);
+  }
+
   deleteArticle() {
     this.props.deleteArticle(this.props.article);
     this._closeConfirmationWindow();
     hashHistory.push("/articles");
+  }
+
+  doneEditing() {
+    this.hashHistory.push(`/articles/${this.state.id}`);
   }
 
   _openConfirmationWindow() {
@@ -102,6 +112,7 @@ class ArticleEditForm extends React.Component {
             <button id='delete-button' onClick={this._openConfirmationWindow}>Delete Article</button>
             <button className='submit-button' id="article-save-button" onClick={this.saveArticle}>{this.state.saveButtonText}</button>
             <button className='submit-button' id="article-publish-button" onClick={this.publishArticle}>{publishButtonText}</button>
+            <button className='submit-button' id="done-editing-button" onClick={this.doneEditing}>Done</button>
           </div>
         </div>
         <form id="article-edit-form" className='edit-form'>
