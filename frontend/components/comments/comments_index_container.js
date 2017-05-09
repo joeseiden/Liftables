@@ -17,6 +17,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     comments,
     articleId: ownProps.articleId,
+    articleAuthorId: state.articles[ownProps.articleId].user.id,
     currentUser: (
       (state.session.currentUser) ? state.session.currentUser : null
     )

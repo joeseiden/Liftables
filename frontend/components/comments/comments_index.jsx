@@ -57,7 +57,9 @@ class CommentsIndex extends React.Component {
                                     key={idx}
                                     comment={comment}
                                     articleId={this.props.articleId}
-                                    deleteComment={this.props.deleteComment}/>)}
+                                    deleteComment={this.props.deleteComment}
+                                    articleAuthorId={this.props.articleAuthorId}
+                                    currentUser={this.props.currentUser}/>)}
           </ul>
         </div>
         <form className="comment-form" onSubmit={this.addComment}>
