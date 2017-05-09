@@ -124,7 +124,7 @@ class ArticleEditForm extends React.Component {
                  value={this.state.title}
                  placeholder='Title'
                  onChange={this.update('title')}/>
-               <label htmlFor='article-edit-description-input'>
+          <label htmlFor='article-edit-description-input'>
           <h3>Description</h3>
           </label>
           <textarea id='article-edit-description-input'

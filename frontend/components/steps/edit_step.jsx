@@ -23,6 +23,10 @@ class StepEditForm extends React.Component {
     this.props.fetchStep(this.props.articleId, this.props.stepId);
   }
 
+  componentDidMount() {
+
+  }
+
   componentWillReceiveProps(newProps) {
     this.setState({title: newProps.step.title, body: newProps.step.body});
   }
@@ -48,7 +52,6 @@ class StepEditForm extends React.Component {
   }
 
   saveStep(e) {
-    e.preventDefault();
     let articleId = this.props.articleId;
     let step = this.state;
     this.props.updateStep(articleId, step).then((response) => {
@@ -58,7 +61,7 @@ class StepEditForm extends React.Component {
   }
 
   autoSave() {
-    setInterval(() => this.saveArticle(), 60000);
+    setInterval(() => this.saveStep(), 60000);
   }
 
   doneEditing() {
