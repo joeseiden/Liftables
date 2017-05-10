@@ -41,7 +41,10 @@ class ArticlesIndex extends React.Component {
     return (
       <section className="articles-index-container">
         <ul className="articles-index">
-          {articles.map(article => <ArticleIndexItem key={article.id} article={article}/>)}
+          {articles.map(article => {
+            if (article.published){
+              return (<ArticleIndexItem key={article.id} article={article}/>);
+            }})}
         </ul>
       </section>
     );

@@ -1,4 +1,4 @@
-json.extract! article, :id, :title, :description
+json.extract! article, :id, :title, :description, :published
 json.user do
   json.partial! 'api/users/user', user: article.user
 end

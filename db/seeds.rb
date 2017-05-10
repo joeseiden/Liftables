@@ -9,16 +9,16 @@ squat_art = Article.create!(
   title: "How to perform the Barbell Back Squat",
   description: "The barbell back squat is one of the most effective movements to train the lower body and posterior chain for strength and size. The barbell back squat should be at the foundation of any athletic training program. It is especially important for powerlifters, for whom it is a competition event, weightlifters and strongman competitors.",
   user_id: grant.id,
-  published: false)
+  published: true)
 bench_art = Article.create!(
   title: "How to perform the Barbell Bench Press ",
   description: "  The barbell bench press is one of the three competition movements in the sport of powerlifting and is also one of the best indicators of overall upper body power. It is commonly used by bodybuilders, as well, to build the chest, shoulders and triceps muscles.\n\n  Effective bench press form is more technical than it would initially seem. In this article, we will walk through how to perform the movement optimally.",
   user_id: joe.id,
-  published: false)
+  published: true)
 sumo_art = Article.create!(
   title: "How to perform the Sumo Deadlift",
   description: "  The sumo deadlift is a style of deadlifting popular among many powerlifters. Probably its most famous practitioner is Ed Coan, considered the greatest powerlifter of all time, whose record of 901lbs still stands after almost 30 years. More recently, Dan Green has also been known for being a very strong sumo deadlifter.\n\n  The sumo deadlift is not optimal for everyone, but if your hip anatomy and flexibility allows it, it can let you deadlift more than you would otherwise.", user_id: joe.id,
-  published: false)
+  published: true)
 Comment.create!([
   { content: "This will help me achieve my dream of having horse legs!",
     user_id: barry.id,

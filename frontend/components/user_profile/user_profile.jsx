@@ -40,17 +40,28 @@ class UserProfile extends React.Component {
         </section>
       );
     }
-    else if (this.props.currentUser.id === this.props.currentUser.id) {
+    else if (this.props.currentUser.id === this.props.user.id) {
       return (
         <section className="user-profile">
           <div className="user-profile-header">
             <h2 className="user-profile-title">Your articles</h2>
           </div>
           <div className="user-articles-container">
-            <h3>Published</h3>
+            <h3>Published Articles</h3>
             <ul className="user-articles-index articles-index published">
-              {articles.map(article =>
-              <ArticleIndexItem key={article.id} article={article}/>)}
+              {articles.map(article => {
+              if(article.published) {
+                return (<ArticleIndexItem key={article.id} article={article}/>);
+              }
+              })}
+            </ul>
+            <h3>Drafts</h3>
+            <ul className="user-articles-index articles-index drafts">
+              {articles.map(article => {
+                if(!article.published) {
+                  return (<ArticleIndexItem key={article.id} article={article}/>);
+                }
+              })}
             </ul>
           </div>
         </section>
