@@ -24,7 +24,6 @@ class ArticleView extends React.Component {
 
   mergeSteps(left, right) {
     const results = [];
-
     while (left.length > 0 && right.length >0) {
       switch (left[0].order < right[0].order) {
         case true:
@@ -79,11 +78,38 @@ class ArticleView extends React.Component {
       <div className='author-actions-container'>
         <div className='edit-link-container'>
           <Link to={`/articles/${this.props.article.id}/edit`}
-          className={'edit-article-link'}>Edit Article</Link>
+          className='edit-article-link'>Edit Article</Link>
         </div>
       </div>
       );
     }
+  }
+
+  renderAuthorInfo() {
+    return (
+      <div className='article-author-info'>
+        <div>More from <Link to={`/user/${this.props.article.user.id}`}>{this.props.article.user.username}</Link>:</div>
+        <ul className="small-article-index">
+          {this.props.article.user.articles.filter((a) => a.id !== this.props.article.id).slice(0,3).map((article, idx) => {
+            if(article.published) {
+              if(article.images[0]){
+                return (
+                  <li className="small-article-index-item" key={idx}>
+                    <Link to={`/articles/${article.id}`}><img src={article.images[0].url} title={article.title} className="small-article-thumb"/></Link>
+                  </li>
+                );
+              } else {
+                return (
+                <li className="small-article-index-item" key={idx}>
+                  <img src="https://image.flaticon.com/icons/png/512/8/8928.png" title={article.title} className="article-thumbnail dummy-thumbnail"/>
+                </li>
+                );
+              }
+            }
+          })}
+        </ul>
+      </div>
+    );
   }
 
   render() {
@@ -94,24 +120,28 @@ class ArticleView extends React.Component {
       <section className="article-view">
         <div className="article-view-header">
           <h2 className="article-title">{article.title}</h2>
-          <span>by <name>{article.user.username}</name></span>
+          <span>by <name><Link to={`/user/${this.props.article.user.id}`}>{article.user.username}</Link></name></span>
         </div>
         {this.renderAuthorActions()}
-        <div className="images-container">
-          <ul className="article-images">
-            {this.renderImages()}
-          </ul>
+        <div className="article-view-content">
+          <div className="article-view-body">
+            <div className="images-container">
+              <ul className="article-images">
+                {this.renderImages()}
+              </ul>
+            </div>
+            <div className="article-description">
+              <p>{article.description}</p>
+            </div>
+            <div className="steps-container">
+              <ul className="steps">
+                {this.renderSteps()}
+              </ul>
+            </div>
+            <CommentsIndexContainer articleId={article.id} />
+          </div>
+          {this.renderAuthorInfo()}
         </div>
-        <div className="article-description">
-          <p>{article.description}</p>
-        </div>
-        <div className="steps-container">
-          <ul className="steps">
-            {this.renderSteps()}
-          </ul>
-        </div>
-        <CommentsIndexContainer articleId={article.id} />
-
       </section>
     );
   }

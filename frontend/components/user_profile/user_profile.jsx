@@ -44,25 +44,29 @@ class UserProfile extends React.Component {
       return (
         <section className="user-profile">
           <div className="user-profile-header">
-            <h2 className="user-profile-title">Your articles</h2>
+            <h2 className="user-profile-title">My Articles</h2>
           </div>
           <div className="user-articles-container">
-            <h3>Published Articles</h3>
-            <ul className="user-articles-index articles-index published">
-              {articles.map(article => {
-              if(article.published) {
-                return (<ArticleIndexItem key={article.id} article={article}/>);
-              }
-              })}
-            </ul>
-            <h3>Drafts</h3>
-            <ul className="user-articles-index articles-index drafts">
-              {articles.map(article => {
-                if(!article.published) {
+            <div className="published">
+              <h3>Published Articles</h3>
+              <ul className="user-articles-index articles-index published">
+                {articles.map(article => {
+                if(article.published) {
                   return (<ArticleIndexItem key={article.id} article={article}/>);
                 }
-              })}
-            </ul>
+                })}
+              </ul>
+            </div>
+            <div className="drafts">
+              <h3>Drafts</h3>
+              <ul className="user-articles-index articles-index drafts">
+                {articles.map(article => {
+                  if(!article.published) {
+                    return (<ArticleIndexItem key={article.id} article={article}/>);
+                  }
+                })}
+              </ul>
+            </div>
           </div>
         </section>
       );

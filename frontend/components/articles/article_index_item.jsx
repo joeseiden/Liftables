@@ -10,7 +10,7 @@ const ArticleIndexItem = ({article, router}) => {
       );
     } else {
       return (
-        <img src='https://image.flaticon.com/icons/png/512/8/8928.png' alt={article.title} className="article-thumbnail dummy-thumbnail" />
+        <img src='https://image.flaticon.com/icons/png/512/8/8928.png' title={article.title} className="article-thumbnail dummy-thumbnail" />
       );
     }
   };
