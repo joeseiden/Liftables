@@ -88,14 +88,14 @@ class ArticleView extends React.Component {
   renderAuthorInfo() {
     return (
       <div className='article-author-info'>
-        <h4>More from {this.props.article.user.username}</h4>
+        <div>More from <Link to={`/user/${this.props.article.user.id}`}>{this.props.article.user.username}</Link>:</div>
         <ul className="small-article-index">
-          {this.props.article.user.articles.map((article, idx) => {
+          {this.props.article.user.articles.filter((a) => a.id !== this.props.article.id).slice(0,3).map((article, idx) => {
             if(article.published) {
               if(article.images[0]){
                 return (
                   <li className="small-article-index-item" key={idx}>
-                    <img src={article.images[0].url} title={article.title} className="small-article-thumb"/>
+                    <Link to={`/articles/${article.id}`}><img src={article.images[0].url} title={article.title} className="small-article-thumb"/></Link>
                   </li>
                 );
               } else {
@@ -120,26 +120,28 @@ class ArticleView extends React.Component {
       <section className="article-view">
         <div className="article-view-header">
           <h2 className="article-title">{article.title}</h2>
-          <span>by <name>{article.user.username}</name></span>
+          <span>by <name><Link to={`/user/${this.props.article.user.id}`}>{article.user.username}</Link></name></span>
         </div>
         {this.renderAuthorActions()}
-        <div className="article-view-body">
-          <div className="images-container">
-            <ul className="article-images">
-              {this.renderImages()}
-            </ul>
+        <div className="article-view-content">
+          <div className="article-view-body">
+            <div className="images-container">
+              <ul className="article-images">
+                {this.renderImages()}
+              </ul>
+            </div>
+            <div className="article-description">
+              <p>{article.description}</p>
+            </div>
+            <div className="steps-container">
+              <ul className="steps">
+                {this.renderSteps()}
+              </ul>
+            </div>
+            <CommentsIndexContainer articleId={article.id} />
           </div>
-          <div className="article-description">
-            <p>{article.description}</p>
-          </div>
-          <div className="steps-container">
-            <ul className="steps">
-              {this.renderSteps()}
-            </ul>
-          </div>
-          <CommentsIndexContainer articleId={article.id} />
+          {this.renderAuthorInfo()}
         </div>
-        {this.renderAuthorInfo()}
       </section>
     );
   }
