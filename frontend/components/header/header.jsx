@@ -44,7 +44,7 @@ class Header extends React.Component{
         <div className="right-nav">
           <button onClick={this._openNewArticleForm()} id='new-article-button'>New Article</button>
           <span id="user-greeting">Hi {this.props.currentUser.username}!</span>
-          <Link to={`/user/${this.props.currentUser.id}`}>My Articles</Link>
+          <Link to={`/user/${this.props.currentUser.id}`} className="profile-link">My Articles</Link>
           <button onClick={this.props.logout} id='logout-button'>Log Out</button>
         </div>
       );

@@ -24,7 +24,6 @@ class ArticleView extends React.Component {
 
   mergeSteps(left, right) {
     const results = [];
-
     while (left.length > 0 && right.length >0) {
       switch (left[0].order < right[0].order) {
         case true:
@@ -79,11 +78,38 @@ class ArticleView extends React.Component {
       <div className='author-actions-container'>
         <div className='edit-link-container'>
           <Link to={`/articles/${this.props.article.id}/edit`}
-          className={'edit-article-link'}>Edit Article</Link>
+          className='edit-article-link'>Edit Article</Link>
         </div>
       </div>
       );
     }
+  }
+
+  renderAuthorInfo() {
+    return (
+      <div className='article-author-info'>
+        <h4>More from {this.props.article.user.username}</h4>
+        <ul className="small-article-index">
+          {this.props.article.user.articles.map((article, idx) => {
+            if(article.published) {
+              if(article.images[0]){
+                return (
+                  <li className="small-article-index-item" key={idx}>
+                    <img src={article.images[0].url} title={article.title} className="small-article-thumb"/>
+                  </li>
+                );
+              } else {
+                return (
+                <li className="small-article-index-item" key={idx}>
+                  <img src="https://image.flaticon.com/icons/png/512/8/8928.png" title={article.title} className="article-thumbnail dummy-thumbnail"/>
+                </li>
+                );
+              }
+            }
+          })}
+        </ul>
+      </div>
+    );
   }
 
   render() {
@@ -97,21 +123,23 @@ class ArticleView extends React.Component {
           <span>by <name>{article.user.username}</name></span>
         </div>
         {this.renderAuthorActions()}
-        <div className="images-container">
-          <ul className="article-images">
-            {this.renderImages()}
-          </ul>
+        <div className="article-view-body">
+          <div className="images-container">
+            <ul className="article-images">
+              {this.renderImages()}
+            </ul>
+          </div>
+          <div className="article-description">
+            <p>{article.description}</p>
+          </div>
+          <div className="steps-container">
+            <ul className="steps">
+              {this.renderSteps()}
+            </ul>
+          </div>
+          <CommentsIndexContainer articleId={article.id} />
         </div>
-        <div className="article-description">
-          <p>{article.description}</p>
-        </div>
-        <div className="steps-container">
-          <ul className="steps">
-            {this.renderSteps()}
-          </ul>
-        </div>
-        <CommentsIndexContainer articleId={article.id} />
-
+        {this.renderAuthorInfo()}
       </section>
     );
   }
