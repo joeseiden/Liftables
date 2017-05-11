@@ -1,0 +1,23 @@
+.user-profile-header {
+  padding: 20px 0;
+}
+
+.user-articles-container {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  h3 {
+    text-align: center;
+  }
+  .published {
+    background: whitesmoke;
+  }
+  .drafts {
+    background: $lightestgrey;
+  }
+  ul {
+    display: flex;
+    justify-content: center;
+  }
+}
