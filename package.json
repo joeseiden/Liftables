@@ -27,18 +27,16 @@
     "webpack": "^2.2.1"
   },
   "devDependencies": {
-    "@types/jest": "^19.2.3",
     "babel-jest": "^20.0.1",
     "jest": "^20.0.1",
-    "regenerator-runtime": "^0.10.5",
-    "ts-jest": "^20.0.3"
+    "regenerator-runtime": "^0.10.5"
   },
   "engines": {
     "node": "4.1.1",
     "npm": "2.1.x"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "webpack": "webpack --watch",
     "heroku-postbuild": "webpack --config webpack.config.prod.js"
   },
@@ -54,15 +52,9 @@
   },
   "homepage": "https://github.com/joeseiden/Liftables#readme",
   "jest": {
-    "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
-      "ts",
-      "tsx",
       "js",
-      "json"
+      "jsx"
     ]
   }
 }
