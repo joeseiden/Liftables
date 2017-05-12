@@ -26,7 +26,13 @@
     "superagent": "^3.5.2",
     "webpack": "^2.2.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/jest": "^19.2.3",
+    "babel-jest": "^20.0.1",
+    "jest": "^20.0.1",
+    "regenerator-runtime": "^0.10.5",
+    "ts-jest": "^20.0.3"
+  },
   "engines": {
     "node": "4.1.1",
     "npm": "2.1.x"
@@ -46,5 +52,17 @@
   "bugs": {
     "url": "https://github.com/joeseiden/Liftables/issues"
   },
-  "homepage": "https://github.com/joeseiden/Liftables#readme"
+  "homepage": "https://github.com/joeseiden/Liftables#readme",
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ]
+  }
 }
