@@ -6,17 +6,20 @@ import {
 import merge from 'lodash/merge';
 
 const ArticlesReducer = (state = {}, action) => {
+  let newState;
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_ARTICLES:
       const articles = action.articles;
       return merge({}, articles);
     case RECEIVE_ARTICLE:
-      let newState = {};
+      newState = {};
       newState[action.article.id]=action.article;
       return newState;
     case REMOVE_ARTICLE:
-      return {};
+      newState = merge({}, state);
+      delete newState[action.article.id];
+      return newState;
     default:
       return state;
   }
