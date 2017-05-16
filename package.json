@@ -26,13 +26,17 @@
     "superagent": "^3.5.2",
     "webpack": "^2.2.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-jest": "^20.0.1",
+    "jest": "^20.0.1",
+    "regenerator-runtime": "^0.10.5"
+  },
   "engines": {
     "node": "4.1.1",
     "npm": "2.1.x"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "webpack": "webpack --watch",
     "heroku-postbuild": "webpack --config webpack.config.prod.js"
   },
@@ -46,5 +50,11 @@
   "bugs": {
     "url": "https://github.com/joeseiden/Liftables/issues"
   },
-  "homepage": "https://github.com/joeseiden/Liftables#readme"
+  "homepage": "https://github.com/joeseiden/Liftables#readme",
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ]
+  }
 }
