@@ -79,7 +79,8 @@ class ArticleEditForm extends React.Component {
   }
 
   publishArticle() {
-    this.setState({published: !this.state.published});
+    let published = (this.state.published) ? false : true;
+    this.setState({published: published});
     this.saveArticle();
   }
 
