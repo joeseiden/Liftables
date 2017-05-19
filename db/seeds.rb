@@ -24,6 +24,13 @@ intro_art = Article.create!(
   description: "Hi there! Welcome to Liftables, a technical recreation of instructables.com with a focus on fitness and weight lifting. It is built using React/Redux on the front end, Ruby on Rails on the backend and a Postgres database to store everything.\n\nIn this article, I'll be giving you an overview on how to use this site and some of my design decisions.",
   user_id: joe.id,
   published: true)
+dummy_art = Article.create!(
+  title: "Draft",
+  description: "I'm just a draft. Why don't you fill me out? You can edit the text in this box, drag images to the dropzone to add them, and add steps to me by clicking the button below.",
+  user_id: barry.id,
+  published: false
+)
+
 intro_step1 = Step.create!(
   title: "So you've made it this far",
   body: "If you're reading this, you've figured out how to read articles, so I'll talk about how the articles are constructed and stored.\n\nIn the database, articles contain columns for the title, description, an integer index linking them to their author as well as a boolean field denoting whether or not the article is published. Unless explicitly published by clicking the 'Publish' button in the edit form, the article will default to being unpublished and will only be visible to the author under 'Drafts' on their 'My Articles' page. You can also view all of a specific user's published articles by clicking on their name in the title or the 'More from this user' pane.",
@@ -44,7 +51,7 @@ intro_step3 = Step.create!(
 )
 intro_step4 = Step.create!(
   title: "Creating and Editing Articles and Steps",
-  body: "To create a new article, make sure you are logged in, then simply click the 'New Article' button on the header and fill out the form in the modal that pops up. Once you've done that, you will be redirected to a more detailed article edit form, where you can make further edits to the title and description as well as upload or remove images from the article. Of these images, the first one will be used as the thumbnail image in the articles index item.\n\nTo add steps, click the 'Add Step' button at the bottom of the form. This will create a step that you can then edit in its own form by clicking its 'Edit' link.",
+  body: "To create a new article, make sure you are logged in, then simply click the 'New Article' button on the header and fill out the form in the modal that pops up. Once you've done that, you will be redirected to a more detailed article edit form, where you can make further edits to the title and description as well as upload or remove images from the article. Of these images, the first one will be used as the thumbnail image in the articles index item.\n\nTo add steps, click the 'Add Step' button at the bottom of the form. This will create a step that you can then edit in its own form by clicking its 'Edit' link.\n\nThe articles and steps will autosave every minute, or you can manually save your work by clicking the save button.",
   article_id: intro_art.id,
   order: 4
 )
@@ -55,8 +62,8 @@ intro_step5 = Step.create!(
   order: 5
 )
 intro_step6 = Step.create!(
-  title: "Try it out!",
-  body: "Now that I've given you a rough overview of the site, create a new account or click the 'Demo' page to use a pre-made one, and start exploring! \n\nIf you would like to get in contact with me, I can be reached by email at joe.seiden214@gmail.com or on LinkedIn at linkedin.com/in/joe-seiden.",
+  title: "You're all set!",
+  body: "Now that I've given you a rough overview of the site, create a new account or click the 'Demo' page to use a pre-made one, and try it for yourself! \n\nIf you would like to get in contact with me, I can be reached by email at joe.seiden214@gmail.com or on LinkedIn at linkedin.com/in/joe-seiden.",
   article_id: intro_art.id,
   order: 6
 )
@@ -224,5 +231,15 @@ Image.create!([
   {url: "http://res.cloudinary.com/liftables/image/upload/v1490376188/baby_squat_form.jpg", imageable_id: squat_step_10.id, imageable_type: "Step"},
   {url: "http://res.cloudinary.com/liftables/image/upload/v1490376888/squat_complete.jpg", imageable_id: squat_step_11.id, imageable_type: "Step"},
   {url: "http://res.cloudinary.com/liftables/image/upload/v1490377164/salt_bae.jpg", imageable_id: squat_step_12.id, imageable_type: "Step"},
-  {url: "http://res.cloudinary.com/liftables/image/upload/v1495174020/Screen_Shot_2017-05-18_at_11.04.16_PM_rle5fb.png", imageable_id: intro_art.id, imageable_type: "Article"}
+  {url: "http://res.cloudinary.com/liftables/image/upload/v1495174020/Screen_Shot_2017-05-18_at_11.04.16_PM_rle5fb.png", imageable_id: intro_art.id, imageable_type: "Article"},
+  {url: "http://res.cloudinary.com/liftables/image/upload/v1495175575/Screen_Shot_2017-05-18_at_11.12.03_PM_ppz38u.png", imageable_id: intro_step1.id, imageable_type: "Step"},
+  {url: "http://res.cloudinary.com/liftables/image/upload/v1495175576/Screen_Shot_2017-05-18_at_11.11.15_PM_vp6ivb.png", imageable_id: intro_step1.id, imageable_type: "Step"},
+  {url: "http://res.cloudinary.com/liftables/image/upload/v1495175576/Screen_Shot_2017-05-18_at_11.10.43_PM_rx8nrt.png", imageable_id: intro_step1.id, imageable_type: "Step"},
+  {url: "http://res.cloudinary.com/liftables/image/upload/v1495176625/Screen_Shot_2017-05-18_at_11.43.14_PM_a7awnr.png", imageable_id: intro_step2.id, imageable_type: "Step"},
+  {url: "http://res.cloudinary.com/liftables/image/upload/v1495176824/Screen_Shot_2017-05-18_at_11.53.03_PM_c67wvh.png", imageable_id: intro_step3.id, imageable_type: "Step"},
+  {url: "http://res.cloudinary.com/liftables/image/upload/v1495177685/Screen_Shot_2017-05-19_at_12.00.50_AM_pclp92.png", imageable_id: intro_step4.id, imageable_type: "Step"},
+  {url: "http://res.cloudinary.com/liftables/image/upload/v1495177786/Screen_Shot_2017-05-19_at_12.08.51_AM_pfwnbp.png", imageable_id: intro_step4.id, imageable_type: "Step"},
+  {url: "http://res.cloudinary.com/liftables/image/upload/v1495177789/Screen_Shot_2017-05-19_at_12.09.06_AM_h0ipns.png", imageable_id: intro_step4.id, imageable_type: "Step"},
+  {url: "http://res.cloudinary.com/liftables/image/upload/v1495177930/Screen_Shot_2017-05-19_at_12.11.09_AM_vjyrtt.png", imageable_id: intro_step5.id, imageable_type: "Step"},
+  {url: "http://res.cloudinary.com/liftables/image/upload/v1495178082/netflix-star-ratings-thumbs-up-0_jjnsks.jpg", imageable_id: intro_step6.id, imageable_type: "Step"}
 ])

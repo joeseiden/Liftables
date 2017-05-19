@@ -8,7 +8,8 @@ class NewArticleModal extends React.Component {
     super(props);
     this.state = {
       title: '',
-      description: ''
+      description: '',
+      published: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
