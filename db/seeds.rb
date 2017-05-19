@@ -17,8 +17,49 @@ bench_art = Article.create!(
   published: true)
 sumo_art = Article.create!(
   title: "How to perform the Sumo Deadlift",
-  description: "  The sumo deadlift is a style of deadlifting popular among many powerlifters. Probably its most famous practitioner is Ed Coan, considered the greatest powerlifter of all time, whose record of 901lbs still stands after almost 30 years. More recently, Dan Green has also been known for being a very strong sumo deadlifter.\n\n  The sumo deadlift is not optimal for everyone, but if your hip anatomy and flexibility allows it, it can let you deadlift more than you would otherwise.", user_id: joe.id,
+  description: "The sumo deadlift is a style of deadlifting popular among many powerlifters. Probably its most famous practitioner is Ed Coan, considered the greatest powerlifter of all time, whose record of 901lbs still stands after almost 30 years. More recently, Dan Green has also been known for being a very strong sumo deadlifter.\n\n  The sumo deadlift is not optimal for everyone, but if your hip anatomy and flexibility allows it, it can let you deadlift more than you would otherwise.", user_id: joe.id,
   published: true)
+intro_art = Article.create!(
+  title: "How to use Liftables",
+  description: "Hi there! Welcome to Liftables, a technical recreation of instructables.com with a focus on fitness and weight lifting. It is built using React/Redux on the front end, Ruby on Rails on the backend and a Postgres database to store everything.\n\nIn this article, I'll be giving you an overview on how to use this site and some of my design decisions.",
+  user_id: joe.id,
+  published: true)
+intro_step1 = Step.create!(
+  title: "So you've made it this far",
+  body: "If you're reading this, you've figured out how to read articles, so I'll talk about how the articles are constructed and stored.\n\nIn the database, articles contain columns for the title, description, an integer index linking them to their author as well as a boolean field denoting whether or not the article is published. Unless explicitly published by clicking the 'Publish' button in the edit form, the article will default to being unpublished and will only be visible to the author under 'Drafts' on their 'My Articles' page. You can also view all of a specific user's published articles by clicking on their name in the title or the 'More from this user' pane.",
+  article_id: intro_art.id,
+  order: 1
+)
+intro_step2 = Step.create!(
+  title: "The Steps",
+  body: "Steps are stored in their own table, containing their title, body text, article_id and an integer denoting their order in the article. I did this because if a step is edited after the fact, they will be in a different order than they originally were when return from the database. By automatically saving their order by looking at the immediately previous step's order upon their creation, I can preserve the order of the steps regardless of when they were updated last. The steps are rendered in this preserved order by using a custom sorting algorithm that sorts them by their order value.\n\nAnother neat trick I was able to do with the order value is auto generate new steps' titles as 'Step X', where X is their order.",
+  article_id: intro_art.id,
+  order: 2
+)
+intro_step3 = Step.create!(
+  title: "The Images",
+  body: "Articles and steps also have their own associated images. I store all images in a single table and use a polymorphic association to link the images to the correct article or step through the type and id of what they're attached to. All image hosting is done through Cloudinary, and upon uploading the image file via the dropzone area, the file is uploaded to the Cloudinary server, that url is then returned and saved to the database, then rendered on the page automatically.",
+  article_id: intro_art.id,
+  order: 3
+)
+intro_step4 = Step.create!(
+  title: "Creating and Editing Articles and Steps",
+  body: "To create a new article, make sure you are logged in, then simply click the 'New Article' button on the header and fill out the form in the modal that pops up. Once you've done that, you will be redirected to a more detailed article edit form, where you can make further edits to the title and description as well as upload or remove images from the article. Of these images, the first one will be used as the thumbnail image in the articles index item.\n\nTo add steps, click the 'Add Step' button at the bottom of the form. This will create a step that you can then edit in its own form by clicking its 'Edit' link.",
+  article_id: intro_art.id,
+  order: 4
+)
+intro_step5 = Step.create!(
+  title: "Comments",
+  body: "Users can also comment on articles. Leaving a comment is fairly straight forward: just type what you want to say into the text box, then click 'Add Comment'. This saves the comment to the database, including the article id and id of the user who left it. Comments can also be deleted, but only by the author of the article or the author of the comment.",
+  article_id: intro_art.id,
+  order: 5
+)
+intro_step6 = Step.create!(
+  title: "Try it out!",
+  body: "Now that I've given you a rough overview of the site, create a new account or click the 'Demo' page to use a pre-made one, and start exploring! \n\nIf you would like to get in contact with me, I can be reached by email at joe.seiden214@gmail.com or on LinkedIn at linkedin.com/in/joe-seiden.",
+  article_id: intro_art.id,
+  order: 6
+)
 Comment.create!([
   { content: "This will help me achieve my dream of having horse legs!",
     user_id: barry.id,
@@ -28,7 +69,16 @@ Comment.create!([
     article_id: bench_art.id },
   { content: "Oh man, I don't know if my hips can do that. I guess it's time to start stretching more!",
     user_id: barry.id,
-    article_id: sumo_art.id }
+    article_id: sumo_art.id },
+  { content: "I commented on this article!",
+    user_id: joe.id,
+    article_id: intro_art.id },
+  { content: "So did I!",
+    user_id: grant.id,
+    article_id: intro_art.id },
+  { content: "I did too. If you log in as the demo user, you'll be able to see the delete button in the top right corner.",
+    user_id: barry.id,
+    article_id: intro_art.id }
 ])
 
 sumo_step_1 = Step.create!(
@@ -173,5 +223,6 @@ Image.create!([
   {url: "http://res.cloudinary.com/liftables/image/upload/v1490375634/squat_form.jpg", imageable_id: squat_step_9.id, imageable_type: "Step"},
   {url: "http://res.cloudinary.com/liftables/image/upload/v1490376188/baby_squat_form.jpg", imageable_id: squat_step_10.id, imageable_type: "Step"},
   {url: "http://res.cloudinary.com/liftables/image/upload/v1490376888/squat_complete.jpg", imageable_id: squat_step_11.id, imageable_type: "Step"},
-  {url: "http://res.cloudinary.com/liftables/image/upload/v1490377164/salt_bae.jpg", imageable_id: squat_step_12.id, imageable_type: "Step"}
+  {url: "http://res.cloudinary.com/liftables/image/upload/v1490377164/salt_bae.jpg", imageable_id: squat_step_12.id, imageable_type: "Step"},
+  {url: "http://res.cloudinary.com/liftables/image/upload/v1495174020/Screen_Shot_2017-05-18_at_11.04.16_PM_rle5fb.png", imageable_id: intro_art.id, imageable_type: "Article"}
 ])

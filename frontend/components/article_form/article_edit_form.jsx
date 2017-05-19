@@ -38,7 +38,8 @@ class ArticleEditForm extends React.Component {
         id: newProps.articleId,
         title: newProps.article.title,
         description: newProps.article.description,
-        confirmationModalOpen: false
+        confirmationModalOpen: false,
+        published: this.props.article.published
       });
     }
   }
