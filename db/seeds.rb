@@ -1,5 +1,3 @@
-User.destroy_all
-
 grant = User.create!(username: "gbrown", password: "password")
 joe = User.create!(username: "jseiden", password: "davis2014")
 barry = User.create!(username: "barry_bluejeans", password: "password")
