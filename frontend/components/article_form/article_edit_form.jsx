@@ -47,7 +47,6 @@ class ArticleEditForm extends React.Component {
         title: newProps.article.title,
         description: newProps.article.description,
         confirmationModalOpen: false,
-        published: newProps.article.published
       });
     }
   }
@@ -79,9 +78,8 @@ class ArticleEditForm extends React.Component {
   }
 
   publishArticle() {
-    let published = (this.state.published) ? false : true;
-    this.setState({published: published});
-    this.saveArticle();
+    this.setState({published: !this.state.published});
+    setTimeout(() => this.saveArticle(), 100);
   }
 
   autoSave() {
