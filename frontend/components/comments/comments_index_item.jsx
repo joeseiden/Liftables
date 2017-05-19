@@ -10,7 +10,7 @@ const CommentsIndexItem = props => {
     if (props.currentUser) {
       if (props.currentUser.id === props.articleAuthorId ||
         props.currentUser.id === props.comment.user.id) {
-        return(<button onClick={deleteComment}>Delete</button>);
+        return(<button onClick={deleteComment}  className="fa fa-times delete-button"></button>);
       }
     }
   };
@@ -19,9 +19,10 @@ const CommentsIndexItem = props => {
     <li className="comment-index-item">
       <div className="comment-info">
         <span className="comment-author">{props.comment.user.username}</span>
+        {deleteButton()}
         <p className="comment-body">
           {props.comment.content}
-        </p>{deleteButton()}
+        </p>
       </div>
     </li>
   );

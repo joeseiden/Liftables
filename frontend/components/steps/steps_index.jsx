@@ -24,7 +24,7 @@ class StepsIndex extends React.Component {
   mergeSteps(left, right) {
     const results = [];
 
-    while (left.length > 0 && right.length >0) {
+    while (left.length > 0 && right.length > 0) {
       switch (left[0].order < right[0].order) {
         case true:
           results.push(left.shift());

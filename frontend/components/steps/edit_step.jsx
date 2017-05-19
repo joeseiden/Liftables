@@ -12,7 +12,6 @@ class StepEditForm extends React.Component {
       body: '',
       saveButtonText: "Save Step"
     };
-    this.autoSave();
     this.handleErrors = this.handleErrors.bind(this);
     this.update = this.update.bind(this);
     this.saveStep = this.saveStep.bind(this);
@@ -24,7 +23,11 @@ class StepEditForm extends React.Component {
   }
 
   componentDidMount() {
+    this.intervalId = setInterval(() => this.saveStep(), 60000);
+  }
 
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
   }
 
   componentWillReceiveProps(newProps) {
@@ -61,7 +64,7 @@ class StepEditForm extends React.Component {
   }
 
   autoSave() {
-    setInterval(() => this.saveStep(), 60000);
+
   }
 
   doneEditing() {

@@ -14,6 +14,12 @@ class ArticleView extends React.Component {
     this.props.requestSingleArticle(this.props.params.articleId);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(this.props.params.articleId !== nextProps.params.articleId){
+      this.props.requestSingleArticle(nextProps.params.articleId);
+    }
+  }
+
   renderImages() {
     return (this.props.article.images.map((image, idx) => (
       <li key={idx}>
@@ -95,7 +101,7 @@ class ArticleView extends React.Component {
               if(article.images[0]){
                 return (
                   <li className="small-article-index-item" key={idx}>
-                    <Link to={`/articles/${article.id}`}><img src={article.images[0].url} title={article.title} className="small-article-thumb"/></Link>
+                    <Link to={`/articles/${article.id}`} key={article.id}><img src={article.images[0].url} title={article.title} className="small-article-thumb"/></Link>
                   </li>
                 );
               } else {

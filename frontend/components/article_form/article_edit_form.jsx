@@ -17,7 +17,6 @@ class ArticleEditForm extends React.Component {
       saveButtonText: "Save Article",
       published: this.props.article.published
     };
-    this.autoSave();
     this.update = this.update.bind(this);
     this.saveArticle = this.saveArticle.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
@@ -32,13 +31,23 @@ class ArticleEditForm extends React.Component {
     this.props.requestSingleArticle(this.props.params.articleId);
   }
 
+  componentDidMount() {
+    this.intervalId = setInterval(() =>
+    this.saveArticle(), 60000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
+
   componentWillReceiveProps(newProps) {
     if (newProps.article) {
       this.setState({
         id: newProps.articleId,
         title: newProps.article.title,
         description: newProps.article.description,
-        confirmationModalOpen: false
+        confirmationModalOpen: false,
+        published: newProps.article.published
       });
     }
   }
@@ -64,10 +73,9 @@ class ArticleEditForm extends React.Component {
   }
 
   saveArticle() {
-    this.props.editArticle(this.state).then((response) => {
-      this.setState({saveButtonText: "Saved"});
-      setTimeout(() => this.setState({saveButtonText: "Save Article"}), 1500);
-    });
+    this.props.editArticle(this.state);
+    this.setState({saveButtonText: "Saved"});
+    setTimeout(() => this.setState({saveButtonText: "Save Article"}), 500);
   }
 
   publishArticle() {
@@ -76,8 +84,7 @@ class ArticleEditForm extends React.Component {
   }
 
   autoSave() {
-    setInterval(() =>
-    this.saveArticle(), 60000);
+
   }
 
   deleteArticle() {

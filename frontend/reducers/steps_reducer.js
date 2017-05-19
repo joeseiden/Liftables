@@ -11,7 +11,7 @@ const StepsReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_STEPS:
       const steps = action.steps;
-      return merge({}, state, steps);
+      return merge({}, steps);
     case RECEIVE_STEP:
       newState = merge({}, state);
       newState[action.step.id]=action.step;
