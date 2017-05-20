@@ -12,12 +12,14 @@
   }
   .published {
     background: whitesmoke;
+    width: 100vw;
   }
   .drafts {
     background: $lightestgrey;
     display: flex;
     align-items: center;
     flex-direction: column;
+    width: 100vw;
   }
   ul {
     display: flex;
