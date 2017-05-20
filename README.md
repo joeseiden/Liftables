@@ -49,7 +49,7 @@ Webpack is used to conveniently bundle all frontend components into a bundle fil
 
 #### React/Redux
 
-All React components, Redux actions, API utiities and store are located in the frontend directory.
+All React components, Redux actions, API utilities and store are located in the frontend directory.
 
 #### jQuery
 
