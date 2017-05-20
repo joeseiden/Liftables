@@ -32,9 +32,11 @@ class UserProfile extends React.Component {
           </div>
           <div className="user-articles-container">
             <ul className="user-articles-index articles-index">
-              {articles.map(article =>
-                <ArticleIndexItem key={article.id} article={article}/>)
+              {articles.map(article => {
+              if(article.published) {
+                return (<ArticleIndexItem key={article.id} article={article}/>);
               }
+              })}
             </ul>
           </div>
         </section>
