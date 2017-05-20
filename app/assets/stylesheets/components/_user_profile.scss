@@ -13,6 +13,14 @@
   .published {
     background: whitesmoke;
     width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
   }
   .drafts {
     background: $lightestgrey;
@@ -23,6 +31,7 @@
   }
   ul {
     display: flex;
+    flex-direction: row;
     justify-content: center;
   }
 }
