@@ -15,6 +15,9 @@
   }
   .drafts {
     background: $lightestgrey;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
   ul {
     display: flex;
